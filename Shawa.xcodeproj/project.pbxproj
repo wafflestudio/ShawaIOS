@@ -22,6 +22,9 @@
 		F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EAC17814C2B009CB6D9 /* ECSlidingViewController.m */; };
 		F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */; };
 		F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EB2178155E5009CB6D9 /* MenuViewController.m */; };
+		F585B8F717829B4B00AB414D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F585B8F617829B4B00AB414D /* Course.m */; };
+		F585B8FA17829C7200AB414D /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F585B8F917829C7200AB414D /* timetable_bg.png */; };
+		F585B8FD1782AF7200AB414D /* Individual.m in Sources */ = {isa = PBXBuildFile; fileRef = F585B8FC1782AF7200AB414D /* Individual.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,12 @@
 		F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
 		F57B3EB1178155E5009CB6D9 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		F57B3EB2178155E5009CB6D9 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		F585B8F517829B4B00AB414D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		F585B8F617829B4B00AB414D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		F585B8F917829C7200AB414D /* timetable_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timetable_bg.png; sourceTree = "<group>"; };
+		F585B8FB1782AF7200AB414D /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
+		F585B8FC1782AF7200AB414D /* Individual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Individual.m; sourceTree = "<group>"; };
+		F585B8FE1782B07100AB414D /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +105,7 @@
 		F57B3E8917814AE9009CB6D9 /* Shawa */ = {
 			isa = PBXGroup;
 			children = (
+				F585B8F917829C7200AB414D /* timetable_bg.png */,
 				F57B3E9217814AE9009CB6D9 /* AppDelegate.h */,
 				F57B3E9317814AE9009CB6D9 /* AppDelegate.m */,
 				F57B3EA417814B4E009CB6D9 /* InitialSlidingViewController.h */,
@@ -104,7 +114,8 @@
 				F57B3EA817814BA9009CB6D9 /* ContentViewController.m */,
 				F57B3EB1178155E5009CB6D9 /* MenuViewController.h */,
 				F57B3EB2178155E5009CB6D9 /* MenuViewController.m */,
-				F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */,
+				F585B8F817829B5000AB414D /* Class */,
+				F585B8FF1782B08000AB414D /* Util */,
 				F57B3E8A17814AE9009CB6D9 /* Supporting Files */,
 			);
 			path = Shawa;
@@ -133,6 +144,26 @@
 				F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */,
 			);
 			path = ECSlidingViewController;
+			sourceTree = "<group>";
+		};
+		F585B8F817829B5000AB414D /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				F585B8FB1782AF7200AB414D /* Individual.h */,
+				F585B8FC1782AF7200AB414D /* Individual.m */,
+				F585B8F517829B4B00AB414D /* Course.h */,
+				F585B8F617829B4B00AB414D /* Course.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
+		F585B8FF1782B08000AB414D /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				F585B8FE1782B07100AB414D /* Constant.h */,
+				F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +222,7 @@
 				F57B3E9817814AE9009CB6D9 /* Default@2x.png in Resources */,
 				F57B3E9A17814AE9009CB6D9 /* Default-568h@2x.png in Resources */,
 				F57B3EA317814B18009CB6D9 /* iPhone.storyboard in Resources */,
+				F585B8FA17829C7200AB414D /* timetable_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +240,8 @@
 				F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */,
 				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
 				F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */,
+				F585B8F717829B4B00AB414D /* Course.m in Sources */,
+				F585B8FD1782AF7200AB414D /* Individual.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,6 +356,7 @@
 				F57B3E9F17814AE9009CB6D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

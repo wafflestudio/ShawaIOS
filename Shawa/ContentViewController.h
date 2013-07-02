@@ -9,9 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
+#import "Course.h"
 
 @interface ContentViewController : UIViewController
 
+@property (nonatomic, strong) NSArray *selectedFriendsList;
+
+- (void)showTimeTable;
 - (IBAction)revealMenu:(id)sender;
 
 @end

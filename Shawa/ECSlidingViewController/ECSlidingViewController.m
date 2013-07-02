@@ -348,7 +348,7 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
     if (animations) {
       animations();
     }
-    [self updateTopViewHorizontalCenter:newCenter];
+ //   [self updateTopViewHorizontalCenter:newCenter];
   } completion:^(BOOL finished){
     if (complete) {
       complete();
