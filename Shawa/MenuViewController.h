@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  MenuViewController.h
 //  Shawa
 //
 //  Created by SukWon Choi on 13. 7. 1..
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ECSlidingViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
+@interface MenuViewController : UIViewController
 
 @end

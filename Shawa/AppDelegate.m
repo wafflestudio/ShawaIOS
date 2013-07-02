@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  Shawa
 //
-//  Created by SukWon Choi on 13. 5. 25..
+//  Created by SukWon Choi on 13. 7. 1..
 //  Copyright (c) 2013년 Wafflestudio. All rights reserved.
 //
 
@@ -10,12 +10,6 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // Override point for customization after application launch.
-    return YES;
-}
-							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

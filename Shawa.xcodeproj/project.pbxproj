@@ -7,116 +7,144 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F52C0DB91750ADD300C6E77C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C0DB81750ADD300C6E77C /* UIKit.framework */; };
-		F52C0DBB1750ADD300C6E77C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C0DBA1750ADD300C6E77C /* Foundation.framework */; };
-		F52C0DBD1750ADD300C6E77C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52C0DBC1750ADD300C6E77C /* CoreGraphics.framework */; };
-		F52C0DC31750ADD300C6E77C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F52C0DC11750ADD300C6E77C /* InfoPlist.strings */; };
-		F52C0DC51750ADD300C6E77C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F52C0DC41750ADD300C6E77C /* main.m */; };
-		F52C0DC91750ADD300C6E77C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F52C0DC81750ADD300C6E77C /* AppDelegate.m */; };
-		F52C0DCB1750ADD300C6E77C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F52C0DCA1750ADD300C6E77C /* Default.png */; };
-		F52C0DCD1750ADD300C6E77C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52C0DCC1750ADD300C6E77C /* Default@2x.png */; };
-		F52C0DCF1750ADD300C6E77C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F52C0DCE1750ADD300C6E77C /* Default-568h@2x.png */; };
-		F52C0DD21750ADD300C6E77C /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F52C0DD01750ADD300C6E77C /* MainStoryboard.storyboard */; };
-		F52C0DD51750ADD300C6E77C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F52C0DD41750ADD300C6E77C /* ViewController.m */; };
+		F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8317814AE9009CB6D9 /* UIKit.framework */; };
+		F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8517814AE9009CB6D9 /* Foundation.framework */; };
+		F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */; };
+		F57B3E8E17814AE9009CB6D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F57B3E8C17814AE9009CB6D9 /* InfoPlist.strings */; };
+		F57B3E9017814AE9009CB6D9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3E8F17814AE9009CB6D9 /* main.m */; };
+		F57B3E9417814AE9009CB6D9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3E9317814AE9009CB6D9 /* AppDelegate.m */; };
+		F57B3E9617814AE9009CB6D9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B3E9517814AE9009CB6D9 /* Default.png */; };
+		F57B3E9817814AE9009CB6D9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B3E9717814AE9009CB6D9 /* Default@2x.png */; };
+		F57B3E9A17814AE9009CB6D9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F57B3E9917814AE9009CB6D9 /* Default-568h@2x.png */; };
+		F57B3EA317814B18009CB6D9 /* iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F57B3EA217814B18009CB6D9 /* iPhone.storyboard */; };
+		F57B3EA617814B4E009CB6D9 /* InitialSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EA517814B4E009CB6D9 /* InitialSlidingViewController.m */; };
+		F57B3EA917814BA9009CB6D9 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EA817814BA9009CB6D9 /* ContentViewController.m */; };
+		F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EAC17814C2B009CB6D9 /* ECSlidingViewController.m */; };
+		F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */; };
+		F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EB2178155E5009CB6D9 /* MenuViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F52C0DB51750ADD300C6E77C /* Shawa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shawa.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F52C0DB81750ADD300C6E77C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F52C0DBA1750ADD300C6E77C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F52C0DBC1750ADD300C6E77C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F52C0DC01750ADD300C6E77C /* Shawa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Shawa-Info.plist"; sourceTree = "<group>"; };
-		F52C0DC21750ADD300C6E77C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F52C0DC41750ADD300C6E77C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F52C0DC61750ADD300C6E77C /* Shawa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shawa-Prefix.pch"; sourceTree = "<group>"; };
-		F52C0DC71750ADD300C6E77C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		F52C0DC81750ADD300C6E77C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F52C0DCA1750ADD300C6E77C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		F52C0DCC1750ADD300C6E77C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		F52C0DCE1750ADD300C6E77C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F52C0DD11750ADD300C6E77C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		F52C0DD31750ADD300C6E77C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F52C0DD41750ADD300C6E77C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F57B3E8017814AE9009CB6D9 /* Shawa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shawa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F57B3E8317814AE9009CB6D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F57B3E8517814AE9009CB6D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F57B3E8B17814AE9009CB6D9 /* Shawa-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Shawa-Info.plist"; sourceTree = "<group>"; };
+		F57B3E8D17814AE9009CB6D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F57B3E8F17814AE9009CB6D9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F57B3E9117814AE9009CB6D9 /* Shawa-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Shawa-Prefix.pch"; sourceTree = "<group>"; };
+		F57B3E9217814AE9009CB6D9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F57B3E9317814AE9009CB6D9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F57B3E9517814AE9009CB6D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		F57B3E9717814AE9009CB6D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		F57B3E9917814AE9009CB6D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		F57B3EA217814B18009CB6D9 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = Shawa/iPhone.storyboard; sourceTree = "<group>"; };
+		F57B3EA417814B4E009CB6D9 /* InitialSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSlidingViewController.h; sourceTree = "<group>"; };
+		F57B3EA517814B4E009CB6D9 /* InitialSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSlidingViewController.m; sourceTree = "<group>"; };
+		F57B3EA717814BA9009CB6D9 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		F57B3EA817814BA9009CB6D9 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		F57B3EAB17814C2B009CB6D9 /* ECSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECSlidingViewController.h; sourceTree = "<group>"; };
+		F57B3EAC17814C2B009CB6D9 /* ECSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECSlidingViewController.m; sourceTree = "<group>"; };
+		F57B3EAD17814C2B009CB6D9 /* UIImage+ImageWithUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageWithUIView.h"; sourceTree = "<group>"; };
+		F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageWithUIView.m"; sourceTree = "<group>"; };
+		F57B3EB1178155E5009CB6D9 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		F57B3EB2178155E5009CB6D9 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F52C0DB21750ADD300C6E77C /* Frameworks */ = {
+		F57B3E7D17814AE9009CB6D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F52C0DB91750ADD300C6E77C /* UIKit.framework in Frameworks */,
-				F52C0DBB1750ADD300C6E77C /* Foundation.framework in Frameworks */,
-				F52C0DBD1750ADD300C6E77C /* CoreGraphics.framework in Frameworks */,
+				F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */,
+				F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */,
+				F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F52C0DAC1750ADD300C6E77C = {
+		F57B3E7717814AE8009CB6D9 = {
 			isa = PBXGroup;
 			children = (
-				F52C0DBE1750ADD300C6E77C /* Shawa */,
-				F52C0DB71750ADD300C6E77C /* Frameworks */,
-				F52C0DB61750ADD300C6E77C /* Products */,
+				F57B3E8917814AE9009CB6D9 /* Shawa */,
+				F57B3EA217814B18009CB6D9 /* iPhone.storyboard */,
+				F57B3E8217814AE9009CB6D9 /* Frameworks */,
+				F57B3E8117814AE9009CB6D9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F52C0DB61750ADD300C6E77C /* Products */ = {
+		F57B3E8117814AE9009CB6D9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F52C0DB51750ADD300C6E77C /* Shawa.app */,
+				F57B3E8017814AE9009CB6D9 /* Shawa.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F52C0DB71750ADD300C6E77C /* Frameworks */ = {
+		F57B3E8217814AE9009CB6D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F52C0DB81750ADD300C6E77C /* UIKit.framework */,
-				F52C0DBA1750ADD300C6E77C /* Foundation.framework */,
-				F52C0DBC1750ADD300C6E77C /* CoreGraphics.framework */,
+				F57B3E8317814AE9009CB6D9 /* UIKit.framework */,
+				F57B3E8517814AE9009CB6D9 /* Foundation.framework */,
+				F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F52C0DBE1750ADD300C6E77C /* Shawa */ = {
+		F57B3E8917814AE9009CB6D9 /* Shawa */ = {
 			isa = PBXGroup;
 			children = (
-				F52C0DC71750ADD300C6E77C /* AppDelegate.h */,
-				F52C0DC81750ADD300C6E77C /* AppDelegate.m */,
-				F52C0DD01750ADD300C6E77C /* MainStoryboard.storyboard */,
-				F52C0DD31750ADD300C6E77C /* ViewController.h */,
-				F52C0DD41750ADD300C6E77C /* ViewController.m */,
-				F52C0DBF1750ADD300C6E77C /* Supporting Files */,
+				F57B3E9217814AE9009CB6D9 /* AppDelegate.h */,
+				F57B3E9317814AE9009CB6D9 /* AppDelegate.m */,
+				F57B3EA417814B4E009CB6D9 /* InitialSlidingViewController.h */,
+				F57B3EA517814B4E009CB6D9 /* InitialSlidingViewController.m */,
+				F57B3EA717814BA9009CB6D9 /* ContentViewController.h */,
+				F57B3EA817814BA9009CB6D9 /* ContentViewController.m */,
+				F57B3EB1178155E5009CB6D9 /* MenuViewController.h */,
+				F57B3EB2178155E5009CB6D9 /* MenuViewController.m */,
+				F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */,
+				F57B3E8A17814AE9009CB6D9 /* Supporting Files */,
 			);
 			path = Shawa;
 			sourceTree = "<group>";
 		};
-		F52C0DBF1750ADD300C6E77C /* Supporting Files */ = {
+		F57B3E8A17814AE9009CB6D9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F52C0DC01750ADD300C6E77C /* Shawa-Info.plist */,
-				F52C0DC11750ADD300C6E77C /* InfoPlist.strings */,
-				F52C0DC41750ADD300C6E77C /* main.m */,
-				F52C0DC61750ADD300C6E77C /* Shawa-Prefix.pch */,
-				F52C0DCA1750ADD300C6E77C /* Default.png */,
-				F52C0DCC1750ADD300C6E77C /* Default@2x.png */,
-				F52C0DCE1750ADD300C6E77C /* Default-568h@2x.png */,
+				F57B3E8B17814AE9009CB6D9 /* Shawa-Info.plist */,
+				F57B3E8C17814AE9009CB6D9 /* InfoPlist.strings */,
+				F57B3E8F17814AE9009CB6D9 /* main.m */,
+				F57B3E9117814AE9009CB6D9 /* Shawa-Prefix.pch */,
+				F57B3E9517814AE9009CB6D9 /* Default.png */,
+				F57B3E9717814AE9009CB6D9 /* Default@2x.png */,
+				F57B3E9917814AE9009CB6D9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F57B3EAB17814C2B009CB6D9 /* ECSlidingViewController.h */,
+				F57B3EAC17814C2B009CB6D9 /* ECSlidingViewController.m */,
+				F57B3EAD17814C2B009CB6D9 /* UIImage+ImageWithUIView.h */,
+				F57B3EAE17814C2B009CB6D9 /* UIImage+ImageWithUIView.m */,
+			);
+			path = ECSlidingViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F52C0DB41750ADD300C6E77C /* Shawa */ = {
+		F57B3E7F17814AE9009CB6D9 /* Shawa */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F52C0DD81750ADD300C6E77C /* Build configuration list for PBXNativeTarget "Shawa" */;
+			buildConfigurationList = F57B3E9D17814AE9009CB6D9 /* Build configuration list for PBXNativeTarget "Shawa" */;
 			buildPhases = (
-				F52C0DB11750ADD300C6E77C /* Sources */,
-				F52C0DB21750ADD300C6E77C /* Frameworks */,
-				F52C0DB31750ADD300C6E77C /* Resources */,
+				F57B3E7C17814AE9009CB6D9 /* Sources */,
+				F57B3E7D17814AE9009CB6D9 /* Frameworks */,
+				F57B3E7E17814AE9009CB6D9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -124,84 +152,80 @@
 			);
 			name = Shawa;
 			productName = Shawa;
-			productReference = F52C0DB51750ADD300C6E77C /* Shawa.app */;
+			productReference = F57B3E8017814AE9009CB6D9 /* Shawa.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F52C0DAD1750ADD300C6E77C /* Project object */ = {
+		F57B3E7817814AE8009CB6D9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Wafflestudio;
 			};
-			buildConfigurationList = F52C0DB01750ADD300C6E77C /* Build configuration list for PBXProject "Shawa" */;
+			buildConfigurationList = F57B3E7B17814AE8009CB6D9 /* Build configuration list for PBXProject "Shawa" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = F52C0DAC1750ADD300C6E77C;
-			productRefGroup = F52C0DB61750ADD300C6E77C /* Products */;
+			mainGroup = F57B3E7717814AE8009CB6D9;
+			productRefGroup = F57B3E8117814AE9009CB6D9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F52C0DB41750ADD300C6E77C /* Shawa */,
+				F57B3E7F17814AE9009CB6D9 /* Shawa */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F52C0DB31750ADD300C6E77C /* Resources */ = {
+		F57B3E7E17814AE9009CB6D9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F52C0DC31750ADD300C6E77C /* InfoPlist.strings in Resources */,
-				F52C0DCB1750ADD300C6E77C /* Default.png in Resources */,
-				F52C0DCD1750ADD300C6E77C /* Default@2x.png in Resources */,
-				F52C0DCF1750ADD300C6E77C /* Default-568h@2x.png in Resources */,
-				F52C0DD21750ADD300C6E77C /* MainStoryboard.storyboard in Resources */,
+				F57B3E8E17814AE9009CB6D9 /* InfoPlist.strings in Resources */,
+				F57B3E9617814AE9009CB6D9 /* Default.png in Resources */,
+				F57B3E9817814AE9009CB6D9 /* Default@2x.png in Resources */,
+				F57B3E9A17814AE9009CB6D9 /* Default-568h@2x.png in Resources */,
+				F57B3EA317814B18009CB6D9 /* iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F52C0DB11750ADD300C6E77C /* Sources */ = {
+		F57B3E7C17814AE9009CB6D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F52C0DC51750ADD300C6E77C /* main.m in Sources */,
-				F52C0DC91750ADD300C6E77C /* AppDelegate.m in Sources */,
-				F52C0DD51750ADD300C6E77C /* ViewController.m in Sources */,
+				F57B3E9017814AE9009CB6D9 /* main.m in Sources */,
+				F57B3E9417814AE9009CB6D9 /* AppDelegate.m in Sources */,
+				F57B3EA617814B4E009CB6D9 /* InitialSlidingViewController.m in Sources */,
+				F57B3EA917814BA9009CB6D9 /* ContentViewController.m in Sources */,
+				F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */,
+				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
+				F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F52C0DC11750ADD300C6E77C /* InfoPlist.strings */ = {
+		F57B3E8C17814AE9009CB6D9 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F52C0DC21750ADD300C6E77C /* en */,
+				F57B3E8D17814AE9009CB6D9 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F52C0DD01750ADD300C6E77C /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F52C0DD11750ADD300C6E77C /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F52C0DD61750ADD300C6E77C /* Debug */ = {
+		F57B3E9B17814AE9009CB6D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -232,7 +256,7 @@
 			};
 			name = Debug;
 		};
-		F52C0DD71750ADD300C6E77C /* Release */ = {
+		F57B3E9C17814AE9009CB6D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -257,7 +281,7 @@
 			};
 			name = Release;
 		};
-		F52C0DD91750ADD300C6E77C /* Debug */ = {
+		F57B3E9E17814AE9009CB6D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -268,7 +292,7 @@
 			};
 			name = Debug;
 		};
-		F52C0DDA1750ADD300C6E77C /* Release */ = {
+		F57B3E9F17814AE9009CB6D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -282,24 +306,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F52C0DB01750ADD300C6E77C /* Build configuration list for PBXProject "Shawa" */ = {
+		F57B3E7B17814AE8009CB6D9 /* Build configuration list for PBXProject "Shawa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F52C0DD61750ADD300C6E77C /* Debug */,
-				F52C0DD71750ADD300C6E77C /* Release */,
+				F57B3E9B17814AE9009CB6D9 /* Debug */,
+				F57B3E9C17814AE9009CB6D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F52C0DD81750ADD300C6E77C /* Build configuration list for PBXNativeTarget "Shawa" */ = {
+		F57B3E9D17814AE9009CB6D9 /* Build configuration list for PBXNativeTarget "Shawa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F52C0DD91750ADD300C6E77C /* Debug */,
-				F52C0DDA1750ADD300C6E77C /* Release */,
+				F57B3E9E17814AE9009CB6D9 /* Debug */,
+				F57B3E9F17814AE9009CB6D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F52C0DAD1750ADD300C6E77C /* Project object */;
+	rootObject = F57B3E7817814AE8009CB6D9 /* Project object */;
 }

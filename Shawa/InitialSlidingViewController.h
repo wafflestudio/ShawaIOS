@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  InitialSlidingViewController.h
 //  Shawa
 //
 //  Created by SukWon Choi on 13. 7. 1..
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "ECSlidingViewController.h"
 
-@property (strong, nonatomic) UIWindow *window;
+@interface InitialSlidingViewController : ECSlidingViewController
 
 @end
