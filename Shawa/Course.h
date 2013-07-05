@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 //수업에 대한 정보를 담고 있는 클래스
-@interface Lecture : NSObject{
+@interface Lecture : NSObject <NSCoding>{
     //day :요일, period :교시, duration :수업시간
     int day;
     double period;
@@ -25,7 +25,7 @@
 @end
 
 //특정 과목에 대한 정보를 담고 있는 클래스
-@interface Course : NSObject{
+@interface Course : NSObject <NSCoding>{
     NSString * courseName;
     NSMutableArray * lectures;
 }

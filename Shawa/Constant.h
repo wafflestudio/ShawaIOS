@@ -18,6 +18,8 @@
 #define FRI 5
 #define SAT 6
 
-
+#define MYSELF   0
+#define FAVORITE 1
+#define OTHERS   2
 
 #endif

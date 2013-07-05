@@ -26,6 +26,23 @@
     return self;
 }
 
+
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeInt:day forKey:@"day"];
+    [aCoder encodeDouble:period forKey:@"period"];
+    [aCoder encodeDouble:duration forKey:@"duration"];
+    [aCoder encodeObject:location forKey:@"location"];
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if( self = [super init]){
+        self.day = [aDecoder decodeIntForKey:@"day"];
+        self.period = [aDecoder decodeDoubleForKey:@"period"];
+        self.duration = [aDecoder decodeDoubleForKey:@"duration"];
+        self.location = [aDecoder decodeObjectForKey:@"location"];
+    }
+    return self;
+}
 @end
 
 
@@ -55,4 +72,15 @@
     [lectures addObject:lecture];
 }
 
+- (void)encodeWithCoder:(NSCoder *)aCoder{
+    [aCoder encodeObject:courseName forKey:@"courseName"];
+    [aCoder encodeObject:lectures forKey:@"lectures"];
+}
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    if( self = [super init]){
+        self.courseName = [aDecoder decodeObjectForKey:@"courseName"];
+        self.lectures = [aDecoder decodeObjectForKey:@"lectures"];
+    }
+    return self;
+}
 @end

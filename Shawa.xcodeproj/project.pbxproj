@@ -24,7 +24,9 @@
 		F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F57B3EB2178155E5009CB6D9 /* MenuViewController.m */; };
 		F585B8F717829B4B00AB414D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F585B8F617829B4B00AB414D /* Course.m */; };
 		F585B8FA17829C7200AB414D /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F585B8F917829C7200AB414D /* timetable_bg.png */; };
-		F585B8FD1782AF7200AB414D /* Individual.m in Sources */ = {isa = PBXBuildFile; fileRef = F585B8FC1782AF7200AB414D /* Individual.m */; };
+		F58A1C04178661FB005BD166 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A1C03178661FB005BD166 /* CoreData.framework */; };
+		F58A1C35178667CB005BD166 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F58A1C33178667CB005BD166 /* Model.xcdatamodeld */; };
+		F58A1C3817866CE7005BD166 /* Individual.m in Sources */ = {isa = PBXBuildFile; fileRef = F58A1C3717866CE7005BD166 /* Individual.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,9 +57,11 @@
 		F585B8F517829B4B00AB414D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		F585B8F617829B4B00AB414D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		F585B8F917829C7200AB414D /* timetable_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timetable_bg.png; sourceTree = "<group>"; };
-		F585B8FB1782AF7200AB414D /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
-		F585B8FC1782AF7200AB414D /* Individual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Individual.m; sourceTree = "<group>"; };
 		F585B8FE1782B07100AB414D /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		F58A1C03178661FB005BD166 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F58A1C34178667CB005BD166 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		F58A1C3617866CE7005BD166 /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
+		F58A1C3717866CE7005BD166 /* Individual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Individual.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			files = (
 				F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */,
 				F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */,
+				F58A1C04178661FB005BD166 /* CoreData.framework in Frameworks */,
 				F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +102,7 @@
 			children = (
 				F57B3E8317814AE9009CB6D9 /* UIKit.framework */,
 				F57B3E8517814AE9009CB6D9 /* Foundation.framework */,
+				F58A1C03178661FB005BD166 /* CoreData.framework */,
 				F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
@@ -105,7 +111,6 @@
 		F57B3E8917814AE9009CB6D9 /* Shawa */ = {
 			isa = PBXGroup;
 			children = (
-				F585B8F917829C7200AB414D /* timetable_bg.png */,
 				F57B3E9217814AE9009CB6D9 /* AppDelegate.h */,
 				F57B3E9317814AE9009CB6D9 /* AppDelegate.m */,
 				F57B3EA417814B4E009CB6D9 /* InitialSlidingViewController.h */,
@@ -114,7 +119,9 @@
 				F57B3EA817814BA9009CB6D9 /* ContentViewController.m */,
 				F57B3EB1178155E5009CB6D9 /* MenuViewController.h */,
 				F57B3EB2178155E5009CB6D9 /* MenuViewController.m */,
+				F58A1C33178667CB005BD166 /* Model.xcdatamodeld */,
 				F585B8F817829B5000AB414D /* Class */,
+				F58A1BF817865B8B005BD166 /* Resource */,
 				F585B8FF1782B08000AB414D /* Util */,
 				F57B3E8A17814AE9009CB6D9 /* Supporting Files */,
 			);
@@ -149,8 +156,8 @@
 		F585B8F817829B5000AB414D /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				F585B8FB1782AF7200AB414D /* Individual.h */,
-				F585B8FC1782AF7200AB414D /* Individual.m */,
+				F58A1C3617866CE7005BD166 /* Individual.h */,
+				F58A1C3717866CE7005BD166 /* Individual.m */,
 				F585B8F517829B4B00AB414D /* Course.h */,
 				F585B8F617829B4B00AB414D /* Course.m */,
 			);
@@ -164,6 +171,14 @@
 				F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		F58A1BF817865B8B005BD166 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F585B8F917829C7200AB414D /* timetable_bg.png */,
+			);
+			name = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +256,8 @@
 				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
 				F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */,
 				F585B8F717829B4B00AB414D /* Course.m in Sources */,
-				F585B8FD1782AF7200AB414D /* Individual.m in Sources */,
+				F58A1C35178667CB005BD166 /* Model.xcdatamodeld in Sources */,
+				F58A1C3817866CE7005BD166 /* Individual.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +375,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F58A1C33178667CB005BD166 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F58A1C34178667CB005BD166 /* Model.xcdatamodel */,
+			);
+			currentVersion = F58A1C34178667CB005BD166 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F57B3E7817814AE8009CB6D9 /* Project object */;
 }

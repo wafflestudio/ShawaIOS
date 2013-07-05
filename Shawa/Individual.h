@@ -14,6 +14,6 @@
 
 @property (nonatomic, retain) NSNumber * userType;
 @property (nonatomic, retain) NSString * userName;
-@property (nonatomic, retain) id courses;
+@property (nonatomic, retain) NSArray * courses;
 
 @end
