@@ -94,7 +94,7 @@
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-91-eTR">
                                 <items>
-                                    <navigationItem title="Title" id="9dy-1g-z1d">
+                                    <navigationItem id="9dy-1g-z1d">
                                         <barButtonItem key="leftBarButtonItem" title="item" id="mVV-fg-Kpo"/>
                                         <barButtonItem key="rightBarButtonItem" title="저장" id="LVk-Ol-OxJ">
                                             <connections>
@@ -114,6 +114,9 @@
                             <constraint firstItem="eNG-91-eTR" firstAttribute="top" secondItem="0pn-eC-uxz" secondAttribute="top" type="default" id="vTn-GX-xfR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="navItem" destination="9dy-1g-z1d" id="0BR-m1-IvE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRC-Nz-w7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

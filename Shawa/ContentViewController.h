@@ -8,16 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
-#import "Course.h"
 
 @interface ContentViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *selectedFriendsList;
 
+@property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
+@property (nonatomic, strong) NSString * navTitle;
+
 - (void)showTimeTable;
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)saveButtonClicked:(id)sender;
-- (void)saveTimeTableAsImage;
 @end

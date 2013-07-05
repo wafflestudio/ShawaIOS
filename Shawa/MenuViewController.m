@@ -158,10 +158,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
  
-    Individual * individual = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
+    Individual * individual = [self.fetchedResultsController objectAtIndexPath:indexPath];
     newContentViewController.selectedFriendsList = [NSArray arrayWithObject:individual];
-                             
+    
+    newContentViewController.navTitle = individual.userName;
+    
     [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{
         CGRect frame = self.slidingViewController.topViewController.view.frame;
         self.slidingViewController.topViewController = newContentViewController;

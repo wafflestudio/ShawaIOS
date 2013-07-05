@@ -18,7 +18,8 @@
 
 @implementation ContentViewController
 
-@synthesize selectedFriendsList;
+@synthesize selectedFriendsList, navItem;
+@synthesize navTitle;
 
 - (IBAction)revealMenu:(id)sender
 {
@@ -64,10 +65,8 @@
     [timeTable addSubview:imageView];
     [self.view addSubview:timeTable];
     
-    
     // Initialized selectedFriendsList as MYSELF
     
-
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -81,6 +80,9 @@
         self.slidingViewController.underRightViewController = (MenuViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    
+    self.navItem.title = navTitle;
     
     [self showTimeTable];
 }

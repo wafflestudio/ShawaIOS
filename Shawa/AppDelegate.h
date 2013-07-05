@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 #import "Constant.h"
+#import "Individual.h"
 #import "Course.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
