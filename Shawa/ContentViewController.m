@@ -20,6 +20,86 @@
 
 @synthesize selectedFriendsList;
 
+- (IBAction)revealMenu:(id)sender
+{
+    [self.slidingViewController anchorTopViewTo:ECLeft];
+}
+
+- (IBAction)saveButtonClicked:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"시간표를 앨범에 저장합니다" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
+    [alert show];
+}
+
+- (void)saveTimeTableAsImage{
+    UIImage* image = nil;
+    
+    UIGraphicsBeginImageContext(timeTable.contentSize);
+    {
+        CGPoint savedContentOffset = timeTable.contentOffset;
+        CGRect savedFrame = timeTable.frame;
+        
+        timeTable.contentOffset = CGPointZero;
+        timeTable.frame = CGRectMake(0, 0, timeTable.contentSize.width, timeTable.contentSize.height);
+        
+        [timeTable.layer renderInContext: UIGraphicsGetCurrentContext()];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        timeTable.contentOffset = savedContentOffset;
+        timeTable.frame = savedFrame;
+    }
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+}
+
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    
+    // Setting ScrollView
+    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)];
+    timeTable.bounces = NO;
+    timeTable.contentSize = CGSizeMake(320, 605);
+    
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
+    
+    [timeTable addSubview:imageView];
+    [self.view addSubview:timeTable];
+    
+    
+    // Initialized selectedFriendsList as MYSELF
+    
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    self.view.layer.shadowOpacity = 0.75f;
+    self.view.layer.shadowRadius = 10.0f;
+    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
+    
+    if(![self.slidingViewController.underRightViewController isKindOfClass:[MenuViewController class]]){
+        self.slidingViewController.underRightViewController = (MenuViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    }
+    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
+    
+    [self showTimeTable];
+}
+
+
+// UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex==0){
+        // Cancel save
+        return;
+    }else if(buttonIndex==1){
+        // Confirm save
+        [self saveTimeTableAsImage];
+    }else{
+        
+    }
+}
+
+// Making TimeTable View
 -(CGPoint)pointMakeDay:(int)day period:(double)pr{
     double x, y;
     x = 25+59*(day-1);
@@ -61,41 +141,6 @@
             [self showLecture:[course.lectures objectAtIndex:j] courseName:[course courseName]];
         }
     }
-}
-
-- (void)viewDidLoad{
-    [super viewDidLoad];
-    
-    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, 320, 484)];
-    timeTable.bounces = NO;
-    timeTable.contentSize = CGSizeMake(320, 605);
-    
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
-    
-    [timeTable addSubview:imageView];
-    [self.view addSubview:timeTable];
-
-}
-
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    self.view.layer.shadowOpacity = 0.75f;
-    self.view.layer.shadowRadius = 10.0f;
-    self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    
-    if(![self.slidingViewController.underRightViewController isKindOfClass:[MenuViewController class]]){
-        self.slidingViewController.underRightViewController = (MenuViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    }
-    [self.view addGestureRecognizer:self.slidingViewController.panGesture];
-    
-    [self showTimeTable];
-}
-
-- (IBAction)revealMenu:(id)sender
-{
-    [self.slidingViewController anchorTopViewTo:ECLeft];
 }
 
 @end

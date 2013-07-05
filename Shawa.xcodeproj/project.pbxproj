@@ -27,6 +27,7 @@
 		F58A1C04178661FB005BD166 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A1C03178661FB005BD166 /* CoreData.framework */; };
 		F58A1C35178667CB005BD166 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F58A1C33178667CB005BD166 /* Model.xcdatamodeld */; };
 		F58A1C3817866CE7005BD166 /* Individual.m in Sources */ = {isa = PBXBuildFile; fileRef = F58A1C3717866CE7005BD166 /* Individual.m */; };
+		F58A1C3A1786BB39005BD166 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A1C391786BB38005BD166 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		F58A1C34178667CB005BD166 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F58A1C3617866CE7005BD166 /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
 		F58A1C3717866CE7005BD166 /* Individual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Individual.m; sourceTree = "<group>"; };
+		F58A1C391786BB38005BD166 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58A1C3A1786BB39005BD166 /* QuartzCore.framework in Frameworks */,
 				F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */,
 				F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */,
 				F58A1C04178661FB005BD166 /* CoreData.framework in Frameworks */,
@@ -100,6 +103,7 @@
 		F57B3E8217814AE9009CB6D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F58A1C391786BB38005BD166 /* QuartzCore.framework */,
 				F57B3E8317814AE9009CB6D9 /* UIKit.framework */,
 				F57B3E8517814AE9009CB6D9 /* Foundation.framework */,
 				F58A1C03178661FB005BD166 /* CoreData.framework */,

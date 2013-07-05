@@ -96,9 +96,9 @@
                                 <items>
                                     <navigationItem title="Title" id="9dy-1g-z1d">
                                         <barButtonItem key="leftBarButtonItem" title="item" id="mVV-fg-Kpo"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Menu" id="LVk-Ol-OxJ">
+                                        <barButtonItem key="rightBarButtonItem" title="저장" id="LVk-Ol-OxJ">
                                             <connections>
-                                                <action selector="revealMenu:" destination="iDc-rj-0sq" id="Nbr-oc-AId"/>
+                                                <action selector="saveButtonClicked:" destination="iDc-rj-0sq" id="p7b-20-X78"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
