@@ -116,7 +116,6 @@
     
     // managedobjectContext 초기화
     AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
-    NSLog(@"%@", delegate.managedObjectContext);
     self.managedObjectContext = delegate.managedObjectContext;
     
 //    [self saveData];
@@ -175,11 +174,7 @@
     newContentViewController.selectedFriendsList = [group.individuals_in_group allObjects];
     
     newContentViewController.navTitle = group.groupName;
-    if([group.groupType intValue]==FAVORITE){
-        newContentViewController.favorite = YES;
-    }else{
-        newContentViewController.favorite = NO;
-    }
+    newContentViewController.groupType = group.groupType;
     
     [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{
         CGRect frame = self.slidingViewController.topViewController.view.frame;

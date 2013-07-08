@@ -20,7 +20,7 @@
 
 @synthesize selectedFriendsList, navItem;
 @synthesize navTitle;
-@synthesize favorite;
+@synthesize groupType;
 
 - (IBAction)revealMenu:(id)sender
 {
@@ -126,6 +126,53 @@
 }
 
 // Making TimeTable View
+
+- (void)showTimeTable{
+    Individual * individual = [selectedFriendsList objectAtIndex:0];
+    for(int i=0; i<[individual.courses count]; i++){
+        Course * course = [[individual courses] objectAtIndex:i];
+        [self showLectures:course];
+    }
+}
+
+- (void)showLectures:(Course *)course{
+    for(int i=0; i<[course.lectures count]; i++){
+        Lecture * lecture = [course.lectures objectAtIndex:i];
+        
+        UIView * lectureView = [[UIView alloc] init];
+        UIImageView * lectureImageView = [[UIImageView alloc] init];
+        UILabel * lectureName = [[UILabel alloc] init];
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        CGPoint point = [self pointMakeDay:lecture.day period:lecture.period];
+        
+        [lectureView setFrame:CGRectMake(point.x, point.y, 59, 45*lecture.duration)];
+        [lectureImageView setFrame:CGRectMake(1, 1, 59, 45*lecture.duration)];
+        [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:0.7 alpha:1]];
+        
+        CGRect rec = CGRectMake(0, 0, 59, 45*lecture.duration);
+        [lectureName setFrame:rec];
+        lectureName.text = course.courseName;
+        lectureName.font = [UIFont boldSystemFontOfSize:8.0f];
+        [lectureName setTextColor:[UIColor blackColor]];
+        [lectureName setTextAlignment:NSTextAlignmentCenter];
+        [lectureName setBackgroundColor:[UIColor clearColor]];
+        
+        [lectureView addSubview:lectureImageView];
+        [lectureView addSubview:lectureName];
+        
+        [timeTable addSubview:lectureView];
+        
+        //Adding buttons to lectureView
+        if([groupType integerValue] == MYSELF){
+            [button setFrame:lectureView.frame];
+            button.tag =[[[selectedFriendsList objectAtIndex:0] courses] indexOfObject:course];
+            [button addTarget:self action:@selector(changeCourse:) forControlEvents:UIControlEventTouchUpInside];
+            [timeTable addSubview:button];
+        }
+    }
+}
+
 -(CGPoint)pointMakeDay:(int)day period:(double)pr{
     double x, y;
     x = 25+59*(day-1);
@@ -133,40 +180,10 @@
     return CGPointMake(x, y);
 }
 
-- (void)showLecture:(Lecture *)lecture courseName:(NSString *)courseName{
-    UIView * lectureView = [[UIView alloc] init];
-    UIImageView * lectureImageView = [[UIImageView alloc] init];
-    UILabel * lectureName = [[UILabel alloc] init];
-    
-    CGPoint point = [self pointMakeDay:lecture.day period:lecture.period];
-    
-    [lectureView setFrame:CGRectMake(point.x, point.y, 59, 45*lecture.duration)];
-    [lectureImageView setFrame:CGRectMake(1, 1, 59, 45*lecture.duration)];
-    [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:0.7 alpha:1]];
-    
-    CGRect rec = CGRectMake(0, 0, 59, 45*lecture.duration);
-    [lectureName setFrame:rec];
-    lectureName.text = courseName;
-    lectureName.font = [UIFont boldSystemFontOfSize:8.0f];
-    [lectureName setTextColor:[UIColor blackColor]];
-    [lectureName setTextAlignment:NSTextAlignmentCenter];
-    [lectureName setBackgroundColor:[UIColor clearColor]];
-    
-    [lectureView addSubview:lectureImageView];
-    [lectureView addSubview:lectureName];
-    [timeTable addSubview:lectureView];
+//Timetable Clicked
+- (void)changeCourse:(id)sender{
+    NSLog(@"changeCourse");
 }
 
-- (void)showTimeTable{
-    Individual * individual = [selectedFriendsList objectAtIndex:0];
-    NSLog(@"%@", individual.userName);
-    for(int i=0; i<[individual.courses count]; i++){
-        Course * course = [[individual courses] objectAtIndex:i];
-        
-        for(int j=0; j<[[course lectures] count]; j++){
-            [self showLecture:[course.lectures objectAtIndex:j] courseName:[course courseName]];
-        }
-    }
-}
 
 @end

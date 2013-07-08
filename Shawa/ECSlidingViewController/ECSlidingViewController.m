@@ -259,7 +259,6 @@ NSString *const ECSlidingViewTopDidReset             = @"ECSlidingViewTopDidRese
     if ((newCenterPosition < self.resettedCenter && (self.anchorLeftTopViewCenter == NSNotFound || self.underRightViewController == nil)) ||
         (newCenterPosition > self.resettedCenter && (self.anchorRightTopViewCenter == NSNotFound || self.underLeftViewController == nil))) {
         newCenterPosition = self.resettedCenter;
-        NSLog(@"updateTopViewHorizontalCenterWithRecognizer!!");
     }
     
     BOOL newCenterPositionIsOutsideAnchor = newCenterPosition < self.anchorLeftTopViewCenter || self.anchorRightTopViewCenter < newCenterPosition;
