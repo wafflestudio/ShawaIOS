@@ -68,25 +68,28 @@
     
     // Initialized selectedFriendsList as MYSELF
     if(self.selectedFriendsList == nil){
+        
         AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
         
-        NSString *entityName = @"Individual";
+        NSString *entityName = @"Group";
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        request.predicate = [NSPredicate predicateWithFormat:@"userType == %@",[NSNumber numberWithInt:MYSELF]];
+//        request.predicate = [NSPredicate predicateWithFormat:@"groupType == %@",[NSNumber numberWithInt:MYSELF]];
 
-        NSSortDescriptor * userTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+        NSSortDescriptor * userTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
                 
         request.sortDescriptors = [NSArray arrayWithObjects:userTypeDescriptor, nil];
         
         NSFetchedResultsController * fetchedResultsController;
-        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:delegate.managedObjectContext sectionNameKeyPath:@"userType" cacheName:nil];
+        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:delegate.managedObjectContext sectionNameKeyPath:@"groupType" cacheName:nil];
         
         [fetchedResultsController performFetch:nil];
         
-        Individual * individual = [fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        
-        self.selectedFriendsList = [NSArray arrayWithObject:individual];
-        self.navTitle = individual.userName; 
+        if([[fetchedResultsController fetchedObjects] count] != 0){
+            Group * group = [fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            self.selectedFriendsList = [group.individuals_in_group allObjects];
+            self.navTitle = group.groupName;
+        }
+         
     }
 }
 
@@ -156,7 +159,7 @@
 
 - (void)showTimeTable{
     Individual * individual = [selectedFriendsList objectAtIndex:0];
-    
+    NSLog(@"%@", individual.userName);
     for(int i=0; i<[individual.courses count]; i++){
         Course * course = [[individual courses] objectAtIndex:i];
         

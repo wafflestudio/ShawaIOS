@@ -2,7 +2,7 @@
 //  Individual.h
 //  Shawa
 //
-//  Created by SukWon Choi on 13. 7. 5..
+//  Created by SukWon Choi on 13. 7. 8..
 //  Copyright (c) 2013년 Wafflestudio. All rights reserved.
 //
 
@@ -10,10 +10,10 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Individual : NSManagedObject
+@interface Individual : NSManagedObject <NSCoding>
 
-@property (nonatomic, retain) NSNumber * userType;
+@property (nonatomic, retain) id courses;
 @property (nonatomic, retain) NSString * userName;
-@property (nonatomic, retain) NSArray * courses;
+@property (nonatomic, retain) NSNumber * idForServer;
 
 @end

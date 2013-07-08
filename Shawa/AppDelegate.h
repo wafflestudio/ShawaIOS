@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 
 #import "Constant.h"
+#import "Group.h"
 #import "Individual.h"
 #import "Course.h"
 

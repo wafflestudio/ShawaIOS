@@ -22,19 +22,15 @@
 
 - (void)setupFetchedResultsController
 {
-    NSString *entityName = @"Individual"; // Put your entity name here
+    NSString *entityName = @"Group"; // Put your entity name here
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
-    // - Filter it if you want
-    //request.predicate = [NSPredicate predicateWithFormat:@"Role.name = Blah"];
+    NSSortDescriptor * groupNameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupName" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSSortDescriptor * groupTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     
-    NSSortDescriptor * userNameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userName" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSSortDescriptor * userTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObjects:groupTypeDescriptor, groupNameDescriptor, nil];
     
-    
-    request.sortDescriptors = [NSArray arrayWithObjects:userTypeDescriptor, userNameDescriptor, nil];
-    
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"userType" cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"groupType" cacheName:nil];
     
     [self.fetchedResultsController performFetch:nil];
     [self.friendsListTableView reloadData];
@@ -61,30 +57,47 @@
     [course5 addNewLecture:TUE period:7.5  duration:1.5];
     [course5 addNewLecture:THU period:7.5 duration:1.5];
     
-    Individual * individual1 = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    
+    Group * group1 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    Individual * individual1 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
     individual1.userName = @"최 석원";
-    individual1.userType = [NSNumber numberWithInt:MYSELF];
     individual1.courses = [NSArray arrayWithObjects:course1, course2, course3, course4, course5, nil];
+    [group1 addIndividuals_in_group:[NSSet setWithObject:individual1]];
+    group1.groupName = individual1.userName;
+    group1.groupType = [NSNumber numberWithInt:MYSELF];
     
-    Individual * individual2 = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    Group * group2 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    Individual * individual2 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
     individual2.userName = @"김 택민";
-    individual2.userType = [NSNumber numberWithInt:FAVORITE];
     individual2.courses = [NSArray arrayWithObjects:course1, course2, course3, course4, nil];
+    [group2 addIndividuals_in_group:[NSSet setWithObject:individual2]];
+    group2.groupName = individual2.userName;
+    group2.groupType = [NSNumber numberWithInt:FAVORITE];
     
-    Individual * individual3 = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    Group * group3 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    Individual * individual3 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
     individual3.userName = @"전 재호";
-    individual3.userType = [NSNumber numberWithInt:FAVORITE];
     individual3.courses = [NSArray arrayWithObjects:course1, course2, course3, nil];
+    [group3 addIndividuals_in_group:[NSSet setWithObject:individual3]];
+    group3.groupName = individual3.userName;
+    group3.groupType = [NSNumber numberWithInt:FAVORITE];
     
-    Individual * individual4 = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    Group * group4 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    Individual * individual4 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
     individual4.userName = @"김 진억";
-    individual4.userType = [NSNumber numberWithInt:OTHERS];
     individual4.courses = [NSArray arrayWithObjects:course1, course2, nil];
+    [group4 addIndividuals_in_group:[NSSet setWithObject:individual4]];
+    group4.groupName = individual4.userName;
+    group4.groupType = [NSNumber numberWithInt:OTHERS];
     
-    Individual * individual5 = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
+    Group * group5 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
+    Individual * individual5 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
     individual5.userName = @"정 현호";
-    individual5.userType = [NSNumber numberWithInt:OTHERS];
     individual5.courses = [NSArray arrayWithObjects:course1, nil];
+    [group5 addIndividuals_in_group:[NSSet setWithObject:individual5]];
+    group5.groupName = individual5.userName;
+    group5.groupType = [NSNumber numberWithInt:OTHERS];
     
     [self.managedObjectContext save:nil];  // write to database
 }
@@ -106,9 +119,7 @@
     NSLog(@"%@", delegate.managedObjectContext);
     self.managedObjectContext = delegate.managedObjectContext;
     
-    
 //    [self saveData];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -146,24 +157,25 @@
      if (cell == nil) {
          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
      }
-    Individual * individual = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = individual.userName;
+    Group * group = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = group.groupName;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
+
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
  
     
-    Individual * individual = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    newContentViewController.selectedFriendsList = [NSArray arrayWithObject:individual];
+    Group * group = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    newContentViewController.selectedFriendsList = [group.individuals_in_group allObjects];
     
-    newContentViewController.navTitle = individual.userName;
-    if([individual.userType intValue]==FAVORITE){
+    newContentViewController.navTitle = group.groupName;
+    if([group.groupType intValue]==FAVORITE){
         newContentViewController.favorite = YES;
     }else{
         newContentViewController.favorite = NO;

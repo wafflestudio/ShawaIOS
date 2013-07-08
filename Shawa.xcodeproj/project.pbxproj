@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F522DDB7178A7E57003311C0 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F522DDB6178A7E57003311C0 /* Group.m */; };
 		F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8317814AE9009CB6D9 /* UIKit.framework */; };
 		F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8517814AE9009CB6D9 /* Foundation.framework */; };
 		F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F522DDB5178A7E56003311C0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		F522DDB6178A7E57003311C0 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		F57B3E8017814AE9009CB6D9 /* Shawa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shawa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B3E8317814AE9009CB6D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F57B3E8517814AE9009CB6D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,6 +163,8 @@
 		F585B8F817829B5000AB414D /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				F522DDB5178A7E56003311C0 /* Group.h */,
+				F522DDB6178A7E57003311C0 /* Group.m */,
 				F58A1C3617866CE7005BD166 /* Individual.h */,
 				F58A1C3717866CE7005BD166 /* Individual.m */,
 				F585B8F517829B4B00AB414D /* Course.h */,
@@ -262,6 +267,7 @@
 				F585B8F717829B4B00AB414D /* Course.m in Sources */,
 				F58A1C35178667CB005BD166 /* Model.xcdatamodeld in Sources */,
 				F58A1C3817866CE7005BD166 /* Individual.m in Sources */,
+				F522DDB7178A7E57003311C0 /* Group.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
