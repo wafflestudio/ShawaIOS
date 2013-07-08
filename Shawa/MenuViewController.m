@@ -163,6 +163,11 @@
     newContentViewController.selectedFriendsList = [NSArray arrayWithObject:individual];
     
     newContentViewController.navTitle = individual.userName;
+    if([individual.userType intValue]==FAVORITE){
+        newContentViewController.favorite = YES;
+    }else{
+        newContentViewController.favorite = NO;
+    }
     
     [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{
         CGRect frame = self.slidingViewController.topViewController.view.frame;

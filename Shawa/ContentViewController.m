@@ -20,6 +20,7 @@
 
 @synthesize selectedFriendsList, navItem;
 @synthesize navTitle;
+@synthesize favorite;
 
 - (IBAction)revealMenu:(id)sender
 {
@@ -66,7 +67,27 @@
     [self.view addSubview:timeTable];
     
     // Initialized selectedFriendsList as MYSELF
-    
+    if(self.selectedFriendsList == nil){
+        AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
+        
+        NSString *entityName = @"Individual";
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        request.predicate = [NSPredicate predicateWithFormat:@"userType == %@",[NSNumber numberWithInt:MYSELF]];
+
+        NSSortDescriptor * userTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"userType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+                
+        request.sortDescriptors = [NSArray arrayWithObjects:userTypeDescriptor, nil];
+        
+        NSFetchedResultsController * fetchedResultsController;
+        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:delegate.managedObjectContext sectionNameKeyPath:@"userType" cacheName:nil];
+        
+        [fetchedResultsController performFetch:nil];
+        
+        Individual * individual = [fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+        
+        self.selectedFriendsList = [NSArray arrayWithObject:individual];
+        self.navTitle = individual.userName; 
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

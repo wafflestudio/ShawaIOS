@@ -15,6 +15,7 @@
 @interface ContentViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *selectedFriendsList;
+@property (nonatomic) BOOL favorite;
 
 @property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
 @property (nonatomic, strong) NSString * navTitle;
