@@ -7,23 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
+#import "Individual.h"
 
-
-@interface Group : NSManagedObject
+@interface Group : NSObject
 
 @property (nonatomic, retain) NSString * groupName;
 @property (nonatomic, retain) NSNumber * groupType;
 @property (nonatomic, retain) NSNumber * idForServer;
-@property (nonatomic, retain) id individuals;
-@property (nonatomic, retain) NSSet *individuals_in_group;
-@end
+@property (nonatomic, retain) NSMutableArray *individuals;
 
-@interface Group (CoreDataGeneratedAccessors)
-
-- (void)addIndividuals_in_groupObject:(NSManagedObject *)value;
-- (void)removeIndividuals_in_groupObject:(NSManagedObject *)value;
-- (void)addIndividuals_in_group:(NSSet *)values;
-- (void)removeIndividuals_in_group:(NSSet *)values;
++ (Group *)getGroupFromServer;
 
 @end

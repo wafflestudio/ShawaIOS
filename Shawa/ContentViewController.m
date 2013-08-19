@@ -28,9 +28,7 @@
 }
 
 - (IBAction)addButtonClicked:(id)sender{
-    
     [self performSegueWithIdentifier:@"Add New Course" sender:self];
-
 }
 
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender {
@@ -80,28 +78,9 @@
     
     // Initialized selectedFriendsList as MYSELF
     if(self.selectedFriendsList == nil){
-        
-        AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
-        
-        NSString *entityName = @"Group";
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-//        request.predicate = [NSPredicate predicateWithFormat:@"groupType == %@",[NSNumber numberWithInt:MYSELF]];
-
-        NSSortDescriptor * userTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-                
-        request.sortDescriptors = [NSArray arrayWithObjects:userTypeDescriptor, nil];
-        
-        NSFetchedResultsController * fetchedResultsController;
-        fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:delegate.managedObjectContext sectionNameKeyPath:@"groupType" cacheName:nil];
-        
-        [fetchedResultsController performFetch:nil];
-        
-        if([[fetchedResultsController fetchedObjects] count] != 0){
-            Group * group = [fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            self.selectedFriendsList = [group.individuals_in_group allObjects];
-            self.navTitle = group.groupName;
-        }
-         
+        Group * group = [Group getGroupFromServer];
+        self.selectedFriendsList = [NSArray arrayWithArray:[group individuals]];
+        self.navTitle = group.groupName;
     }
 }
 

@@ -17,104 +17,15 @@
 @interface MenuViewController (){
     NSArray * friendsList;
 }
-- (Group *)getGroupFromServer;
-- (Course *)getCourseFromDic:(NSDictionary *)courseDic;
-- (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic;
-- (int)getDayFromStrimg:(NSString *)dayString;
 
 @end
 
 @implementation MenuViewController
 
 @synthesize friendsListTableView;
-- (Course *)getCourseFromDic:(NSDictionary *)courseDic{
-    Course * course = [[Course alloc] init];
 
-    course.courseName = [courseDic objectForKey:@"courseName"];
-    
-    int lectureNum = [[courseDic objectForKey:@"lectures"] count];
-    for(int i=0; i<lectureNum; i++){
-        
-        Lecture * lecture = [self getLectureFromDic:[[courseDic objectForKey:@"lectures"] objectAtIndex:i]];
-        
-        [course.lectures addObject:lecture];
-    }
-    return course; 
-}
-- (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic{
-    Lecture * lecture = [[Lecture alloc] init];
-    lecture.day = [self getDayFromStrimg:[lectureDic objectForKey:@"day"]];
-    lecture.period = [[lectureDic objectForKey:@"period"] doubleValue];
-    lecture.duration = [[lectureDic objectForKey:@"duration"] doubleValue];
-    
-    return lecture;
-}
-- (int)getDayFromStrimg:(NSString *)dayString{
-    if([dayString isEqualToString:@"Monday"]) return MON;
-    else if([dayString isEqualToString:@"Tuesday"]) return TUE;
-    else if([dayString isEqualToString:@"Wednesday"]) return WED;
-    else if([dayString isEqualToString:@"Thursday"]) return THU;
-    else if([dayString isEqualToString:@"Friday"]) return FRI;
-    else if([dayString isEqualToString:@"Saturday"]) return SAT;
-    else if([dayString isEqualToString:@"Sunday"]) return SUN;
-    else {
-        NSLog(@"No matching Day for string");
-        return -1;
-    }
-}
-- (Group *)getGroupFromServer{
-    NSDictionary * jsonDic =  [NSDictionary dictionaryWithContentsOfJSONURLString:@"http://services.snu.ac.kr:3332/test"];
-    
-    Group * groupFromServer = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    
-    groupFromServer.groupName = [jsonDic objectForKey:@"groupName"];
-    
-    NSMutableArray * individuals = [[NSMutableArray alloc] init];
-    
-    int individualNum = [[jsonDic objectForKey:@"individuals"] count];
-    for(int i=0; i< individualNum; i++){
-        Individual * individual = [NSEntityDescription insertNewObjectForEntityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
-        
-        NSDictionary * individualDic = (NSDictionary *)[[jsonDic objectForKey:@"individuals"] objectAtIndex:i];
-        individual.userName = [individualDic objectForKey:@"userName"];
-        
-        NSMutableArray *courses = [[NSMutableArray alloc] init];
-        
-        int courseNum = [[individualDic objectForKey:@"courses"] count];
-        for(int j=0; j<courseNum; j++){
-            Course * course = [self getCourseFromDic:[[individualDic objectForKey:@"courses"] objectAtIndex:j]];
-            [courses addObject:course];
-        }
-        individual.courses = [NSArray arrayWithArray:courses];
-        
-        [individuals addObject:individual];
-    }
-    
-    [groupFromServer addIndividuals_in_group:[NSSet setWithArray:individuals]];
 
-    return groupFromServer;
-}
-
-- (void)courseChanged{
-    [self.managedObjectContext save:nil];
-}
-
-- (void)setupFetchedResultsController
-{
-    NSString *entityName = @"Group"; // Put your entity name here
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    NSSortDescriptor * groupNameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupName" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSSortDescriptor * groupTypeDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"groupType" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    
-    request.sortDescriptors = [NSArray arrayWithObjects:groupTypeDescriptor, groupNameDescriptor, nil];
-    
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"groupType" cacheName:nil];
-    
-    [self.fetchedResultsController performFetch:nil];
-    [self.friendsListTableView reloadData];
-}
-
+/*
 - (void)saveData{
     Course * course1 = [[Course alloc] initWithCourseName:@"시스템프로그래밍"];
     [course1 addNewLecture:MON period:1 duration:1.5];
@@ -179,7 +90,7 @@
     group5.groupType = [NSNumber numberWithInt:OTHERS];
     
     [self.managedObjectContext save:nil];  // write to database
-}
+}*/
 
 - (void)viewDidLoad
 {
@@ -192,44 +103,26 @@
     // slidingView Anchor 설정
     [self.slidingViewController setAnchorLeftRevealAmount:280.0f];
     self.slidingViewController.underRightWidthLayout = ECFullWidth;
-    
-    // managedobjectContext 초기화
-    AppDelegate * delegate = [[UIApplication sharedApplication] delegate];
-    self.managedObjectContext = delegate.managedObjectContext;
-    
-    [self setupFetchedResultsController];
-    [self saveData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    [self.managedObjectContext save:nil];
 }
 
 #pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//   return [[self.fetchedResultsController sections] count];
-    return 4;
+    return 1;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(section == MYSELF){
-        return nil;
-    }else if(section == FAVORITE){
-        return @"즐겨찾기";
-    }else if(section == OTHERS){
-        return @"친구";
-    }
-    else return @"서버 통신";
+    return @"서버";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section==3) return 1;
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    return 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -238,14 +131,7 @@
      if (cell == nil) {
          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
      }
-    if(indexPath.section==3){
-        cell.textLabel.text = @"서버";
-        return cell;
-    }
-    
-    Group * group = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = group.groupName;
-    
+    cell.textLabel.text = @"서버";
     return cell;
 }
 
@@ -255,19 +141,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if(indexPath.section == 3){
-        
-    }
-    
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
-    Group * group;
-    if(indexPath.section==3){
-        group = [self getGroupFromServer];
-    }else{
-        group = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    }
-    newContentViewController.selectedFriendsList = [group.individuals_in_group allObjects];
+    Group * group = [Group new];
+    
+    newContentViewController.selectedFriendsList = [group.individuals copy];
     
     newContentViewController.navTitle = group.groupName;
     newContentViewController.groupType = group.groupType;
@@ -282,4 +160,9 @@
 
 #pragma mark - Table View Delegate End.
 
+#pragma mark - AddCourseViewController Delegate Start
+- (void)courseChanged{
+    
+}
+#pragma mark - AddCourseViewController Delegate End.
 @end

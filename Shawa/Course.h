@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Constant.h"
 
 //수업에 대한 정보를 담고 있는 클래스
 @interface Lecture : NSObject <NSCoding>{
@@ -20,7 +21,10 @@
 @property (nonatomic) double period;
 @property (nonatomic) double duration;
 @property (nonatomic) NSString * location;
--(id)initWithDay:(int)day period:(double)pr duration:(double)dr location:(NSString*)loc;
+
++ (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic;
+
+- (id)initWithDay:(int)day period:(double)pr duration:(double)dr location:(NSString*)loc;
 
 @end
 
@@ -34,5 +38,7 @@
 
 -(id)initWithCourseName:(NSString*)courseName;
 -(void)addNewLecture:(int)day period:(double)pr duration:(double)dr;
+
++ (Course *)getCourseFromDic:(NSDictionary *)courseDic;
 
 @end

@@ -15,6 +15,28 @@
 @implementation Lecture
 @synthesize day, period, duration, location;
 
++ (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic{
+    Lecture * lecture = [[Lecture alloc] init];
+    lecture.day = [self getDayFromStrimg:[lectureDic objectForKey:@"day"]];
+    lecture.period = [[lectureDic objectForKey:@"period"] doubleValue];
+    lecture.duration = [[lectureDic objectForKey:@"duration"] doubleValue];
+    
+    return lecture;
+}
+
++ (int)getDayFromStrimg:(NSString *)dayString{
+    if([dayString isEqualToString:@"Monday"]) return MON;
+    else if([dayString isEqualToString:@"Tuesday"]) return TUE;
+    else if([dayString isEqualToString:@"Wednesday"]) return WED;
+    else if([dayString isEqualToString:@"Thursday"]) return THU;
+    else if([dayString isEqualToString:@"Friday"]) return FRI;
+    else if([dayString isEqualToString:@"Saturday"]) return SAT;
+    else if([dayString isEqualToString:@"Sunday"]) return SUN;
+    else {
+        NSLog(@"No matching Day for string");
+        return -1;
+    }
+}
 //Lecture 초기화
 -(id)initWithDay:(int)day period:(double)pr duration:(double)dr location:(NSString *)loc{
     if(self=[super init]){
@@ -49,6 +71,23 @@
 //Cource 구현
 @implementation Course
 @synthesize courseName, lectures;
+
+
++ (Course *)getCourseFromDic:(NSDictionary *)courseDic{
+    Course * course = [[Course alloc] init];
+    
+    course.courseName = [courseDic objectForKey:@"courseName"];
+    
+    int lectureNum = [[courseDic objectForKey:@"lectures"] count];
+    for(int i=0; i<lectureNum; i++){
+        
+        Lecture * lecture = [Lecture getLectureFromDic:[[courseDic objectForKey:@"lectures"] objectAtIndex:i]];
+        
+        [course.lectures addObject:lecture];
+    }
+    return course;
+}
+
 
 //Cource 초기화
 -(id)init{

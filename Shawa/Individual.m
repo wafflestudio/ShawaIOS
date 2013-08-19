@@ -29,5 +29,21 @@
     return self;
 }
 
++ (Individual *)getIndividualFromDic:(NSDictionary *)individualDic{
+    Individual * individual = [Individual new];
+    
+    individual.userName = [individualDic objectForKey:@"userName"];
+    
+    NSMutableArray *courses = [[NSMutableArray alloc] init];
+    
+    int courseNum = [[individualDic objectForKey:@"courses"] count];
+    for(int j=0; j<courseNum; j++){
+        Course * course = [Course getCourseFromDic:[[individualDic objectForKey:@"courses"] objectAtIndex:j]];
+        [courses addObject:course];
+    }
+    individual.courses = [NSArray arrayWithArray:courses];
+    return individual;
+}
+
 
 @end

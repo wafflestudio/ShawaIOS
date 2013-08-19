@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreData/CoreData.h>
 
+#import "Course.h"
 
-@interface Individual : NSManagedObject <NSCoding>
+@interface Individual : NSObject <NSCoding>
 
-@property (nonatomic, retain) id courses;
+@property (nonatomic, retain) NSMutableArray * courses;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSNumber * idForServer;
+
++ (Individual *)getIndividualFromDic:(NSDictionary *)individualDic;
 
 @end
