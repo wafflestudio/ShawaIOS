@@ -22,5 +22,6 @@
 
 - (void)showTimeTable;
 - (IBAction)revealMenu:(id)sender;
-- (IBAction)saveButtonClicked:(id)sender;
+- (IBAction)addButtonClicked:(id)sender;
+- (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender;
 @end

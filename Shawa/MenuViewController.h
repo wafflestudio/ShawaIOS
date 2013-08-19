@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "AddCourseViewController.h"
 
 #import "ECSlidingViewController.h"
+#import "SBJson.h"
 
-
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AddCourseViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView * friendsListTableView;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

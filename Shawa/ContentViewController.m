@@ -24,12 +24,24 @@
 
 - (IBAction)revealMenu:(id)sender
 {
-    [self.slidingViewController anchorTopViewTo:ECLeft];
+    [self.slidingViewController anchorTopViewTo:ECLeft];    
 }
 
-- (IBAction)saveButtonClicked:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"시간표를 앨범에 저장합니다" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
-    [alert show];
+- (IBAction)addButtonClicked:(id)sender{
+    
+    [self performSegueWithIdentifier:@"Add New Course" sender:self];
+
+}
+
+- (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"UIGestureRecognizerStateEnded");
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan){
+        NSLog(@"UIGestureRecognizerStateBegan.");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"시간표를 앨범에 저장합니다" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
+        [alert show];
+    }
 }
 
 - (void)saveTimeTableAsImage{
@@ -105,7 +117,6 @@
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    
     self.navItem.title = navTitle;
     
     [self showTimeTable];
@@ -169,6 +180,9 @@
             button.tag =[[[selectedFriendsList objectAtIndex:0] courses] indexOfObject:course];
             [button addTarget:self action:@selector(changeCourse:) forControlEvents:UIControlEventTouchUpInside];
             [timeTable addSubview:button];
+            self.navItem.rightBarButtonItem.enabled = YES;
+        }else{
+            self.navItem.rightBarButtonItem.enabled = NO;
         }
     }
 }
@@ -182,8 +196,12 @@
 
 //Timetable Clicked
 - (void)changeCourse:(id)sender{
-    NSLog(@"changeCourse");
+    [self performSegueWithIdentifier:@"Add New Course" sender:self];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    AddCourseViewController * addCourseViewController = [segue destinationViewController];
+    addCourseViewController.delegate = (MenuViewController *)self.slidingViewController.underRightViewController;
+}
 
 @end

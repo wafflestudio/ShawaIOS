@@ -3,6 +3,7 @@
     <entity name="Group" representedClassName="Group" syncable="YES">
         <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="idForServer" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="individuals" optional="YES" attributeType="Transformable" syncable="YES"/>
         <relationship name="individuals_in_group" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Individual" syncable="YES"/>
     </entity>
@@ -12,7 +13,7 @@
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Group" positionX="160" positionY="192" width="128" height="113"/>
+        <element name="Group" positionX="160" positionY="192" width="128" height="128"/>
         <element name="Individual" positionX="160" positionY="192" width="128" height="98"/>
     </elements>
 </model>
