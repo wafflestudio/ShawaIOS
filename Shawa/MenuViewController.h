@@ -13,8 +13,9 @@
 
 #import "ECSlidingViewController.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, AddCourseViewDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView * friendsListTableView;
+@property (nonatomic, strong) NSArray * arrayWithHashData;
 
 @end

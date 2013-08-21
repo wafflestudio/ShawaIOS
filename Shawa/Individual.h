@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSNumber * idForServer;
 
++ (Individual *)getIndividualFromServer:(int)individual_id;
 + (Individual *)getIndividualFromDic:(NSDictionary *)individualDic;
 
 @end

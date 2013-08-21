@@ -7,6 +7,8 @@
 //
 
 #import "Individual.h"
+#import "NSDictionary+JSONCategories.h"
+
 
 
 @implementation Individual
@@ -29,6 +31,15 @@
     return self;
 }
 
++ (Individual *)getIndividualFromServer:(int)individual_id{
+    NSString * url = [NSString stringWithFormat:@"%@individual/%d",WEB_BASE_URL, individual_id];
+    NSDictionary * jsonDic =  [NSDictionary dictionaryWithContentsOfJSONURLString:url];
+    
+    Individual * individualFromServer = [Individual getIndividualFromDic:jsonDic];
+    
+    return individualFromServer;
+}
+
 + (Individual *)getIndividualFromDic:(NSDictionary *)individualDic{
     Individual * individual = [Individual new];
     
@@ -41,7 +52,7 @@
         Course * course = [Course getCourseFromDic:[[individualDic objectForKey:@"courses"] objectAtIndex:j]];
         [courses addObject:course];
     }
-    individual.courses = [NSArray arrayWithArray:courses];
+    individual.courses = [NSMutableArray arrayWithArray:courses];
     return individual;
 }
 

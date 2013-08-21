@@ -17,21 +17,22 @@
 @synthesize idForServer;
 @synthesize individuals;
 
-+ (Group *)getGroupFromServer{
-    NSDictionary * jsonDic =  [NSDictionary dictionaryWithContentsOfJSONURLString:@"http://services.snu.ac.kr:3332/test"];
++ (Group *)getGroupFromServer:(int)group_id{
+    NSString * url = [NSString stringWithFormat:@"%@group/%d", WEB_BASE_URL, group_id];
+    NSDictionary * jsonDic =  [NSDictionary dictionaryWithContentsOfJSONURLString:url];
     
     Group * groupFromServer = [Group new];
     
     groupFromServer.groupName = [jsonDic objectForKey:@"groupName"];
     
+    groupFromServer.groupType = [NSNumber numberWithInteger:[[jsonDic objectForKey:@"groupType"] integerValue] ];
+    
     NSMutableArray * individuals = [[NSMutableArray alloc] init];
     
-    int individualNum = [[jsonDic objectForKey:@"individuals"] count];
-    for(int i=0; i< individualNum; i++){
-        NSDictionary * individualDic = (NSDictionary *)[[jsonDic objectForKey:@"individuals"] objectAtIndex:i];
-        
-        Individual * individual = [Individual getIndividualFromDic:individualDic];
-        
+    NSArray * individual_ids = [[jsonDic objectForKey:@"individual_ids"] componentsSeparatedByString:@" "];
+    
+    for(NSString *individual_id in individual_ids){
+        Individual * individual = [Individual getIndividualFromServer:[individual_id integerValue]];
         [individuals addObject:individual];
     }
     groupFromServer.individuals = individuals;

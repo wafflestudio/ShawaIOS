@@ -22,75 +22,7 @@
 
 @implementation MenuViewController
 
-@synthesize friendsListTableView;
-
-
-/*
-- (void)saveData{
-    Course * course1 = [[Course alloc] initWithCourseName:@"시스템프로그래밍"];
-    [course1 addNewLecture:MON period:1 duration:1.5];
-    [course1 addNewLecture:WED period:1 duration:1.5];
-    
-    Course * course2 = [[Course alloc] initWithCourseName:@"산업조직론"];
-    [course2 addNewLecture:TUE period:1 duration:1.5];
-    [course2 addNewLecture:THU period:1 duration:1.5];
-    
-    Course * course3 = [[Course alloc] initWithCourseName:@"논리설계실험"];
-    [course3 addNewLecture:MON period:11 duration:3];
-    [course3 addNewLecture:WED period:11 duration:3];
-    
-    Course * course4 = [[Course alloc] initWithCourseName:@"논리설계"];
-    [course4 addNewLecture:TUE period:3 duration:1.5];
-    [course4 addNewLecture:THU period:3 duration:1.5];
-    
-    Course * course5 = [[Course alloc] initWithCourseName:@"게임이론 및 정치"];
-    [course5 addNewLecture:TUE period:7.5  duration:1.5];
-    [course5 addNewLecture:THU period:7.5 duration:1.5];
-    
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Individual" inManagedObjectContext:self.managedObjectContext];
-    
-    Group * group1 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    Individual * individual1 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    individual1.userName = @"최 석원";
-    individual1.courses = [NSArray arrayWithObjects:course1, course2, course3, course4, course5, nil];
-    [group1 addIndividuals_in_group:[NSSet setWithObject:individual1]];
-    group1.groupName = individual1.userName;
-    group1.groupType = [NSNumber numberWithInt:MYSELF];
-    
-    Group * group2 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    Individual * individual2 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    individual2.userName = @"김 택민";
-    individual2.courses = [NSArray arrayWithObjects:course1, course2, course3, course4, nil];
-    [group2 addIndividuals_in_group:[NSSet setWithObject:individual2]];
-    group2.groupName = individual2.userName;
-    group2.groupType = [NSNumber numberWithInt:FAVORITE];
-    
-    Group * group3 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    Individual * individual3 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    individual3.userName = @"전 재호";
-    individual3.courses = [NSArray arrayWithObjects:course1, course2, course3, nil];
-    [group3 addIndividuals_in_group:[NSSet setWithObject:individual3]];
-    group3.groupName = individual3.userName;
-    group3.groupType = [NSNumber numberWithInt:FAVORITE];
-    
-    Group * group4 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    Individual * individual4 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    individual4.userName = @"김 진억";
-    individual4.courses = [NSArray arrayWithObjects:course1, course2, nil];
-    [group4 addIndividuals_in_group:[NSSet setWithObject:individual4]];
-    group4.groupName = individual4.userName;
-    group4.groupType = [NSNumber numberWithInt:OTHERS];
-    
-    Group * group5 = [NSEntityDescription insertNewObjectForEntityForName:@"Group" inManagedObjectContext:self.managedObjectContext];
-    Individual * individual5 = [[Individual alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    individual5.userName = @"정 현호";
-    individual5.courses = [NSArray arrayWithObjects:course1, nil];
-    [group5 addIndividuals_in_group:[NSSet setWithObject:individual5]];
-    group5.groupName = individual5.userName;
-    group5.groupType = [NSNumber numberWithInt:OTHERS];
-    
-    [self.managedObjectContext save:nil];  // write to database
-}*/
+@synthesize friendsListTableView, arrayWithHashData;
 
 - (void)viewDidLoad
 {
@@ -103,10 +35,26 @@
     // slidingView Anchor 설정
     [self.slidingViewController setAnchorLeftRevealAmount:280.0f];
     self.slidingViewController.underRightWidthLayout = ECFullWidth;
+    
+    self.arrayWithHashData = [self getHashDataFromServer];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+}
+
+- (NSArray *)getHashDataFromServer{
+    NSString * uuid = [AppDelegate getUuidString];
+    NSString * JSONURLString = [NSString stringWithFormat:@"%@user/%@", WEB_BASE_URL, uuid];
+    
+    NSArray *jsonArray = (NSArray *)[NSDictionary dictionaryWithContentsOfJSONURLString:JSONURLString];
+    
+    if([jsonArray count] != 0){
+        NSDictionary * jsonDic = [jsonArray objectAtIndex:0];
+        return [jsonDic objectForKey:@"groups"];
+    }else{
+        return nil;
+    }
 }
 
 #pragma mark - Table View Delegate
@@ -122,7 +70,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if(self.arrayWithHashData != nil){
+        return [self.arrayWithHashData count];
+    }else{
+        return 0;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -131,7 +83,10 @@
      if (cell == nil) {
          cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
      }
-    cell.textLabel.text = @"서버";
+    if(self.arrayWithHashData != nil)
+        cell.textLabel.text = [[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+    else
+        cell.textLabel.text = @"aaa";
     return cell;
 }
 
@@ -143,7 +98,8 @@
     
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
-    Group * group = [Group new];
+    Group * group = [Group getGroupFromServer:[[[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+    //rGroup * group = [Group getGroupFromServer:2];
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
     
@@ -156,13 +112,8 @@
         self.slidingViewController.topViewController.view.frame = frame;
         [self.slidingViewController resetTopView];
     }];
-}   
+}
 
 #pragma mark - Table View Delegate End.
 
-#pragma mark - AddCourseViewController Delegate Start
-- (void)courseChanged{
-    
-}
-#pragma mark - AddCourseViewController Delegate End.
 @end

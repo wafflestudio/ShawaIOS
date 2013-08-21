@@ -12,11 +12,11 @@
 
 @protocol AddCourseViewDelegate <NSObject>
 
--(void)courseChanged;
+-(void)newCourse:(Course *)course;
 
 @end
 
-@interface AddCourseViewController : UIViewController
+@interface AddCourseViewController : UIViewController <UITextFieldDelegate>
 
 // Delegate
 @property (nonatomic, weak) id <AddCourseViewDelegate> delegate;
@@ -37,15 +37,26 @@
 @property (nonatomic, strong) IBOutlet UIButton * satButton;
 @property (nonatomic, strong) IBOutlet UIButton * sunButton;
 
+//Delete Button
+@property (nonatomic, strong) IBOutlet UIButton * deleteButton;
+
 //UIPicker Button
 @property (nonatomic, strong) IBOutlet UIButton *startTimeButton;
 @property (nonatomic, strong) IBOutlet UIButton *endTimeButton;
 
+
 //TextField
 @property (nonatomic, strong) IBOutlet UITextField * courseNameTextField;
-@property (nonatomic, strong) IBOutlet UITextField * locationTextField;
+
 
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)saveButtonClicked:(id)sender;
+
+- (IBAction)dayButtonClicked:(id)sender;
+- (IBAction)deleteButtonClicked:(id)sender;
+
+- (IBAction)startTimeButtonClicked:(id)sender;
+- (IBAction)endTimeButtonClicked:(id)sender;
+
 
 @end

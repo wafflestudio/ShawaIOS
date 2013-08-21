@@ -9,6 +9,7 @@
 #import "ContentViewController.h"
 #import "AppDelegate.h"
 #import "Individual.h"
+#import "NSDictionary+JSONCategories.h"
 
 @interface ContentViewController (){
     UIScrollView * timeTable;
@@ -33,10 +34,8 @@
 
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
-        NSLog(@"UIGestureRecognizerStateEnded");
     }
     else if (sender.state == UIGestureRecognizerStateBegan){
-        NSLog(@"UIGestureRecognizerStateBegan.");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"시간표를 앨범에 저장합니다" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
         [alert show];
     }
@@ -72,15 +71,32 @@
     timeTable.contentSize = CGSizeMake(320, 605);
     
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
+    imageView.tag = 111;
     
     [timeTable addSubview:imageView];
     [self.view addSubview:timeTable];
     
     // Initialized selectedFriendsList as MYSELF
     if(self.selectedFriendsList == nil){
-        Group * group = [Group getGroupFromServer];
-        self.selectedFriendsList = [NSArray arrayWithArray:[group individuals]];
-        self.navTitle = group.groupName;
+
+        NSString * uuid = [AppDelegate getUuidString];
+        NSString * JSONURLString = [NSString stringWithFormat:@"%@user/%@", WEB_BASE_URL, uuid];
+        
+        NSArray *jsonArray = (NSArray *)[NSDictionary dictionaryWithContentsOfJSONURLString:JSONURLString];
+
+        if([jsonArray count] != 0){
+            NSDictionary * jsonDic = [jsonArray objectAtIndex:0];
+            int my_individual_id = [[jsonDic objectForKey:@"my_individual_id"] integerValue];
+            
+            Individual * individual = [Individual getIndividualFromServer:my_individual_id];
+            
+            self.selectedFriendsList = [NSArray arrayWithObject:individual];
+            self.navTitle = individual.userName;
+            self.groupType = [NSNumber numberWithInt:MYSELF];
+        }else{
+            self.selectedFriendsList = nil;
+            self.navTitle = nil;
+        }
     }
 }
 
@@ -97,7 +113,11 @@
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
     self.navItem.title = navTitle;
-    
+    for (id view in [timeTable subviews]){
+        if([view tag] != 111){
+            [view removeFromSuperview];
+        }
+    }
     [self showTimeTable];
 }
 
@@ -150,7 +170,6 @@
         
         [lectureView addSubview:lectureImageView];
         [lectureView addSubview:lectureName];
-        
         [timeTable addSubview:lectureView];
         
         //Adding buttons to lectureView
@@ -163,6 +182,7 @@
         }else{
             self.navItem.rightBarButtonItem.enabled = NO;
         }
+    
     }
 }
 
@@ -175,12 +195,26 @@
 
 //Timetable Clicked
 - (void)changeCourse:(id)sender{
-    [self performSegueWithIdentifier:@"Add New Course" sender:self];
+    self.view.tag = [sender tag];
+    [self performSegueWithIdentifier:@"Edit Existing Course" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     AddCourseViewController * addCourseViewController = [segue destinationViewController];
-    addCourseViewController.delegate = (MenuViewController *)self.slidingViewController.underRightViewController;
+    addCourseViewController.delegate = self;
+    if([segue.identifier isEqualToString:@"Add New Course"]){
+        addCourseViewController.course = nil;
+        
+    }else{
+        int courseIndex = [[sender view] tag];
+        Course * course = [[[selectedFriendsList objectAtIndex:0] courses] objectAtIndex:courseIndex];
+        addCourseViewController.course = course;
+    }
+}
+
+#pragma AddcourseViewDelegate 
+- (void)newCourse:(Course *)course{
+    [[[self.selectedFriendsList objectAtIndex:0] courses] addObject:course];
 }
 
 @end

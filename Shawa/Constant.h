@@ -10,6 +10,8 @@
 #ifndef Timetable_Constant_h
 #define Timetable_Constant_h
 
+#define WEB_BASE_URL @"http://services.snu.ac.kr:3332/"
+
 #define SUN 0
 #define MON 1
 #define TUE 2
@@ -18,8 +20,8 @@
 #define FRI 5
 #define SAT 6
 
-#define MYSELF   0
+#define MYSELF   2
 #define FAVORITE 1
-#define OTHERS   2
+#define OTHERS   0
 
 #endif

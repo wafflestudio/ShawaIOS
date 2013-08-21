@@ -15,6 +15,11 @@
     NSURL *myURL = [[NSURL alloc]initWithString:urlAddress];
     NSData *myData = [[NSData alloc]initWithContentsOfURL:myURL];
     
+    if(myData == nil){
+        NSLog(@"Error receiving data from server");
+        return nil;
+    }
+    
     id jsonDictionary = [NSJSONSerialization JSONObjectWithData:myData options:NSJSONReadingMutableContainers error:nil];
     
     return (NSDictionary *)jsonDictionary;

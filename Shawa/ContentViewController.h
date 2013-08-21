@@ -13,7 +13,7 @@
 #import "ECSlidingViewController.h"
 #import "MenuViewController.h"
 
-@interface ContentViewController : UIViewController <UIAlertViewDelegate>
+@interface ContentViewController : UIViewController <UIAlertViewDelegate, AddCourseViewDelegate>
 
 @property (nonatomic, strong) NSArray *selectedFriendsList;
 @property (nonatomic) NSNumber * groupType;

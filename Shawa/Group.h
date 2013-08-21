@@ -16,6 +16,6 @@
 @property (nonatomic, retain) NSNumber * idForServer;
 @property (nonatomic, retain) NSMutableArray *individuals;
 
-+ (Group *)getGroupFromServer;
++ (Group *)getGroupFromServer:(int)group_id;
 
 @end
