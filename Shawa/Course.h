@@ -23,6 +23,7 @@
 @property (nonatomic) NSString * location;
 
 + (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic;
++ (NSDictionary *)getNSDictionaryFromLecture:(Lecture *)lecture;
 
 - (id)initWithDay:(int)day period:(double)pr duration:(double)dr location:(NSString*)loc;
 
@@ -40,5 +41,6 @@
 -(void)addNewLecture:(int)day period:(double)pr duration:(double)dr;
 
 + (Course *)getCourseFromDic:(NSDictionary *)courseDic;
++ (NSDictionary *)getNSDictionaryFromCourse:(Course *)course;
 
 @end

@@ -23,12 +23,34 @@
 @synthesize navTitle;
 @synthesize groupType;
 
+- (void)sendDataToServer{
+    if([groupType integerValue] != 2){
+        return;
+    }
+    NSString * individualDic = (NSString *)[Individual getNSDictionaryFromIndividual:[self.selectedFriendsList objectAtIndex:0]];
+    
+    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:individualDic options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@individual/%d", WEB_BASE_URL, [AppDelegate getMyIndividualId]]];
+    
+    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:15 ];
+    
+    [theRequest setHTTPMethod:@"POST"];
+    [theRequest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [theRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [theRequest setHTTPBody:jsonData];
+    
+    NSURLConnection * connection = [NSURLConnection connectionWithRequest:theRequest delegate:self];
+    [connection start];
+}
+
 - (IBAction)revealMenu:(id)sender
 {
-    [self.slidingViewController anchorTopViewTo:ECLeft];    
+    [self.slidingViewController anchorTopViewTo:ECLeft];
 }
 
 - (IBAction)addButtonClicked:(id)sender{
+    
     [self performSegueWithIdentifier:@"Add New Course" sender:self];
 }
 
@@ -77,26 +99,12 @@
     [self.view addSubview:timeTable];
     
     // Initialized selectedFriendsList as MYSELF
-    if(self.selectedFriendsList == nil){
+    if(self.selectedFriendsList == nil && [AppDelegate getMyIndividualId] != -1){
 
-        NSString * uuid = [AppDelegate getUuidString];
-        NSString * JSONURLString = [NSString stringWithFormat:@"%@user/%@", WEB_BASE_URL, uuid];
-        
-        NSArray *jsonArray = (NSArray *)[NSDictionary dictionaryWithContentsOfJSONURLString:JSONURLString];
-
-        if([jsonArray count] != 0){
-            NSDictionary * jsonDic = [jsonArray objectAtIndex:0];
-            int my_individual_id = [[jsonDic objectForKey:@"my_individual_id"] integerValue];
-            
-            Individual * individual = [Individual getIndividualFromServer:my_individual_id];
-            
-            self.selectedFriendsList = [NSArray arrayWithObject:individual];
-            self.navTitle = individual.userName;
-            self.groupType = [NSNumber numberWithInt:MYSELF];
-        }else{
-            self.selectedFriendsList = nil;
-            self.navTitle = nil;
-        }
+        Individual * individual = [Individual getIndividualFromServer:[AppDelegate getMyIndividualId]];
+        self.selectedFriendsList = [NSArray arrayWithObject:individual];
+        self.navTitle = individual.userName;
+        self.groupType = [NSNumber numberWithInt:MYSELF];
     }
 }
 
@@ -118,6 +126,7 @@
             [view removeFromSuperview];
         }
     }
+    
     [self showTimeTable];
 }
 
@@ -182,7 +191,6 @@
         }else{
             self.navItem.rightBarButtonItem.enabled = NO;
         }
-    
     }
 }
 
@@ -204,17 +212,23 @@
     addCourseViewController.delegate = self;
     if([segue.identifier isEqualToString:@"Add New Course"]){
         addCourseViewController.course = nil;
+        addCourseViewController.isNewCourse = YES;
         
     }else{
         int courseIndex = [[sender view] tag];
         Course * course = [[[selectedFriendsList objectAtIndex:0] courses] objectAtIndex:courseIndex];
         addCourseViewController.course = course;
+        addCourseViewController.isNewCourse = NO;
     }
 }
 
 #pragma AddcourseViewDelegate 
-- (void)newCourse:(Course *)course{
+- (void)addNewCourse:(Course *)course{
     [[[self.selectedFriendsList objectAtIndex:0] courses] addObject:course];
+    [self sendDataToServer];
+}
+- (void)updateCourse:(Course *)course{
+    [self sendDataToServer];
 }
 
 @end

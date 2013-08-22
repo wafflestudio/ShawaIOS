@@ -15,12 +15,42 @@
 @implementation Lecture
 @synthesize day, period, duration, location;
 
++ (NSDictionary *)getNSDictionaryFromLecture:(Lecture *)lecture{
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    
+    if(lecture.day == MON){
+        [dictionary setObject:@"Monday" forKey:@"day"];
+    }
+    if(lecture.day == TUE){
+        [dictionary setObject:@"Tuesday" forKey:@"day"];
+    }
+    if(lecture.day == WED){
+        [dictionary setObject:@"Wednesday" forKey:@"day"];
+    }
+    if(lecture.day == THU){
+        [dictionary setObject:@"Thursday" forKey:@"day"];
+    }
+    if(lecture.day == FRI){
+        [dictionary setObject:@"Friday" forKey:@"day"];
+    }
+    if(lecture.day == SAT){
+        [dictionary setObject:@"Saturday" forKey:@"day"];
+    }
+    if(lecture.day == SUN){
+        [dictionary setObject:@"Sunday" forKey:@"day"];
+    }
+    [dictionary setObject:[NSNumber numberWithDouble:lecture.period] forKey:@"period"];
+    [dictionary setObject:[NSNumber numberWithDouble:lecture.duration] forKey:@"duration"];
+    [dictionary setObject:lecture.location forKey:@"location"];
+    return dictionary;
+}
+
 + (Lecture *)getLectureFromDic:(NSDictionary *)lectureDic{
     Lecture * lecture = [[Lecture alloc] init];
     lecture.day = [self getDayFromStrimg:[lectureDic objectForKey:@"day"]];
     lecture.period = [[lectureDic objectForKey:@"period"] doubleValue];
     lecture.duration = [[lectureDic objectForKey:@"duration"] doubleValue];
-    
+    lecture.location = @"";
     return lecture;
 }
 
@@ -72,6 +102,19 @@
 @implementation Course
 @synthesize courseName, lectures;
 
++ (NSDictionary *)getNSDictionaryFromCourse:(Course *)course{
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:course.courseName forKey:@"courseName"];
+    
+    NSMutableArray * lectureArray = [[NSMutableArray alloc] init];
+    for(Lecture * lecture in [course lectures]){
+        NSString * lecDic = [Lecture getNSDictionaryFromLecture:lecture];
+        [lectureArray addObject:lecDic];
+    }
+    
+    [dictionary setObject:lectureArray forKey:@"lectures"];
+    return dictionary;
+}
 
 + (Course *)getCourseFromDic:(NSDictionary *)courseDic{
     Course * course = [[Course alloc] init];

@@ -18,5 +18,6 @@
 
 + (Individual *)getIndividualFromServer:(int)individual_id;
 + (Individual *)getIndividualFromDic:(NSDictionary *)individualDic;
++ (NSDictionary *)getNSDictionaryFromIndividual:(Individual *)individual;
 
 @end

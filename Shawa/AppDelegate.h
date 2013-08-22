@@ -8,15 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NSDictionary+JSONCategories.h"
 #import "Constant.h"
 #import "Group.h"
 #import "Individual.h"
 #import "Course.h"
 
+
+static NSString * my_uuid;
+static int my_individual_id;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
++(void)setUuidAndIndividualId;
 +(NSString *)getUuidString;
++(int)getMyIndividualId;
 
 @end

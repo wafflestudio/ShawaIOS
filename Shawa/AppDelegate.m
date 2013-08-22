@@ -11,26 +11,45 @@
 
 @implementation AppDelegate
 
-+(NSString *)getUuidString{
++ (void)setUuidAndIndividualId{
+    // Set Uuid
     NSString *retrieveuuid = [SSKeychain passwordForService:@"com.wafflestudio.shawa" account:@"user"];
     
     if([retrieveuuid length]>0){
-        return retrieveuuid;
+        my_uuid = retrieveuuid;
+    }else{
+        CFUUIDRef uuidRef = CFUUIDCreate(NULL);
+        CFStringRef identifier = CFUUIDCreateString(NULL, uuidRef);
+        CFRelease(uuidRef);
+        my_uuid = CFBridgingRelease(identifier);
+        [SSKeychain setPassword:my_uuid forService:@"com.wafflestudio.shawa" account:@"user"];
     }
+    // Set My Individual Id
+    NSString * uuid = [AppDelegate getUuidString];
+    NSString * JSONURLString = [NSString stringWithFormat:@"%@user/%@", WEB_BASE_URL, uuid];
     
-    CFUUIDRef uuid = CFUUIDCreate(NULL);
-    CFStringRef identifier = CFUUIDCreateString(NULL, uuid);
-    CFRelease(uuid);
+    NSArray *jsonArray = (NSArray *)[NSDictionary dictionaryWithContentsOfJSONURLString:JSONURLString];
     
-    NSString *uuidString = CFBridgingRelease(identifier);
-    [SSKeychain setPassword:uuidString forService:@"com.wafflestudio.shawa" account:@"user"];
-    
-    return uuidString;
+    if([jsonArray count] != 0){
+        NSDictionary * jsonDic = [jsonArray objectAtIndex:0];
+        my_individual_id = [[jsonDic objectForKey:@"my_individual_id"] integerValue];
+    }else{
+        my_individual_id = -1;
+    }
+}
+
++(NSString *)getUuidString{
+    return my_uuid; 
+}
++(int)getMyIndividualId{
+    return my_individual_id;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AppDelegate setUuidAndIndividualId];
     NSLog(@"uuid : %@", [AppDelegate getUuidString]);
+
     return YES;
 }
 

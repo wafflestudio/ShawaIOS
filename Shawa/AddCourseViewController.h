@@ -12,7 +12,8 @@
 
 @protocol AddCourseViewDelegate <NSObject>
 
--(void)newCourse:(Course *)course;
+-(void)addNewCourse:(Course *)course;
+-(void)updateCourse:(Course *)course;
 
 @end
 
@@ -23,6 +24,7 @@
 
 // Data source
 @property (nonatomic, strong) Course * course;
+@property (nonatomic) BOOL isNewCourse;
 
 //BarButton
 @property (nonatomic, strong) IBOutlet UIBarButtonItem * saveBarButtonItem;

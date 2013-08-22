@@ -31,6 +31,21 @@
     return self;
 }
 
++ (NSDictionary *)getNSDictionaryFromIndividual:(Individual *)individual{
+    NSMutableDictionary * dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setObject:individual.userName forKey:@"userName"];
+    [dictionary setObject:individual.idForServer forKey:@"idForServer"];
+    
+    NSMutableArray * courseArray = [[NSMutableArray alloc] init];
+    for(Course * course in [individual courses]){
+        NSString * courseDic = [Course getNSDictionaryFromCourse:course];
+        [courseArray addObject:courseDic];
+    }
+    
+    [dictionary setObject:courseArray forKey:@"courses"];
+    return dictionary;
+}
+
 + (Individual *)getIndividualFromServer:(int)individual_id{
     NSString * url = [NSString stringWithFormat:@"%@individual/%d",WEB_BASE_URL, individual_id];
     NSDictionary * jsonDic =  [NSDictionary dictionaryWithContentsOfJSONURLString:url];
@@ -53,6 +68,7 @@
         [courses addObject:course];
     }
     individual.courses = [NSMutableArray arrayWithArray:courses];
+    individual.idForServer = [individualDic objectForKey:@"id"];
     return individual;
 }
 

@@ -20,16 +20,41 @@
 @synthesize monButton, tueButton, wedButton, thuButton, friButton, satButton, sunButton;
 @synthesize startTimeButton, endTimeButton;
 @synthesize courseNameTextField;
-@synthesize course;
+@synthesize course, isNewCourse;
 
 - (IBAction)cancelButtonClicked:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)saveButtonClicked:(id)sender{
+    
+    if([self verifiyCourse] == NO){
+        return;
+    }
+    
     [self setCourseWithIBOutlets:course];
-    [self.delegate newCourse:course];
+    
+    if(self.isNewCourse){
+        [self.delegate addNewCourse:course];
+    }else{
+        [self.delegate updateCourse:course];
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (BOOL)verifiyCourse{
+    if(!(monButton.tag || tueButton.tag || wedButton.tag || thuButton.tag || friButton.tag || satButton.tag || sunButton.tag)){
+        return NO;
+    }
+    if([courseNameTextField.text isEqual:@""] || courseNameTextField.text == nil){
+        return NO;
+    }
+    if([[startTimeButton titleForState:UIControlStateNormal] isEqualToString:[endTimeButton titleForState:UIControlStateNormal]]){
+        return NO;
+    }
+    return YES;
+}
+
 - (IBAction)dayButtonClicked:(id)sender{
     UIButton * button = (UIButton *)sender;
     if(button.tag){
@@ -126,36 +151,34 @@
     double ehour = [[[endTimeString substringFromIndex:3] substringToIndex:2] integerValue];
     double eminute = [[endTimeString substringFromIndex:6] integerValue];
     double duration = ehour + eminute/60 - shour - sminute/60;
-    
-    for(UIButton * dayButton in [self.view subviews]){
-        if(monButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:MON period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(tueButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:TUE period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(wedButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:WED period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(thuButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:THU period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(friButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:FRI period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(satButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:SAT period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
-        if(sunButton.tag == 1){
-            Lecture * lecture = [[Lecture alloc] initWithDay:SUN period:period duration:duration location:@""];
-            [course.lectures addObject:lecture];
-        }
+
+    if(monButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:MON period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(tueButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:TUE period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(wedButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:WED period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(thuButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:THU period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(friButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:FRI period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(satButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:SAT period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
+    }
+    if(sunButton.tag == 1){
+        Lecture * lecture = [[Lecture alloc] initWithDay:SUN period:period duration:duration location:@""];
+        [course.lectures addObject:lecture];
     }
 }
 - (NSDate*)clampDate:(NSDate *)dt toMinutes:(int)minutes {
@@ -251,6 +274,17 @@
     
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height+44, 320, 216)];
     [datePicker setDatePickerMode:UIDatePickerModeTime];
+    
+    NSDateFormatter * format = [[NSDateFormatter alloc] init];
+    [format setDateFormat:@"hh:mm"];
+    
+    NSString * timeString;
+    if([sender tag] == 2){
+        timeString = [[startTimeButton titleForState:UIControlStateNormal] substringFromIndex:3];
+    }else if ([sender tag]==3){
+        timeString = [[endTimeButton titleForState:UIControlStateNormal] substringFromIndex:3];
+    }
+    [datePicker setDate:[format dateFromString:timeString]];
     datePicker.tag = [(UIButton *)sender tag] + 10;
     [datePicker addTarget:self action: @selector(changeDate:) forControlEvents:UIControlEventValueChanged];
     

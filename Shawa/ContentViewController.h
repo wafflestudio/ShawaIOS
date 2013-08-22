@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString * navTitle;
 
 - (void)showTimeTable;
+- (void)sendDataToServer;
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender;
