@@ -14,6 +14,7 @@
 
 -(void)addNewCourse:(Course *)course;
 -(void)updateCourse:(Course *)course;
+-(void)deleteCourse:(Course *)course;
 
 @end
 

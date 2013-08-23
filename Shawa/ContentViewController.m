@@ -230,5 +230,9 @@
 - (void)updateCourse:(Course *)course{
     [self sendDataToServer];
 }
+- (void)deleteCourse:(Course *)course{
+    [[[self.selectedFriendsList objectAtIndex:0] courses] removeObject:course];
+    [self sendDataToServer];
+}
 
 @end

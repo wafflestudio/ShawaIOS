@@ -67,6 +67,7 @@
 }
 - (IBAction)deleteButtonClicked:(id)sender{
     [course.lectures removeAllObjects];
+    [self.delegate deleteCourse:course];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)startTimeButtonClicked:(id)sender{
