@@ -94,16 +94,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    // Setting ScrollView
-    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)];
-    timeTable.bounces = NO;
-    timeTable.contentSize = CGSizeMake(320, 568);
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouchDetected:)];
-    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouchDetected:)];
-    
-    [timeTable addGestureRecognizer:tapGestureRecognizer];
-    [timeTable addGestureRecognizer:longPressGestureRecognizer];
-
+    self.view.backgroundColor = [self colorWithRGBHex:0x1dd69d];
     
     // Setting Navigation Bar
     UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
@@ -114,12 +105,26 @@
     
     self.navItem.rightBarButtonItem = sideMenuButton;
     [self.navBar setBarTintColor:[self colorWithRGBHex:0x1dd69d]];
+    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    
+    // Setting ScrollView
+    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navBar.frame.size.height + self.navBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    timeTable.bounces = NO;
+    timeTable.contentSize = CGSizeMake(320, 503.5);
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouchDetected:)];
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouchDetected:)];
+    
+    [timeTable addGestureRecognizer:tapGestureRecognizer];
+    [timeTable addGestureRecognizer:longPressGestureRecognizer];
+    timeTable.userInteractionEnabled = YES;
 
     // Setting Background
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
     imageView.tag = 111;
     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y,
-                                 320, 568);
+                                 320, 503.5);
     
     [timeTable addSubview:imageView];
     [self.view addSubview:timeTable];
@@ -141,7 +146,7 @@
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-    
+
     if(![self.slidingViewController.underRightViewController isKindOfClass:[MenuViewController class]]){
         self.slidingViewController.underRightViewController = (MenuViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
@@ -228,7 +233,7 @@
 -(CGPoint)pointMakeDay:(int)day period:(double)pr{
     double x, y;
     x = 32+(47.5)*(day-1);
-    y = 27+50*(pr-1);
+    y = 27+42.5*(pr-1) + 2;
     return CGPointMake(x, y);
 }
 

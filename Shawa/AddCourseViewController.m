@@ -79,6 +79,7 @@
 }
 
 - (void)viewDidLoad{
+    
     // Adding or Editting
     if(course == nil || [[course lectures] count]==0){
         course = [Course new];
