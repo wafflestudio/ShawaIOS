@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *selectedFriendsList;
 @property (nonatomic) NSNumber * groupType;
 
+@property (nonatomic ,strong) IBOutlet UIBarButtonItem * rightBarButtonItem;
 @property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
 @property (nonatomic, strong) NSString * navTitle;
 
@@ -26,4 +27,5 @@
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender;
+- (IBAction)tapTouchDetected:(UITapGestureRecognizer *)sender;
 @end

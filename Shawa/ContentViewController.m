@@ -19,9 +19,9 @@
 
 @implementation ContentViewController
 
-@synthesize selectedFriendsList, navItem;
-@synthesize navTitle;
+@synthesize selectedFriendsList;
 @synthesize groupType;
+@synthesize navItem, navTitle;
 
 - (void)sendDataToServer{
     if([groupType integerValue] != 2){
@@ -50,8 +50,10 @@
 }
 
 - (IBAction)addButtonClicked:(id)sender{
-    
-    [self performSegueWithIdentifier:@"Add New Course" sender:self];
+    if([groupType integerValue] == MYSELF){
+        [self performSegueWithIdentifier:@"Add New Course" sender:self];
+    }else{
+    }
 }
 
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender {
@@ -61,6 +63,11 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"시간표를 앨범에 저장합니다" delegate:self cancelButtonTitle:@"취소" otherButtonTitles:@"확인", nil];
         [alert show];
     }
+}
+
+- (IBAction)tapTouchDetected:(UITapGestureRecognizer *)sender{
+    NSLog(@"tapTouchDetected");
+    [self addButtonClicked:nil];
 }
 
 - (void)saveTimeTableAsImage{
@@ -90,20 +97,39 @@
     // Setting ScrollView
     timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 44, self.view.frame.size.width, self.view.frame.size.height - 44)];
     timeTable.bounces = NO;
-    timeTable.contentSize = CGSizeMake(320, 605);
+    timeTable.contentSize = CGSizeMake(320, 568);
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouchDetected:)];
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouchDetected:)];
     
+    [timeTable addGestureRecognizer:tapGestureRecognizer];
+    [timeTable addGestureRecognizer:longPressGestureRecognizer];
+
+    
+    // Setting Right Bar Button
+    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [sideMenuView setBackgroundImage:[UIImage imageNamed:@"side_menu"] forState:UIControlStateNormal];
+    UIBarButtonItem * sideMenuButton = [[UIBarButtonItem alloc] initWithCustomView:sideMenuView];
+    [self.navigationItem setRightBarButtonItem:sideMenuButton];
+    
+    self.navItem.rightBarButtonItem = sideMenuButton;
+    
+    // Setting Background
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
     imageView.tag = 111;
+    imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y,
+                                 320, 568);
     
     [timeTable addSubview:imageView];
     [self.view addSubview:timeTable];
     
     // Initialized selectedFriendsList as MYSELF
+    
     if(self.selectedFriendsList == nil && [AppDelegate getMyIndividualId] != -1){
 
         Individual * individual = [Individual getIndividualFromServer:[AppDelegate getMyIndividualId]];
         self.selectedFriendsList = [NSArray arrayWithObject:individual];
-        self.navTitle = individual.userName;
+        navTitle = individual.userName;
         self.groupType = [NSNumber numberWithInt:MYSELF];
     }
 }
@@ -155,27 +181,34 @@
 }
 
 - (void)showLectures:(Course *)course{
+
     for(int i=0; i<[course.lectures count]; i++){
         Lecture * lecture = [course.lectures objectAtIndex:i];
         
+        if(lecture.day == SUN) continue;
+        
         UIView * lectureView = [[UIView alloc] init];
+        [lectureView setBackgroundColor:[UIColor yellowColor]];
         UIImageView * lectureImageView = [[UIImageView alloc] init];
         UILabel * lectureName = [[UILabel alloc] init];
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         
         CGPoint point = [self pointMakeDay:lecture.day period:lecture.period];
         
-        [lectureView setFrame:CGRectMake(point.x, point.y, 59, 45*lecture.duration)];
-        [lectureImageView setFrame:CGRectMake(1, 1, 59, 45*lecture.duration)];
-        [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:0.7 alpha:1]];
+        [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 50*lecture.duration)];
         
-        CGRect rec = CGRectMake(0, 0, 59, 45*lecture.duration);
+        [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 50*lecture.duration)];
+        [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+        
+        CGRect rec = CGRectMake(5, 0, 37.5, 50*lecture.duration);
         [lectureName setFrame:rec];
         lectureName.text = course.courseName;
         lectureName.font = [UIFont boldSystemFontOfSize:8.0f];
         [lectureName setTextColor:[UIColor blackColor]];
         [lectureName setTextAlignment:NSTextAlignmentCenter];
         [lectureName setBackgroundColor:[UIColor clearColor]];
+        [lectureName setNumberOfLines:2];
+        [lectureName setLineBreakMode:NSLineBreakByWordWrapping];
         
         [lectureView addSubview:lectureImageView];
         [lectureView addSubview:lectureName];
@@ -187,17 +220,14 @@
             button.tag =[[[selectedFriendsList objectAtIndex:0] courses] indexOfObject:course];
             [button addTarget:self action:@selector(changeCourse:) forControlEvents:UIControlEventTouchUpInside];
             [timeTable addSubview:button];
-            self.navItem.rightBarButtonItem.enabled = YES;
-        }else{
-            self.navItem.rightBarButtonItem.enabled = NO;
         }
     }
 }
 
 -(CGPoint)pointMakeDay:(int)day period:(double)pr{
     double x, y;
-    x = 25+59*(day-1);
-    y = 20+45*(pr-1);
+    x = 32+(47.5)*(day-1);
+    y = 27+50*(pr-1);
     return CGPointMake(x, y);
 }
 

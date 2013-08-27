@@ -99,7 +99,6 @@
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
     Group * group = [Group getGroupFromServer:[[[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
-    //rGroup * group = [Group getGroupFromServer:2];
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
     

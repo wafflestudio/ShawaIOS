@@ -50,6 +50,7 @@
     [AppDelegate setUuidAndIndividualId];
     NSLog(@"uuid : %@", [AppDelegate getUuidString]);
 
+
     return YES;
 }
 
