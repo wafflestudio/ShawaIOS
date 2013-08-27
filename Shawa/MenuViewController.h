@@ -16,6 +16,9 @@
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView * friendsListTableView;
+@property (nonatomic, strong) IBOutlet UISearchBar * searchBar;
+
+// Data
 @property (nonatomic, strong) NSArray * arrayWithHashData;
 
 @end

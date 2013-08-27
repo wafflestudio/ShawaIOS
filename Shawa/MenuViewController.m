@@ -10,6 +10,7 @@
 #import "ContentViewController.h"
 #import "AppDelegate.h"
 #import "Individual.h"
+#import "CustomCell.h"
 
 #import "NSDictionary+JSONCategories.h"
 
@@ -22,15 +23,21 @@
 
 @implementation MenuViewController
 
-@synthesize friendsListTableView, arrayWithHashData;
+@synthesize arrayWithHashData, friendsListTableView, searchBar;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor colorWithRGBHex:0x6a6a6a]];
     
     // friendsListTableView Delegate 설정
     friendsListTableView.delegate = self;
     friendsListTableView.dataSource = self;
+    
+    friendsListTableView.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    
+    // searchBar 설정
+    searchBar.backgroundImage = [UIColor image1x1WithColor:[UIColor colorWithRGBHex:0x6a6a6a]];
     
     // slidingView Anchor 설정
     [self.slidingViewController setAnchorLeftRevealAmount:280.0f];
@@ -79,20 +86,36 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     
-     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-     if (cell == nil) {
-         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray * tmpArray;
+        tmpArray = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:nil options:nil];
+        cell = [tmpArray objectAtIndex:0];
      }
-    if(self.arrayWithHashData != nil)
-        cell.textLabel.text = [[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+    if(self.arrayWithHashData != nil){
+        cell.userName.text  = [[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+        cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    }
     else
-        cell.textLabel.text = @"aaa";
+        cell.userName.text = @"aaa";
     return cell;
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 40;
+}
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
+    [headerView setBackgroundColor:[UIColor colorWithRGBHex:0x6a6a6a]];
+    
+    UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
+    label.textColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    label.text= @"favorite";
+    
+    [headerView addSubview:label];
+    return headerView;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

@@ -54,6 +54,7 @@
 
     return YES;
 }
+
 /*
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

@@ -94,7 +94,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    self.view.backgroundColor = [self colorWithRGBHex:0x1dd69d];
+    self.view.backgroundColor = [UIColor colorWithRGBHex:0x1dd69d];
     [self setNeedsStatusBarAppearanceUpdate];
     
     // Setting Navigation Bar
@@ -105,7 +105,7 @@
     [self.navigationItem setRightBarButtonItem:sideMenuButton];
     
     self.navItem.rightBarButtonItem = sideMenuButton;
-    [self.navBar setBarTintColor:[self colorWithRGBHex:0x1dd69d]];
+    [self.navBar setBarTintColor:[UIColor colorWithRGBHex:0x1dd69d]];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
@@ -272,17 +272,6 @@
     [self sendDataToServer];
 }
 
-- (UIColor *)colorWithRGBHex:(UInt32)hex
-{
-    int r = (hex >> 16) & 0xFF;
-    int g = (hex >> 8) & 0xFF;
-    int b = (hex) & 0xFF;
-    
-    return [UIColor colorWithRed:r / 255.0f
-                           green:g / 255.0f
-                            blue:b / 255.0f
-                           alpha:1.0f];
-}
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }

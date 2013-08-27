@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+#import "UIColor+COLORCategories.h"
 #import "NSDictionary+JSONCategories.h"
 #import "Constant.h"
 #import "Group.h"
