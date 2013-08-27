@@ -194,23 +194,25 @@
         
         if(lecture.day == SUN) continue;
         
-        UIView * lectureView = [[UIView alloc] init];
-        [lectureView setBackgroundColor:[UIColor yellowColor]];
-        UIImageView * lectureImageView = [[UIImageView alloc] init];
-        UILabel * lectureName = [[UILabel alloc] init];
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        
+        // Setting lectureView
         CGPoint point = [self pointMakeDay:lecture.day period:lecture.period];
         
+        UIView * lectureView = [[UIView alloc] init];
+        [lectureView setBackgroundColor:[UIColor colorWithRGBHex:0xffc018]];
         [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 50*lecture.duration)];
         
+        // Setting lectureImageView
+        UIImageView * lectureImageView = [[UIImageView alloc] init];
         [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 50*lecture.duration)];
         [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
         
+        // Setting lectureName Label
         CGRect rec = CGRectMake(5, 0, 37.5, 50*lecture.duration);
+        
+        UILabel * lectureName = [[UILabel alloc] init];
         [lectureName setFrame:rec];
         lectureName.text = course.courseName;
-        lectureName.font = [UIFont boldSystemFontOfSize:8.0f];
+        lectureName.font = [UIFont fontWithName:@"Helvetica Neue" size:9.0f];
         [lectureName setTextColor:[UIColor blackColor]];
         [lectureName setTextAlignment:NSTextAlignmentCenter];
         [lectureName setBackgroundColor:[UIColor clearColor]];
@@ -222,6 +224,7 @@
         [timeTable addSubview:lectureView];
         
         //Adding buttons to lectureView
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         if([groupType integerValue] == MYSELF){
             [button setFrame:lectureView.frame];
             button.tag =[[[selectedFriendsList objectAtIndex:0] courses] indexOfObject:course];

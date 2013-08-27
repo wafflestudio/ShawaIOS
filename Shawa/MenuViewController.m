@@ -23,12 +23,18 @@
 
 @implementation MenuViewController
 
-@synthesize arrayWithHashData, friendsListTableView, searchBar;
+@synthesize friendsListTableView, searchBar;
+@synthesize arrayWithFavorite, arrayWithFriends, arrayWithMyself;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithRGBHex:0x6a6a6a]];
+    
+    // initialize arrays
+    arrayWithMyself = [[NSMutableArray alloc] init];
+    arrayWithFavorite = [[NSMutableArray alloc] init];
+    arrayWithFriends = [[NSMutableArray alloc] init];
     
     // friendsListTableView Delegate 설정
     friendsListTableView.delegate = self;
@@ -43,7 +49,8 @@
     [self.slidingViewController setAnchorLeftRevealAmount:280.0f];
     self.slidingViewController.underRightWidthLayout = ECFullWidth;
     
-    self.arrayWithHashData = [self getHashDataFromServer];
+    NSArray * arrayWithHashData = [self getHashDataFromServer];
+    [self parseHashData:arrayWithHashData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -64,11 +71,22 @@
     }
 }
 
+- (void)parseHashData:(NSArray *)hashData{
+    for(NSDictionary * groupDic in hashData){
+        if([[groupDic objectForKey:@"groupType"] integerValue] == 2){
+            [arrayWithMyself addObject:groupDic];
+        }else if([[groupDic objectForKey:@"groupType"] integerValue] == 1){
+            [arrayWithFavorite addObject:groupDic];
+        }else{
+            [arrayWithFriends addObject:groupDic];
+        }
+    }
+}
 #pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -77,11 +95,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(self.arrayWithHashData != nil){
-        return [self.arrayWithHashData count];
-    }else{
-        return 0;
-    }
+    if(section == 0) return [self.arrayWithFavorite count];
+    if(section == 1) return [self.arrayWithFriends count];
+    
+    return 0;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -92,14 +109,17 @@
         tmpArray = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:nil options:nil];
         cell = [tmpArray objectAtIndex:0];
      }
-    if(self.arrayWithHashData != nil){
-        cell.userName.text  = [[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"groupName"];
-        cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
-    }
-    else
-        cell.userName.text = @"aaa";
-    return cell;
     
+    if(indexPath.section == 0){
+        cell.userName.text = [[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+    }else if(indexPath.section == 1){
+        cell.userName.text = [[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+    }else{
+        cell.userName.text = @"error";
+    }
+    cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -112,8 +132,11 @@
     
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
     label.textColor = [UIColor colorWithRGBHex:0xcfcfcf];
-    label.text= @"favorite";
-    
+    if(section == 0){
+        label.text= @"favorite";
+    }else{
+        label.text = @"friends";
+    }
     [headerView addSubview:label];
     return headerView;
 }
@@ -121,7 +144,13 @@
     
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
-    Group * group = [Group getGroupFromServer:[[[self.arrayWithHashData objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+    Group * group;
+    
+    if(indexPath.section == 0){
+        group = [Group getGroupFromServer:[[[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+    }else if(indexPath.section == 1){
+        group = [Group getGroupFromServer:[[[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+    }
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
     

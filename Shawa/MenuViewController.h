@@ -19,6 +19,8 @@
 @property (nonatomic, strong) IBOutlet UISearchBar * searchBar;
 
 // Data
-@property (nonatomic, strong) NSArray * arrayWithHashData;
+@property (nonatomic, strong) NSMutableArray * arrayWithFavorite;
+@property (nonatomic, strong) NSMutableArray * arrayWithFriends;
+@property (nonatomic, strong) NSMutableArray * arrayWithMyself;
 
 @end
