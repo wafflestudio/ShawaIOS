@@ -95,11 +95,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [self colorWithRGBHex:0x1dd69d];
+    [self setNeedsStatusBarAppearanceUpdate];
     
     // Setting Navigation Bar
-    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [sideMenuView setBackgroundImage:[UIImage imageNamed:@"side_menu"] forState:UIControlStateNormal];
+    [sideMenuView setBackgroundImage:[UIImage imageNamed:@"icon_list"] forState:UIControlStateNormal];
     UIBarButtonItem * sideMenuButton = [[UIBarButtonItem alloc] initWithCustomView:sideMenuView];
     [self.navigationItem setRightBarButtonItem:sideMenuButton];
     
@@ -281,6 +282,9 @@
                            green:g / 255.0f
                             blue:b / 255.0f
                            alpha:1.0f];
+}
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 @end

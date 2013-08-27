@@ -49,9 +49,14 @@
 {
     [AppDelegate setUuidAndIndividualId];
     NSLog(@"uuid : %@", [AppDelegate getUuidString]);
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     return YES;
 }
-
-
+/*
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+*/
 @end
