@@ -21,7 +21,7 @@
 
 @synthesize selectedFriendsList;
 @synthesize groupType;
-@synthesize navItem, navTitle;
+@synthesize navItem, navTitle, navBar;
 
 - (void)sendDataToServer{
     if([groupType integerValue] != 2){
@@ -105,7 +105,7 @@
     [timeTable addGestureRecognizer:longPressGestureRecognizer];
 
     
-    // Setting Right Bar Button
+    // Setting Navigation Bar
     UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [sideMenuView setBackgroundImage:[UIImage imageNamed:@"side_menu"] forState:UIControlStateNormal];
@@ -113,7 +113,8 @@
     [self.navigationItem setRightBarButtonItem:sideMenuButton];
     
     self.navItem.rightBarButtonItem = sideMenuButton;
-    
+    [self.navBar setBarTintColor:[self colorWithRGBHex:0x1dd69d]];
+
     // Setting Background
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
     imageView.tag = 111;
@@ -263,6 +264,18 @@
 - (void)deleteCourse:(Course *)course{
     [[[self.selectedFriendsList objectAtIndex:0] courses] removeObject:course];
     [self sendDataToServer];
+}
+
+- (UIColor *)colorWithRGBHex:(UInt32)hex
+{
+    int r = (hex >> 16) & 0xFF;
+    int g = (hex >> 8) & 0xFF;
+    int b = (hex) & 0xFF;
+    
+    return [UIColor colorWithRed:r / 255.0f
+                           green:g / 255.0f
+                            blue:b / 255.0f
+                           alpha:1.0f];
 }
 
 @end

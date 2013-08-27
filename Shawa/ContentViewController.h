@@ -19,6 +19,7 @@
 @property (nonatomic) NSNumber * groupType;
 
 @property (nonatomic ,strong) IBOutlet UIBarButtonItem * rightBarButtonItem;
+@property (nonatomic, strong) IBOutlet UINavigationBar * navBar;
 @property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
 @property (nonatomic, strong) NSString * navTitle;
 

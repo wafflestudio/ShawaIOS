@@ -109,7 +109,7 @@
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-91-eTR">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <color key="barTintColor" red="0.0" green="1" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <items>
                                     <navigationItem title="Title" id="4SZ-ih-JJa"/>
                                 </items>
@@ -126,6 +126,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navBar" destination="eNG-91-eTR" id="Wxx-qB-tgw"/>
                         <outlet property="navItem" destination="4SZ-ih-JJa" id="5No-In-eEI"/>
                         <segue destination="Tij-eE-cG7" kind="modal" identifier="Add New Course" id="61D-At-vvE"/>
                         <segue destination="Tij-eE-cG7" kind="modal" identifier="Edit Existing Course" id="CJO-NH-p7f"/>
