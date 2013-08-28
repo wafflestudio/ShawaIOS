@@ -25,6 +25,7 @@
 
 @synthesize friendsListTableView, searchBar;
 @synthesize arrayWithFavorite, arrayWithFriends, arrayWithMyself;
+@synthesize mySelfView, userName, checkButton;
 
 - (void)viewDidLoad
 {
@@ -36,11 +37,19 @@
     arrayWithFavorite = [[NSMutableArray alloc] init];
     arrayWithFriends = [[NSMutableArray alloc] init];
     
+    // set arrays
+    NSArray * arrayWithHashData = [self getHashDataFromServer];
+    [self parseHashData:arrayWithHashData];
+    
     // friendsListTableView Delegate 설정
     friendsListTableView.delegate = self;
     friendsListTableView.dataSource = self;
     
     friendsListTableView.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    
+    // set MySelfView
+    [mySelfView setBackgroundColor:[UIColor colorWithRGBHex:0xcfcfcf]];
+    userName.text = [[arrayWithMyself objectAtIndex:0] objectForKey:@"groupName"];
     
     // searchBar 설정
     searchBar.backgroundImage = [UIColor image1x1WithColor:[UIColor colorWithRGBHex:0x6a6a6a]];
@@ -48,9 +57,6 @@
     // slidingView Anchor 설정
     [self.slidingViewController setAnchorLeftRevealAmount:280.0f];
     self.slidingViewController.underRightWidthLayout = ECFullWidth;
-    
-    NSArray * arrayWithHashData = [self getHashDataFromServer];
-    [self parseHashData:arrayWithHashData];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -86,17 +92,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
-}
-
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"서버";
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section == 0) return [self.arrayWithFavorite count];
-    if(section == 1) return [self.arrayWithFriends count];
+    if(section == 0) return [self.arrayWithMyself count];
+    if(section == 1) return [self.arrayWithFavorite count];
+    if(section == 2) return [self.arrayWithFriends count];
     
     return 0;
 }
@@ -109,13 +112,12 @@
         tmpArray = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:nil options:nil];
         cell = [tmpArray objectAtIndex:0];
      }
-    
     if(indexPath.section == 0){
-        cell.userName.text = [[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+        cell.userName.text = [[self.arrayWithMyself objectAtIndex:indexPath.row] objectForKey:@"groupName"];
     }else if(indexPath.section == 1){
+        cell.userName.text = [[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+    }else if(indexPath.section == 2){
         cell.userName.text = [[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"groupName"];
-    }else{
-        cell.userName.text = @"error";
     }
     cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
     
@@ -123,21 +125,29 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40;
+    return 44;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if(section == 0) return 0;
+    else return 20;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0) return nil;
+    
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, 30)];
     [headerView setBackgroundColor:[UIColor colorWithRGBHex:0x6a6a6a]];
     
     UILabel * label = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 20)];
     label.textColor = [UIColor colorWithRGBHex:0xcfcfcf];
-    if(section == 0){
+    if(section == 1){
         label.text= @"favorite";
-    }else{
+    }else if(section == 2){
         label.text = @"friends";
     }
     [headerView addSubview:label];
+    
     return headerView;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -145,10 +155,11 @@
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
     Group * group;
-    
     if(indexPath.section == 0){
-        group = [Group getGroupFromServer:[[[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+        group = [Group getGroupFromServer:[[[self.arrayWithMyself objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
     }else if(indexPath.section == 1){
+        group = [Group getGroupFromServer:[[[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+    }else if(indexPath.section == 2){
         group = [Group getGroupFromServer:[[[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
     }
     

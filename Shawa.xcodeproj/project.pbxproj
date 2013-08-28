@@ -87,7 +87,7 @@
 		F57B3E9517814AE9009CB6D9 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F57B3E9717814AE9009CB6D9 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F57B3E9917814AE9009CB6D9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F57B3EA217814B18009CB6D9 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = iPhone.storyboard; path = Shawa/iPhone.storyboard; sourceTree = "<group>"; };
+		F57B3EA217814B18009CB6D9 /* iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = iPhone.storyboard; sourceTree = "<group>"; };
 		F57B3EA417814B4E009CB6D9 /* InitialSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialSlidingViewController.h; sourceTree = "<group>"; };
 		F57B3EA517814B4E009CB6D9 /* InitialSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialSlidingViewController.m; sourceTree = "<group>"; };
 		F57B3EA717814BA9009CB6D9 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
@@ -130,7 +130,6 @@
 			isa = PBXGroup;
 			children = (
 				F57B3E8917814AE9009CB6D9 /* Shawa */,
-				F57B3EA217814B18009CB6D9 /* iPhone.storyboard */,
 				F57B3E8217814AE9009CB6D9 /* Frameworks */,
 				F57B3E8117814AE9009CB6D9 /* Products */,
 			);
@@ -171,6 +170,7 @@
 				F50E436517CC93FE002E916F /* CustomCell.h */,
 				F50E436617CC93FE002E916F /* CustomCell.m */,
 				F50E436817CC9412002E916F /* CustomCell.xib */,
+				F57B3EA217814B18009CB6D9 /* iPhone.storyboard */,
 				F514D36C17B23A70005ABBAF /* NSDictionary+JSONCategories.h */,
 				F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */,
 				F55A554F17CC96BD00A40D67 /* UIColor+COLORCategories.h */,

@@ -15,8 +15,15 @@
 
 @interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
+
+// IBOutlets
 @property (nonatomic, strong) IBOutlet UITableView * friendsListTableView;
 @property (nonatomic, strong) IBOutlet UISearchBar * searchBar;
+
+// MyselfView
+@property (nonatomic, strong) IBOutlet UIView * mySelfView;
+@property (nonatomic, strong) IBOutlet UIButton * checkButton;
+@property (nonatomic, strong) IBOutlet UILabel * userName;
 
 // Data
 @property (nonatomic, strong) NSMutableArray * arrayWithFavorite;

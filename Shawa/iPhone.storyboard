@@ -45,14 +45,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ki0-YE-fF4">
                                 <rect key="frame" x="40" y="64" width="280" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <view key="tableHeaderView" contentMode="scaleToFill" id="MIu-a1-q9U">
-                                    <rect key="frame" x="0.0" y="0.0" width="280" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" indentationWidth="10" textLabel="8bR-ZI-Fda" style="IBUITableViewCellStyleDefault" id="u2z-mM-FP4">
-                                        <rect key="frame" x="0.0" y="66" width="280" height="44"/>
+                                        <rect key="frame" x="0.0" y="22" width="280" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="u2z-mM-FP4" id="OqB-gv-RA9">
                                             <rect key="frame" x="0.0" y="0.0" width="280" height="43"/>
