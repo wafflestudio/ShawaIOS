@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CustomCellDelegate <NSObject>
+- (void)buttonStateHasChanged:(id)sender;
+@end
+
 @interface CustomCell : UITableViewCell
+
+@property (nonatomic, weak) id <CustomCellDelegate> delegate;
 
 @property (nonatomic, strong) IBOutlet UILabel * userName;
 @property (nonatomic, strong) IBOutlet UIButton * checkButton;

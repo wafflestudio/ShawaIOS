@@ -28,7 +28,10 @@
 }
 
 - (IBAction)checkButtonClicked:(id)sender{
+    UIButton * button = (UIButton *)sender;
+    button.tag = self.tag;
     [checkButton setSelected:!checkButton.selected];
+    [self.delegate buttonStateHasChanged:sender];
 }
 
 @end

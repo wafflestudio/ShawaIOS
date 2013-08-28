@@ -58,7 +58,7 @@
         }
     }
     
-    if([startTime compare:endTime]){
+    if(![startTime compare:endTime]){
         return NO;
     }
     if([[startTimeButton titleForState:UIControlStateNormal] isEqualToString:[endTimeButton titleForState:UIControlStateNormal]]){
@@ -234,7 +234,7 @@
     NSDate * date = (NSDate *)sender.date;
     date = [self clampDate:date toMinutes:15];
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"a hh:mm"];
+    [dateFormatter setDateFormat:@"a HH:mm"];
     
     NSString * dateString = [dateFormatter stringFromDate:date];
     UIButton * timeButton = (UIButton *)[self.view viewWithTag:[(UIDatePicker *)sender tag] - 10];
@@ -288,7 +288,7 @@
     [datePicker setDatePickerMode:UIDatePickerModeTime];
     
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"a hh:mm"];
+    [format setDateFormat:@"a HH:mm"];
     
     NSString * timeString;
     if([sender tag] == 2){

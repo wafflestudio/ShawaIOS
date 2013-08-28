@@ -180,15 +180,15 @@
 // Making TimeTable View
 
 - (void)showTimeTable{
-    Individual * individual = [selectedFriendsList objectAtIndex:0];
-    for(int i=0; i<[individual.courses count]; i++){
-        Course * course = [[individual courses] objectAtIndex:i];
-        [self showLectures:course];
+    for(Individual * individual in selectedFriendsList){
+        for(int i=0; i<[individual.courses count]; i++){
+            Course * course = [[individual courses] objectAtIndex:i];
+            [self showLectures:course];
+        }
     }
 }
 
 - (void)showLectures:(Course *)course{
-
     for(int i=0; i<[course.lectures count]; i++){
         Lecture * lecture = [course.lectures objectAtIndex:i];
         

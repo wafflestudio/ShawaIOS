@@ -10,7 +10,6 @@
 #import "ContentViewController.h"
 #import "AppDelegate.h"
 #import "Individual.h"
-#import "CustomCell.h"
 
 #import "NSDictionary+JSONCategories.h"
 
@@ -25,6 +24,7 @@
 
 @synthesize friendsListTableView, searchBar;
 @synthesize arrayWithFavorite, arrayWithFriends, arrayWithMyself;
+@synthesize arrayWithSelectedIndividualIds;
 
 - (void)viewDidLoad
 {
@@ -35,6 +35,7 @@
     arrayWithMyself = [[NSMutableArray alloc] init];
     arrayWithFavorite = [[NSMutableArray alloc] init];
     arrayWithFriends = [[NSMutableArray alloc] init];
+    arrayWithSelectedIndividualIds = [[NSMutableArray alloc] init];
     
     // set arrays
     NSArray * arrayWithHashData = [self getHashDataFromServer];
@@ -60,6 +61,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
+    [arrayWithSelectedIndividualIds removeAllObjects];
+    [self.friendsListTableView reloadData];
 }
 
 - (NSArray *)getHashDataFromServer{
@@ -110,15 +113,21 @@
         NSArray * tmpArray;
         tmpArray = [[NSBundle mainBundle] loadNibNamed:@"CustomCell" owner:nil options:nil];
         cell = [tmpArray objectAtIndex:0];
+        cell.delegate = self;
      }
+
     if(indexPath.section == 0){
-        cell.userName.text = [[self.arrayWithMyself objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+        NSDictionary * dic = [self.arrayWithMyself objectAtIndex:indexPath.row];
+        cell.userName.text = [dic objectForKey:@"groupName"];
     }else if(indexPath.section == 1){
-        cell.userName.text = [[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+        NSDictionary * dic = [self.arrayWithFavorite objectAtIndex:indexPath.row];
+        cell.userName.text = [dic objectForKey:@"groupName"];
     }else if(indexPath.section == 2){
-        cell.userName.text = [[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"groupName"];
+        NSDictionary * dic = [self.arrayWithFriends objectAtIndex:indexPath.row];
+        cell.userName.text = [dic objectForKey:@"groupName"];
     }
     cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
+    cell.tag = indexPath.section * 10 + indexPath.row + 1000;
     
     return cell;
 }
@@ -157,9 +166,9 @@
     if(indexPath.section == 0){
         group = [Group getGroupFromServer:[[[self.arrayWithMyself objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
     }else if(indexPath.section == 1){
-        group = [Group getGroupFromServer:[[[self.arrayWithFavorite objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+        group = [Group getGroupFromServer:[[[self.arrayWithFavorite objectAtIndex:indexPath.row]objectForKey:@"id"] integerValue]];
     }else if(indexPath.section == 2){
-        group = [Group getGroupFromServer:[[[self.arrayWithFriends objectAtIndex:indexPath.row] objectForKey:@"id"] integerValue]];
+        group = [Group getGroupFromServer:[[[self.arrayWithFriends objectAtIndex:indexPath.row]objectForKey:@"id"] integerValue]];
     }
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
@@ -188,8 +197,60 @@
     [_searchBar setShowsCancelButton:NO animated:YES];
 }
 - (void)completeButtonClicked:(id)sender{
-
+    ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
+    
+    Group * group = [[Group alloc] init];
+    group.groupName = @"그룹";
+    group.groupType = nil;
+    group.idForServer = nil;
+    for(NSNumber * number in arrayWithSelectedIndividualIds){
+        Individual * individual = [Individual getIndividualFromServer:[number integerValue]];
+        [group.individuals addObject:individual];
+    }
+    
+    newContentViewController.selectedFriendsList = [group.individuals copy];
+    
+    newContentViewController.navTitle = group.groupName;
+    newContentViewController.groupType = group.groupType;
+    
+    [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{
+        CGRect frame = self.slidingViewController.topViewController.view.frame;
+        self.slidingViewController.topViewController = newContentViewController;
+        self.slidingViewController.topViewController.view.frame = frame;
+        [self.slidingViewController resetTopView];
+    }];
 }
 #pragma Custom Search Bar Delegate End.
+
+#pragma Custom Cell Delegate
+- (void)buttonStateHasChanged:(id)sender{
+    int section = ([sender tag] - 1000)/10;
+    int index = ([sender tag] - 1000)%10;
+    
+    BOOL isSelected = NO;
+    int individual_id;
+    
+    if(section == 0){
+        isSelected = [sender isSelected];
+        individual_id = [[[arrayWithMyself objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+    }else if(section == 1){
+        isSelected = [sender isSelected];
+        individual_id = [[[arrayWithFavorite objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+    }else if(section == 2){
+        isSelected = [sender isSelected];
+        individual_id = [[[arrayWithFriends objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+    }
+    
+    if(isSelected){
+        [arrayWithSelectedIndividualIds addObject:[NSNumber numberWithInt:individual_id]];
+    }else{
+        for(NSNumber * number in arrayWithSelectedIndividualIds){
+            if([number integerValue] == individual_id){
+                [arrayWithSelectedIndividualIds removeObject:number];
+            }
+        }
+    }
+}
+#pragma Custom Cell Delegate End.
 
 @end

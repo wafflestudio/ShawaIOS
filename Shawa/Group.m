@@ -39,4 +39,13 @@
     return groupFromServer;
 }
 
+- (id)init{
+    self = [super init];
+    if(self != nil){
+        groupName = @"Default Group Name";
+        individuals = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 @end

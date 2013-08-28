@@ -10,12 +10,14 @@
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
 #import "CustomSearchBar.h"
+#import "CustomCell.h"
+
 
 #import "AddCourseViewController.h"
 
 #import "ECSlidingViewController.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate, CustomSearchBarDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate, CustomSearchBarDelegate, CustomCellDelegate>
 
 
 // IBOutlets
@@ -26,5 +28,7 @@
 @property (nonatomic, strong) NSMutableArray * arrayWithFavorite;
 @property (nonatomic, strong) NSMutableArray * arrayWithFriends;
 @property (nonatomic, strong) NSMutableArray * arrayWithMyself;
+
+@property (nonatomic, strong) NSMutableArray * arrayWithSelectedIndividualIds;
 
 @end
