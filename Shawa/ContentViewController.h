@@ -21,6 +21,9 @@
 @property (nonatomic ,strong) IBOutlet UIBarButtonItem * rightBarButtonItem;
 @property (nonatomic, strong) IBOutlet UINavigationBar * navBar;
 @property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
+
+@property (nonatomic, strong) IBOutlet UILabel * titleLabel;
+@property (nonatomic, strong) IBOutlet UIImageView * profileImageView;
 @property (nonatomic, strong) NSString * navTitle;
 
 - (void)showTimeTable;

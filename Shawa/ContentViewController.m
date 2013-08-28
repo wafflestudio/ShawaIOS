@@ -22,6 +22,7 @@
 @synthesize selectedFriendsList;
 @synthesize groupType;
 @synthesize navItem, navTitle, navBar;
+@synthesize profileImageView, titleLabel;
 
 - (void)sendDataToServer{
     if([groupType integerValue] != 2){
@@ -97,7 +98,24 @@
     self.view.backgroundColor = [UIColor colorWithRGBHex:0x1dd69d];
     [self setNeedsStatusBarAppearanceUpdate];
     
-    // Setting Navigation Bar
+    // Navigation Bar
+    
+    // Set Profile Image View
+    profileImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder"]];
+    profileImageView.autoresizingMask = UIViewAutoresizingNone;
+    profileImageView.frame = CGRectMake(100, 5, 33, 33);
+    [self.navBar addSubview:profileImageView];
+    
+    // Set Title Label
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 0, 100, 44)];
+    titleLabel.autoresizingMask = UIViewContentModeRight;
+    titleLabel.backgroundColor = [UIColor clearColor];
+    titleLabel.font = [UIFont systemFontOfSize:21];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.text = @"최 석원";
+    [self.navBar addSubview:titleLabel];
+    
+    //Set sideMenuButton
     UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [sideMenuView setBackgroundImage:[UIImage imageNamed:@"icon_list"] forState:UIControlStateNormal];
@@ -106,8 +124,6 @@
     
     self.navItem.rightBarButtonItem = sideMenuButton;
     [self.navBar setBarTintColor:[UIColor colorWithRGBHex:0x1dd69d]];
-    
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
     
     // Setting ScrollView
     timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navBar.frame.size.height + self.navBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
@@ -153,7 +169,7 @@
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    self.navItem.title = navTitle;
+    self.titleLabel.text = navTitle;
     for (id view in [timeTable subviews]){
         if([view tag] != 111){
             [view removeFromSuperview];
