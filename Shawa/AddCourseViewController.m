@@ -49,8 +49,18 @@
     if([courseNameTextField.text isEqual:@""] || courseNameTextField.text == nil){
         return NO;
     }
-//    NSString * startTime = [startTimeButton titleForState:UIControlStateNormal];
-//    NSString * endTime = [startTimeButton titleForState:UIControlStateNormal];
+    NSString * startTime = [startTimeButton titleForState:UIControlStateNormal];
+    NSString * endTime = [startTimeButton titleForState:UIControlStateNormal];
+    
+    if([ (startTime = [startTime substringToIndex:3]) isEqualToString:@"오후"]){
+        if([ (endTime = [endTime substringToIndex:3]) isEqualToString:@"오전"]){
+            return NO;
+        }
+    }
+    
+    if([startTime compare:endTime]){
+        return NO;
+    }
     if([[startTimeButton titleForState:UIControlStateNormal] isEqualToString:[endTimeButton titleForState:UIControlStateNormal]]){
         return NO;
     }
@@ -201,7 +211,6 @@
     
     if(hour > 12) {
         am_pm = @"오후";
-        hour -= 12;
     }else{
         am_pm = @"오전";
     }
@@ -220,13 +229,12 @@
 }
 
 
-
 // DatePicker
 - (void)changeDate:(UIDatePicker *)sender{
     NSDate * date = (NSDate *)sender.date;
     date = [self clampDate:date toMinutes:15];
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"a HH:mm"];
+    [dateFormatter setDateFormat:@"a hh:mm"];
     
     NSString * dateString = [dateFormatter stringFromDate:date];
     UIButton * timeButton = (UIButton *)[self.view viewWithTag:[(UIDatePicker *)sender tag] - 10];
@@ -280,13 +288,13 @@
     [datePicker setDatePickerMode:UIDatePickerModeTime];
     
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"hh:mm"];
+    [format setDateFormat:@"a hh:mm"];
     
     NSString * timeString;
     if([sender tag] == 2){
-        timeString = [[startTimeButton titleForState:UIControlStateNormal] substringFromIndex:3];
+        timeString = [startTimeButton titleForState:UIControlStateNormal];
     }else if ([sender tag]==3){
-        timeString = [[endTimeButton titleForState:UIControlStateNormal] substringFromIndex:3];
+        timeString = [endTimeButton titleForState:UIControlStateNormal];
     }
     [datePicker setDate:[format dateFromString:timeString]];
     datePicker.tag = [(UIButton *)sender tag] + 10;
