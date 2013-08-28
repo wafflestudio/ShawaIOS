@@ -43,12 +43,14 @@
 }
 
 - (BOOL)verifiyCourse{
-    if(!(monButton.tag || tueButton.tag || wedButton.tag || thuButton.tag || friButton.tag || satButton.tag || sunButton.tag)){
+    if(!(monButton.selected || tueButton.selected || wedButton.selected || thuButton.selected || friButton.selected || satButton.selected || sunButton.selected)){
         return NO;
     }
     if([courseNameTextField.text isEqual:@""] || courseNameTextField.text == nil){
         return NO;
     }
+//    NSString * startTime = [startTimeButton titleForState:UIControlStateNormal];
+//    NSString * endTime = [startTimeButton titleForState:UIControlStateNormal];
     if([[startTimeButton titleForState:UIControlStateNormal] isEqualToString:[endTimeButton titleForState:UIControlStateNormal]]){
         return NO;
     }
@@ -57,12 +59,12 @@
 
 - (IBAction)dayButtonClicked:(id)sender{
     UIButton * button = (UIButton *)sender;
-    if(button.tag){
+    if(button.selected){
         button.backgroundColor = [UIColor clearColor];
-        button.tag = 0;
+        [button setSelected:NO];
     }else{
         button.backgroundColor = [UIColor blackColor];
-        button.tag = 1;
+        [button setSelected:YES];
     }
 }
 - (IBAction)deleteButtonClicked:(id)sender{
@@ -154,31 +156,31 @@
     double eminute = [[endTimeString substringFromIndex:6] integerValue];
     double duration = ehour + eminute/60 - shour - sminute/60;
 
-    if(monButton.tag == 1){
+    if(monButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:MON period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(tueButton.tag == 1){
+    if(tueButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:TUE period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(wedButton.tag == 1){
+    if(wedButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:WED period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(thuButton.tag == 1){
+    if(thuButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:THU period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(friButton.tag == 1){
+    if(friButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:FRI period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(satButton.tag == 1){
+    if(satButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:SAT period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
-    if(sunButton.tag == 1){
+    if(sunButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:SUN period:period duration:duration location:@""];
         [_course.lectures addObject:lecture];
     }
