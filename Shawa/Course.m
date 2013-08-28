@@ -68,9 +68,9 @@
     }
 }
 //Lecture 초기화
--(id)initWithDay:(int)day period:(double)pr duration:(double)dr location:(NSString *)loc{
+-(id)initWithDay:(int)_day period:(double)pr duration:(double)dr location:(NSString *)loc{
     if(self=[super init]){
-        self.day = day;
+        self.day = _day;
         self.period = pr;
         self.duration = dr;
         self.location = [NSString stringWithString:loc];
@@ -108,7 +108,7 @@
     
     NSMutableArray * lectureArray = [[NSMutableArray alloc] init];
     for(Lecture * lecture in [course lectures]){
-        NSString * lecDic = [Lecture getNSDictionaryFromLecture:lecture];
+        NSString * lecDic = (NSString *)[Lecture getNSDictionaryFromLecture:lecture];
         [lectureArray addObject:lecDic];
     }
     
@@ -141,9 +141,9 @@
     return self;
 }
 
--(id)initWithCourseName:(NSString *)courseName{
+-(id)initWithCourseName:(NSString *)_courseName{
     if(self=[self init]){
-        self.courseName = [NSString stringWithString:courseName];
+        self.courseName = [NSString stringWithString:_courseName];
         lectures = [[NSMutableArray alloc] initWithCapacity:10];
     }
     return self;

@@ -38,7 +38,7 @@
     
     NSMutableArray * courseArray = [[NSMutableArray alloc] init];
     for(Course * course in [individual courses]){
-        NSString * courseDic = [Course getNSDictionaryFromCourse:course];
+        NSString * courseDic = (NSString *)[Course getNSDictionaryFromCourse:course];
         [courseArray addObject:courseDic];
     }
     

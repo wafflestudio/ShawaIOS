@@ -98,12 +98,12 @@
     originCenter = self.view.center;
 }
 
-- (void)setIBOutletsWithCourse:(Course *)course{
+- (void)setIBOutletsWithCourse:(Course *)_course{
     //set Name Text Field
-    courseNameTextField.text = course.courseName;
+    courseNameTextField.text = _course.courseName;
     
     //set Day Buttons
-    for(Lecture * lecture in course.lectures){
+    for(Lecture * lecture in _course.lectures){
         if(lecture.day == MON){
             [self dayButtonClicked:monButton];
         }
@@ -128,7 +128,7 @@
     }
     
     //set Time Buttons
-    Lecture * strLecture = [course.lectures objectAtIndex:0];
+    Lecture * strLecture = [_course.lectures objectAtIndex:0];
     int hour = strLecture.period + 8;
     int minute = (strLecture.period - (int)strLecture.period) * 60;
     [startTimeButton setTitle:[self timeMaker:hour minute:minute] forState:UIControlStateNormal];
@@ -138,9 +138,9 @@
     [endTimeButton setTitle:[self timeMaker:hour minute:minute] forState:UIControlStateNormal];
 }
 
-- (void)setCourseWithIBOutlets:(Course *)course{
-    course.courseName = courseNameTextField.text;
-    [course.lectures removeAllObjects];
+- (void)setCourseWithIBOutlets:(Course *)_course{
+    _course.courseName = courseNameTextField.text;
+    [_course.lectures removeAllObjects];
     
     // get period and duration
     NSString * startTimeString = [startTimeButton titleForState:UIControlStateNormal];
@@ -156,31 +156,31 @@
 
     if(monButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:MON period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(tueButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:TUE period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(wedButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:WED period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(thuButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:THU period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(friButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:FRI period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(satButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:SAT period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
     if(sunButton.tag == 1){
         Lecture * lecture = [[Lecture alloc] initWithDay:SUN period:period duration:duration location:@""];
-        [course.lectures addObject:lecture];
+        [_course.lectures addObject:lecture];
     }
 }
 - (NSDate*)clampDate:(NSDate *)dt toMinutes:(int)minutes {
