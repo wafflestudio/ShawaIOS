@@ -11,5 +11,8 @@
 @interface CustomCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UILabel * userName;
+@property (nonatomic, strong) IBOutlet UIButton * checkButton;
+
+- (IBAction)checkButtonClicked:(id)sender;
 
 @end

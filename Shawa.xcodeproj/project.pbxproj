@@ -22,6 +22,7 @@
 		F50E436317CC7F58002E916F /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435617CC7D8C002E916F /* timetable_bg.png */; };
 		F50E436717CC93FE002E916F /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50E436617CC93FE002E916F /* CustomCell.m */; };
 		F50E436917CC9412002E916F /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50E436817CC9412002E916F /* CustomCell.xib */; };
+		F50E54CA17CDC2080032CFF1 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */; };
 		F514D36E17B23A70005ABBAF /* NSDictionary+JSONCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */; };
 		F522DDB7178A7E57003311C0 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F522DDB6178A7E57003311C0 /* Group.m */; };
 		F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */; };
@@ -67,6 +68,8 @@
 		F50E436517CC93FE002E916F /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		F50E436617CC93FE002E916F /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		F50E436817CC9412002E916F /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSearchBar.h; path = Shawa/CustomSearchBar.h; sourceTree = "<group>"; };
+		F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSearchBar.m; path = Shawa/CustomSearchBar.m; sourceTree = "<group>"; };
 		F514D36C17B23A70005ABBAF /* NSDictionary+JSONCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONCategories.h"; sourceTree = "<group>"; };
 		F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONCategories.m"; sourceTree = "<group>"; };
 		F522DDB5178A7E56003311C0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 		F57B3E7717814AE8009CB6D9 = {
 			isa = PBXGroup;
 			children = (
+				F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */,
+				F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */,
 				F57B3E8917814AE9009CB6D9 /* Shawa */,
 				F57B3E8217814AE9009CB6D9 /* Frameworks */,
 				F57B3E8117814AE9009CB6D9 /* Products */,
@@ -352,6 +357,7 @@
 				F5E8BFC617C3279500250C0C /* SSKeychain.m in Sources */,
 				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
 				F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */,
+				F50E54CA17CDC2080032CFF1 /* CustomSearchBar.m in Sources */,
 				F57B3EB3178155E5009CB6D9 /* MenuViewController.m in Sources */,
 				F585B8F717829B4B00AB414D /* Course.m in Sources */,
 				F58A1C3817866CE7005BD166 /* Individual.m in Sources */,

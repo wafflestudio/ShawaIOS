@@ -70,10 +70,8 @@
 - (IBAction)dayButtonClicked:(id)sender{
     UIButton * button = (UIButton *)sender;
     if(button.selected){
-        button.backgroundColor = [UIColor clearColor];
         [button setSelected:NO];
     }else{
-        button.backgroundColor = [UIColor blackColor];
         [button setSelected:YES];
     }
 }
@@ -104,9 +102,11 @@
     // Set Time Buttons
     startTimeButton.tag = 2;
     startTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"오전 10:00"];
+    
     endTimeButton.tag = 3;
     endTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"오전 11:00"];
     
+    // Set originCenter
     originCenter = self.view.center;
 }
 

@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bdr-LP-6cU">
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bdr-LP-6cU" customClass="CustomSearchBar">
                                 <rect key="frame" x="40" y="20" width="280" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="yVQ-aD-Rk0"/>
@@ -45,6 +45,9 @@
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="PtS-tx-NCM" id="fjY-oc-3lW"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ki0-YE-fF4">
                                 <rect key="frame" x="40" y="64" width="280" height="504"/>
@@ -83,7 +86,7 @@
                     </view>
                     <connections>
                         <outlet property="friendsListTableView" destination="Ki0-YE-fF4" id="QMY-qK-BFd"/>
-                        <outlet property="searchBar" destination="Bdr-LP-6cU" id="mdo-QI-Q27"/>
+                        <outlet property="searchBar" destination="Bdr-LP-6cU" id="AnG-49-LS0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuQ-6q-Ysp" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -25,7 +25,6 @@
 
 @synthesize friendsListTableView, searchBar;
 @synthesize arrayWithFavorite, arrayWithFriends, arrayWithMyself;
-@synthesize mySelfView, userName, checkButton;
 
 - (void)viewDidLoad
 {
@@ -47,12 +46,11 @@
     
     friendsListTableView.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
     
-    // set MySelfView
-    [mySelfView setBackgroundColor:[UIColor colorWithRGBHex:0xcfcfcf]];
-    userName.text = [[arrayWithMyself objectAtIndex:0] objectForKey:@"groupName"];
     
     // searchBar 설정
+    [searchBar addCompleteButton];
     searchBar.delegate = self;
+    searchBar.customSearchBarDelegate = self;
     searchBar.backgroundImage = [UIColor image1x1WithColor:[UIColor colorWithRGBHex:0x6a6a6a]];
     
     // slidingView Anchor 설정
@@ -179,7 +177,7 @@
 
 #pragma mark - Table View Delegate End.
 
-#pragma Search Bar Delegate Start
+#pragma Custom Search Bar Delegate Start
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar{
     [_searchBar setShowsCancelButton:YES animated:YES];
     return YES;
@@ -189,6 +187,9 @@
     [_searchBar resignFirstResponder];
     [_searchBar setShowsCancelButton:NO animated:YES];
 }
-#pragma Search Bar Delegate End.
+- (void)completeButtonClicked:(id)sender{
+
+}
+#pragma Custom Search Bar Delegate End.
 
 @end

@@ -9,21 +9,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 #import "AppDelegate.h"
+#import "CustomSearchBar.h"
+
 #import "AddCourseViewController.h"
 
 #import "ECSlidingViewController.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate,UISearchBarDelegate, CustomSearchBarDelegate>
 
 
 // IBOutlets
 @property (nonatomic, strong) IBOutlet UITableView * friendsListTableView;
-@property (nonatomic, strong) IBOutlet UISearchBar * searchBar;
-
-// MyselfView
-@property (nonatomic, strong) IBOutlet UIView * mySelfView;
-@property (nonatomic, strong) IBOutlet UIButton * checkButton;
-@property (nonatomic, strong) IBOutlet UILabel * userName;
+@property (nonatomic, strong) IBOutlet CustomSearchBar * searchBar;
 
 // Data
 @property (nonatomic, strong) NSMutableArray * arrayWithFavorite;

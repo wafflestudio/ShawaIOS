@@ -10,13 +10,14 @@
 
 @implementation CustomCell
 
-@synthesize userName;
+@synthesize userName, checkButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        [checkButton setBackgroundImage:[UIImage imageNamed:@"icon_plus"] forState:UIControlStateNormal];
+        [checkButton setBackgroundImage:[UIImage imageNamed:@"icon_checked"] forState:UIControlStateSelected];
     }
     return self;
 }
@@ -24,8 +25,10 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+- (IBAction)checkButtonClicked:(id)sender{
+    [checkButton setSelected:!checkButton.selected];
 }
 
 @end
