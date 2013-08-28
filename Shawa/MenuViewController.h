@@ -13,7 +13,7 @@
 
 #import "ECSlidingViewController.h"
 
-@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface MenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
 
 // IBOutlets

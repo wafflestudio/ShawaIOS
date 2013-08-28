@@ -52,6 +52,7 @@
     userName.text = [[arrayWithMyself objectAtIndex:0] objectForKey:@"groupName"];
     
     // searchBar 설정
+    searchBar.delegate = self;
     searchBar.backgroundImage = [UIColor image1x1WithColor:[UIColor colorWithRGBHex:0x6a6a6a]];
     
     // slidingView Anchor 설정
@@ -177,5 +178,17 @@
 }
 
 #pragma mark - Table View Delegate End.
+
+#pragma Search Bar Delegate Start
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)_searchBar{
+    [_searchBar setShowsCancelButton:YES animated:YES];
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)_searchBar{
+    [_searchBar resignFirstResponder];
+    [_searchBar setShowsCancelButton:NO animated:YES];
+}
+#pragma Search Bar Delegate End.
 
 @end
