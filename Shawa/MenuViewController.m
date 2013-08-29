@@ -196,6 +196,8 @@
     [_searchBar setShowsCancelButton:NO animated:YES];
 }
 - (void)completeButtonClicked:(id)sender{
+    if([arrayWithSelectedIndividualIds count]==0) return;
+    
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
     Group * group = [[Group alloc] init];

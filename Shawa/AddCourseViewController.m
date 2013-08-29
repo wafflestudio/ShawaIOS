@@ -26,7 +26,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)saveButtonClicked:(id)sender{
-    
     if([self verifiyCourse] == NO){
         return;
     }

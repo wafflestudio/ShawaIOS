@@ -13,6 +13,7 @@
 
 @interface ContentViewController (){
     UIScrollView * timeTable;
+    BOOL isGroup;
 }
 
 @end
@@ -98,6 +99,9 @@
     self.view.backgroundColor = [UIColor colorWithRGBHex:0x1dd69d];
     [self setNeedsStatusBarAppearanceUpdate];
     
+    // has more than one individual
+    isGroup = [self.selectedFriendsList count] > 1;
+
     // Navigation Bar
     
     // Set Profile Image View
@@ -216,7 +220,6 @@
         
         UIView * lectureView = [[UIView alloc] init];
         [lectureView setBackgroundColor:lectureColor];
-        
         [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 50*lecture.duration)];
         
         // Setting lectureImageView
@@ -248,6 +251,13 @@
             button.tag =[[[selectedFriendsList objectAtIndex:0] courses] indexOfObject:course];
             [button addTarget:self action:@selector(changeCourse:) forControlEvents:UIControlEventTouchUpInside];
             [timeTable addSubview:button];
+        }
+        
+        // if it has more than one individual
+        if(isGroup){
+            [lectureImageView setFrame:CGRectMake(0, 0, 47.5, 50*lecture.duration)];
+            [lectureImageView setBackgroundColor:[UIColor lightGrayColor]];
+            lectureName.text = @"";
         }
     }
 }
