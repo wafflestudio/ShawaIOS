@@ -120,7 +120,7 @@
     [self.navBar addSubview:titleLabel];
     
     //Set sideMenuButton
-    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 18, 18)];
+    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 18)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [sideMenuView setBackgroundImage:[UIImage imageNamed:@"icon_list"] forState:UIControlStateNormal];
     UIBarButtonItem * sideMenuButton = [[UIBarButtonItem alloc] initWithCustomView:sideMenuView];
@@ -142,7 +142,7 @@
     timeTable.userInteractionEnabled = YES;
 
     // Setting Background
-    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]];
+    UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]	];
     imageView.tag = 111;
     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y,
                                  320, 503.5);
@@ -220,15 +220,15 @@
         
         UIView * lectureView = [[UIView alloc] init];
         [lectureView setBackgroundColor:lectureColor];
-        [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 50*lecture.duration)];
+        [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 42.5*lecture.duration)];
         
         // Setting lectureImageView
         UIImageView * lectureImageView = [[UIImageView alloc] init];
-        [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 50*lecture.duration)];
+        [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 42.5*lecture.duration)];
         [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
         
         // Setting lectureName Label
-        CGRect rec = CGRectMake(5, 0, 37.5, 50*lecture.duration);
+        CGRect rec = CGRectMake(5, 0, 37.5, 42.5*lecture.duration);
         
         UILabel * lectureName = [[UILabel alloc] init];
         [lectureName setFrame:rec];
@@ -255,8 +255,10 @@
         
         // if it has more than one individual
         if(isGroup){
+            [lectureView setBackgroundColor:[UIColor clearColor]];
             [lectureImageView setFrame:CGRectMake(0, 0, 47.5, 50*lecture.duration)];
-            [lectureImageView setBackgroundColor:[UIColor lightGrayColor]];
+            [lectureImageView setBackgroundColor:[UIColor grayColor]];
+            lectureImageView.alpha = 0.9;
             lectureName.text = @"";
         }
     }

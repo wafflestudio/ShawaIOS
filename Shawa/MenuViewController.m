@@ -61,6 +61,17 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [arrayWithSelectedIndividualIds removeAllObjects];
+    
+    for(NSDictionary * dic in arrayWithMyself){
+        [dic setValue:[NSNumber numberWithBool:NO] forKey:@"isSelected"];
+    }
+    for(NSDictionary * dic in arrayWithFavorite){
+        [dic setValue:[NSNumber numberWithBool:NO] forKey:@"isSelected"];
+    }
+    for(NSDictionary * dic in arrayWithFriends){
+        [dic setValue:[NSNumber numberWithBool:NO] forKey:@"isSelected"];
+    }
+    
     [self.friendsListTableView reloadData];
 }
 
@@ -80,6 +91,7 @@
 
 - (void)parseHashData:(NSArray *)hashData{
     for(NSDictionary * groupDic in hashData){
+        [groupDic setValue:[NSNumber numberWithBool:NO] forKey:@"isSelected"];
         if([[groupDic objectForKey:@"groupType"] integerValue] == 2){
             [arrayWithMyself addObject:groupDic];
         }else if([[groupDic objectForKey:@"groupType"] integerValue] == 1){
@@ -114,17 +126,19 @@
         cell = [tmpArray objectAtIndex:0];
         cell.delegate = self;
      }
-
+    
+    NSDictionary * dic;
     if(indexPath.section == 0){
-        NSDictionary * dic = [self.arrayWithMyself objectAtIndex:indexPath.row];
+        dic = [self.arrayWithMyself objectAtIndex:indexPath.row];
         cell.userName.text = [dic objectForKey:@"groupName"];
     }else if(indexPath.section == 1){
-        NSDictionary * dic = [self.arrayWithFavorite objectAtIndex:indexPath.row];
+        dic = [self.arrayWithFavorite objectAtIndex:indexPath.row];
         cell.userName.text = [dic objectForKey:@"groupName"];
     }else if(indexPath.section == 2){
-        NSDictionary * dic = [self.arrayWithFriends objectAtIndex:indexPath.row];
+        dic = [self.arrayWithFriends objectAtIndex:indexPath.row];
         cell.userName.text = [dic objectForKey:@"groupName"];
     }
+    [cell.checkButton setSelected:[[dic objectForKey:@"isSelected"] boolValue]];
     cell.backgroundColor = [UIColor colorWithRGBHex:0xcfcfcf];
     cell.tag = indexPath.section * 10 + indexPath.row + 1000;
     
@@ -158,7 +172,6 @@
     return headerView;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     ContentViewController * newContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"Content"];
     
     Group * group;
@@ -228,29 +241,31 @@
     int section = ([sender tag] - 1000)/10;
     int index = ([sender tag] - 1000)%10;
     
-    BOOL isSelected = NO;
-    int individual_id;
-    
+    NSDictionary * dic;
     if(section == 0){
-        isSelected = [sender isSelected];
-        individual_id = [[[arrayWithMyself objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+        dic = [arrayWithMyself objectAtIndex:index];
     }else if(section == 1){
-        isSelected = [sender isSelected];
-        individual_id = [[[arrayWithFavorite objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+        dic = [arrayWithFavorite objectAtIndex:index];
     }else if(section == 2){
-        isSelected = [sender isSelected];
-        individual_id = [[[arrayWithFriends objectAtIndex:index] objectForKey:@"individual_ids"] integerValue];
+        dic = [arrayWithFriends objectAtIndex:index];
     }
+    
+    BOOL isSelected = [sender isSelected];
+    int individual_id = [[dic objectForKey:@"individual_ids"] integerValue];
     
     if(isSelected){
         [arrayWithSelectedIndividualIds addObject:[NSNumber numberWithInt:individual_id]];
     }else{
+        NSNumber * numberToRemove;
         for(NSNumber * number in arrayWithSelectedIndividualIds){
             if([number integerValue] == individual_id){
-                [arrayWithSelectedIndividualIds removeObject:number];
+                numberToRemove = number;
             }
         }
+        [arrayWithSelectedIndividualIds removeObject:numberToRemove];
     }
+    
+    [dic setValue:[NSNumber numberWithBool:isSelected] forKey:@"isSelected"];
 }
 #pragma Custom Cell Delegate End.
 

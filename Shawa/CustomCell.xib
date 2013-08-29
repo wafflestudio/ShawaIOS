@@ -21,8 +21,8 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlC-Fk-CbX">
-                        <rect key="frame" x="244" y="7" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wlC-Fk-CbX">
+                        <rect key="frame" x="240" y="2" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <state key="normal" image="icon_plus.png">
@@ -47,8 +47,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_checked.png" width="35" height="35"/>
-        <image name="icon_plus.png" width="35" height="35"/>
+        <image name="icon_checked.png" width="80" height="80"/>
+        <image name="icon_plus.png" width="80" height="80"/>
         <image name="placeholder.png" width="65" height="65"/>
     </resources>
 </document>
