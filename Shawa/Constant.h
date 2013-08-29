@@ -24,4 +24,12 @@
 #define FAVORITE 1
 #define OTHERS   0
 
+#define COLOR1 [UIColor colorWithRGBHex:0xffc018]
+#define COLOR2 [UIColor colorWithRGBHex:0xc07dff]
+#define COLOR3 [UIColor colorWithRGBHex:0x6ee8f0]
+#define COLOR4 [UIColor colorWithRGBHex:0x1dd69d]
+#define COLOR5 [UIColor colorWithRGBHex:0xff4e84]
+
+#define COLOR [NSMutableArray arrayWithObjects:COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, nil]
+
 #endif

@@ -13,7 +13,6 @@
 
 #import "NSDictionary+JSONCategories.h"
 
-
 @interface MenuViewController (){
     NSArray * friendsList;
 }

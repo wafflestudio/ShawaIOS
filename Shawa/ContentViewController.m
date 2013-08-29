@@ -205,6 +205,7 @@
 }
 
 - (void)showLectures:(Course *)course{
+    UIColor * lectureColor = [COLOR objectAtIndex:arc4random()%5];
     for(int i=0; i<[course.lectures count]; i++){
         Lecture * lecture = [course.lectures objectAtIndex:i];
         
@@ -214,7 +215,8 @@
         CGPoint point = [self pointMakeDay:lecture.day period:lecture.period];
         
         UIView * lectureView = [[UIView alloc] init];
-        [lectureView setBackgroundColor:[UIColor colorWithRGBHex:0xffc018]];
+        [lectureView setBackgroundColor:lectureColor];
+        
         [lectureView setFrame:CGRectMake(point.x, point.y, 47.5, 50*lecture.duration)];
         
         // Setting lectureImageView

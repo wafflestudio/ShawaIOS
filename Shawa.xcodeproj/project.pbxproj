@@ -68,8 +68,8 @@
 		F50E436517CC93FE002E916F /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		F50E436617CC93FE002E916F /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		F50E436817CC9412002E916F /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomSearchBar.h; path = Shawa/CustomSearchBar.h; sourceTree = "<group>"; };
-		F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomSearchBar.m; path = Shawa/CustomSearchBar.m; sourceTree = "<group>"; };
+		F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
 		F514D36C17B23A70005ABBAF /* NSDictionary+JSONCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSONCategories.h"; sourceTree = "<group>"; };
 		F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSONCategories.m"; sourceTree = "<group>"; };
 		F522DDB5178A7E56003311C0 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -129,11 +129,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F51CE02E17CED53E00324B44 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F514D36C17B23A70005ABBAF /* NSDictionary+JSONCategories.h */,
+				F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */,
+				F55A554F17CC96BD00A40D67 /* UIColor+COLORCategories.h */,
+				F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		F51CE02F17CED56500324B44 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F522DDB5178A7E56003311C0 /* Group.h */,
+				F522DDB6178A7E57003311C0 /* Group.m */,
+				F58A1C3617866CE7005BD166 /* Individual.h */,
+				F58A1C3717866CE7005BD166 /* Individual.m */,
+				F585B8F517829B4B00AB414D /* Course.h */,
+				F585B8F617829B4B00AB414D /* Course.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		F57B3E7717814AE8009CB6D9 = {
 			isa = PBXGroup;
 			children = (
-				F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */,
-				F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */,
 				F57B3E8917814AE9009CB6D9 /* Shawa */,
 				F57B3E8217814AE9009CB6D9 /* Frameworks */,
 				F57B3E8117814AE9009CB6D9 /* Products */,
@@ -172,16 +194,10 @@
 				F57B3EA817814BA9009CB6D9 /* ContentViewController.m */,
 				F57B3EB1178155E5009CB6D9 /* MenuViewController.h */,
 				F57B3EB2178155E5009CB6D9 /* MenuViewController.m */,
-				F50E436517CC93FE002E916F /* CustomCell.h */,
-				F50E436617CC93FE002E916F /* CustomCell.m */,
-				F50E436817CC9412002E916F /* CustomCell.xib */,
-				F57B3EA217814B18009CB6D9 /* iPhone.storyboard */,
-				F514D36C17B23A70005ABBAF /* NSDictionary+JSONCategories.h */,
-				F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */,
-				F55A554F17CC96BD00A40D67 /* UIColor+COLORCategories.h */,
-				F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */,
 				F5065B30178ABD1C002EE434 /* AddCourseViewController.h */,
 				F5065B31178ABD1C002EE434 /* AddCourseViewController.m */,
+				F57B3EA217814B18009CB6D9 /* iPhone.storyboard */,
+				F51CE02E17CED53E00324B44 /* Categories */,
 				F585B8F817829B5000AB414D /* Class */,
 				F58A1BF817865B8B005BD166 /* Resource */,
 				F585B8FF1782B08000AB414D /* Util */,
@@ -218,12 +234,12 @@
 		F585B8F817829B5000AB414D /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				F522DDB5178A7E56003311C0 /* Group.h */,
-				F522DDB6178A7E57003311C0 /* Group.m */,
-				F58A1C3617866CE7005BD166 /* Individual.h */,
-				F58A1C3717866CE7005BD166 /* Individual.m */,
-				F585B8F517829B4B00AB414D /* Course.h */,
-				F585B8F617829B4B00AB414D /* Course.m */,
+				F51CE02F17CED56500324B44 /* Model */,
+				F50E436517CC93FE002E916F /* CustomCell.h */,
+				F50E436617CC93FE002E916F /* CustomCell.m */,
+				F50E436817CC9412002E916F /* CustomCell.xib */,
+				F50E54C817CDC2080032CFF1 /* CustomSearchBar.h */,
+				F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
