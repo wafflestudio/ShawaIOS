@@ -224,24 +224,36 @@
         
         // Setting lectureImageView
         UIImageView * lectureImageView = [[UIImageView alloc] init];
-        [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 42.5*lecture.duration)];
+        [lectureImageView setFrame:CGRectMake(0, 5, 47.5, 42.5*lecture.duration - 5)];
         [lectureImageView setBackgroundColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
         
         // Setting lectureName Label
-        CGRect rec = CGRectMake(5, 0, 37.5, 42.5*lecture.duration);
+        CGRect rec = CGRectMake(5, -5, 37.5, 42.5*lecture.duration);
         
         UILabel * lectureName = [[UILabel alloc] init];
         [lectureName setFrame:rec];
         lectureName.text = course.courseName;
-        lectureName.font = [UIFont fontWithName:@"Helvetica Neue" size:9.0f];
+        lectureName.font = [UIFont fontWithName:@"Helvetica Neue" size:8.0f];
         [lectureName setTextColor:[UIColor blackColor]];
         [lectureName setTextAlignment:NSTextAlignmentCenter];
         [lectureName setBackgroundColor:[UIColor clearColor]];
         [lectureName setNumberOfLines:2];
         [lectureName setLineBreakMode:NSLineBreakByWordWrapping];
         
+        // Setting location Label
+        UILabel * location = [[UILabel alloc] init];
+        [location setFrame:CGRectMake(5, 10, 37.5, 42.5*lecture.duration)];
+        location.text = lecture.location;
+        location.font = [UIFont fontWithName:@"Helvetica Neue" size:8.0f];
+        [location setTextColor:[UIColor blackColor]];
+        [location setTextAlignment:NSTextAlignmentCenter];
+        [location setBackgroundColor:[UIColor clearColor]];
+        [location setNumberOfLines:2];
+        [location setLineBreakMode:NSLineBreakByWordWrapping];
+        
         [lectureView addSubview:lectureImageView];
         [lectureView addSubview:lectureName];
+        [lectureView addSubview:location];
         [timeTable addSubview:lectureView];
         
         //Adding buttons to lectureView

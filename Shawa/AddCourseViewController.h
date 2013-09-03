@@ -50,6 +50,7 @@
 
 //TextField
 @property (nonatomic, strong) IBOutlet UITextField * courseNameTextField;
+@property (nonatomic, strong) IBOutlet UITextField * courseLocationTextField;
 
 
 - (IBAction)cancelButtonClicked:(id)sender;

@@ -34,6 +34,7 @@
         NSDictionary * jsonDic = [jsonArray objectAtIndex:0];
         my_individual_id = [[jsonDic objectForKey:@"my_individual_id"] integerValue];
     }else{
+        NSLog(@"error getting my_individual_id");
         my_individual_id = -1;
     }
 }

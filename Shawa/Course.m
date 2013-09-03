@@ -50,7 +50,7 @@
     lecture.day = [self getDayFromStrimg:[lectureDic objectForKey:@"day"]];
     lecture.period = [[lectureDic objectForKey:@"period"] doubleValue];
     lecture.duration = [[lectureDic objectForKey:@"duration"] doubleValue];
-    lecture.location = @"";
+    lecture.location = [lectureDic objectForKey:@"location"];
     return lecture;
 }
 

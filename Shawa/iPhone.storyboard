@@ -293,8 +293,29 @@
                                     <outlet property="delegate" destination="Tij-eE-cG7" id="PcD-JV-3VK"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="장소" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LSY-Ik-EN3">
+                                <rect key="frame" x="20" y="284" width="37" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="6Iu-KR-1dG"/>
+                                    <constraint firstAttribute="height" constant="21" id="D9E-R3-ScK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dWs-hS-j1F">
+                                <rect key="frame" x="78" y="280" width="232" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="eO6-Sr-ZE7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Tij-eE-cG7" id="lMK-91-Mj8"/>
+                                </connections>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkG-qP-lhD">
-                                <rect key="frame" x="38" y="308" width="244" height="33"/>
+                                <rect key="frame" x="38" y="323" width="244" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="244" id="KF5-RI-7yl"/>
                                 </constraints>
@@ -364,6 +385,7 @@
                     <navigationItem key="navigationItem" id="yoz-gt-3as"/>
                     <connections>
                         <outlet property="cancelBarButtonItem" destination="BPa-eA-jiL" id="KWe-Bk-pNc"/>
+                        <outlet property="courseLocationTextField" destination="dWs-hS-j1F" id="ppb-hN-GGM"/>
                         <outlet property="courseNameTextField" destination="BAl-pa-uA9" id="tqn-GB-5ak"/>
                         <outlet property="deleteButton" destination="YkG-qP-lhD" id="AHC-BN-Pqy"/>
                         <outlet property="endTimeButton" destination="zgN-h8-iHi" id="yxL-Df-E2m"/>

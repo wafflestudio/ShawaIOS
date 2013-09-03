@@ -19,7 +19,7 @@
 @synthesize saveBarButtonItem, cancelBarButtonItem;
 @synthesize monButton, tueButton, wedButton, thuButton, friButton, satButton, sunButton;
 @synthesize startTimeButton, endTimeButton;
-@synthesize courseNameTextField;
+@synthesize courseNameTextField, courseLocationTextField;
 @synthesize course, isNewCourse;
 
 - (IBAction)cancelButtonClicked:(id)sender{
@@ -110,8 +110,9 @@
 }
 
 - (void)setIBOutletsWithCourse:(Course *)_course{
-    //set Name Text Field
+    //set Text Field
     courseNameTextField.text = _course.courseName;
+    courseLocationTextField.text = ((Lecture *)[_course.lectures objectAtIndex:0]).location;
     
     //set Day Buttons
     for(Lecture * lecture in _course.lectures){
@@ -167,30 +168,37 @@
 
     if(monButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:MON period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(tueButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:TUE period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(wedButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:WED period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(thuButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:THU period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(friButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:FRI period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(satButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:SAT period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
     if(sunButton.selected){
         Lecture * lecture = [[Lecture alloc] initWithDay:SUN period:period duration:duration location:@""];
+        lecture.location = courseLocationTextField.text;
         [_course.lectures addObject:lecture];
     }
 }
