@@ -268,10 +268,11 @@
         // if it has more than one individual
         if(isGroup){
             [lectureView setBackgroundColor:[UIColor clearColor]];
-            [lectureImageView setFrame:CGRectMake(0, 0, 47.5, 50*lecture.duration)];
+            [lectureImageView setFrame:CGRectMake(0, 0, 47.5, 42.5*lecture.duration)];
             [lectureImageView setBackgroundColor:[UIColor grayColor]];
             lectureImageView.alpha = 0.9;
             lectureName.text = @"";
+            location.text = @"";
         }
     }
 }
