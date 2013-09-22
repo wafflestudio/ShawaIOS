@@ -27,6 +27,7 @@
 		F55A555317CCA16800A40D67 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F55A555217CC9B7500A40D67 /* placeholder.png */; };
 		F55E3A5A17EEC5E70045145C /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F55E3A5917EEC5590045145C /* timetable_bg.png */; };
 		F55E3A5D17EECD750045145C /* NSDate+DATEHelperCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E3A5C17EECD750045145C /* NSDate+DATEHelperCategories.m */; };
+		F55E3A5E17EF11430045145C /* icon_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = F51CE03517CF45CF00324B44 /* icon_checked.png */; };
 		F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8317814AE9009CB6D9 /* UIKit.framework */; };
 		F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8517814AE9009CB6D9 /* Foundation.framework */; };
 		F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */; };
@@ -331,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F55E3A5E17EF11430045145C /* icon_checked.png in Resources */,
 				F50E436317CC7F58002E916F /* timetable_bg_old.png in Resources */,
 				F50E435F17CC7F4D002E916F /* research0.png in Resources */,
 				F50E435917CC7F41002E916F /* guide_friend.png in Resources */,

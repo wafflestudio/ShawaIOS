@@ -116,13 +116,12 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont systemFontOfSize:21];
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.text = @"최 석원";
     [self.navBar addSubview:titleLabel];
     
     //Set sideMenuButton
-    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 18)];
+    UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 30)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [sideMenuView setBackgroundImage:[UIImage imageNamed:@"icon_list"] forState:UIControlStateNormal];
+    [sideMenuView setBackgroundImage:[UIImage imageNamed:@"side_menu.png"] forState:UIControlStateNormal];
     UIBarButtonItem * sideMenuButton = [[UIBarButtonItem alloc] initWithCustomView:sideMenuView];
     [self.navigationItem setRightBarButtonItem:sideMenuButton];
     
@@ -132,7 +131,6 @@
     // Setting ScrollView
     int topMargin =self.navBar.frame.size.height + self.navBar.frame.origin.y;
     timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.frame.size.width, self.view.frame.size.height - topMargin)];
-    NSLog(@"%f %f %f %f", timeTable.frame.origin.x, timeTable.frame.origin.y, timeTable.frame.size.width, timeTable.frame.size.height);
     timeTable.bounces = NO;
     timeTable.contentSize = CGSizeMake(320, 626);
     
