@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuQ-6q-Ysp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-442"/>
+            <point key="canvasLocation" x="1503" y="-442"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="1vm-lj-6rx">
@@ -105,7 +105,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Content View Controller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzs-lZ-6Hu">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Content View Controller" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzs-lZ-6Hu">
                                 <rect key="frame" x="59" y="76" width="203" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="203" id="R2T-eT-Tk9"/>
@@ -115,43 +115,24 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNG-91-eTR">
-                                <rect key="frame" x="0.0" y="21" width="320" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="21"/>
-                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem id="4SZ-ih-JJa"/>
-                                </items>
-                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="eNG-91-eTR" firstAttribute="leading" secondItem="0pn-eC-uxz" secondAttribute="leading" id="NFe-Yf-zzq"/>
                             <constraint firstItem="tzs-lZ-6Hu" firstAttribute="top" secondItem="0pn-eC-uxz" secondAttribute="top" constant="76" id="NN3-Z3-WfT"/>
-                            <constraint firstItem="eNG-91-eTR" firstAttribute="trailing" secondItem="0pn-eC-uxz" secondAttribute="trailing" id="a5O-kA-cmN"/>
-                            <constraint firstItem="eNG-91-eTR" firstAttribute="centerX" secondItem="tzs-lZ-6Hu" secondAttribute="centerX" id="u4n-z9-bCt"/>
-                            <constraint firstItem="eNG-91-eTR" firstAttribute="top" secondItem="0pn-eC-uxz" secondAttribute="top" constant="20.5" id="vTn-GX-xfR"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <navigationItem key="navigationItem" id="fDI-E7-YJj"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="navBar" destination="eNG-91-eTR" id="Wxx-qB-tgw"/>
-                        <outlet property="navItem" destination="4SZ-ih-JJa" id="5No-In-eEI"/>
                         <segue destination="Tij-eE-cG7" kind="modal" identifier="Add New Course" id="61D-At-vvE"/>
                         <segue destination="Tij-eE-cG7" kind="modal" identifier="Edit Existing Course" id="CJO-NH-p7f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vRC-Nz-w7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="533" y="-442"/>
+            <point key="canvasLocation" x="1059" y="-442"/>
         </scene>
         <!--Add Course View Controller-->
         <scene sceneID="kYJ-3C-ar0">
@@ -403,24 +384,26 @@
             </objects>
             <point key="canvasLocation" x="542" y="297"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tOl-oE-Qcx">
+        <!--Navigation Controller-->
+        <scene sceneID="yMn-z3-yjb">
             <objects>
-                <viewController id="kX3-HR-lcz" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="VOl-9o-jEM"/>
-                        <viewControllerLayoutGuide type="bottom" id="T3k-V9-RL7"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rPj-Pk-EVY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xH7-vt-7E1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3nL-oU-C7a" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jtv-X7-5Np">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iDc-rj-0sq" kind="relationship" relationship="rootViewController" id="637-ah-ZBc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VoO-16-qL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="533" y="-442"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

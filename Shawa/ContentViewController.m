@@ -7,6 +7,7 @@
 //
 
 #import "ContentViewController.h"
+#import "SettingViewController.h"
 #import "AppDelegate.h"
 #import "Individual.h"
 #import "NSDictionary+JSONCategories.h"
@@ -22,8 +23,9 @@
 
 @synthesize selectedFriendsList;
 @synthesize groupType;
-@synthesize navItem, navTitle, navBar;
 @synthesize profileImageView, titleLabel;
+@synthesize settingButton;
+@synthesize barTitle;
 
 - (void)sendDataToServer{
     if([groupType integerValue] != 2){
@@ -95,9 +97,9 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    [self setNeedsStatusBarAppearanceUpdate];
     
     self.view.backgroundColor = [UIColor colorWithRGBHex:0x1dd69d];
-    [self setNeedsStatusBarAppearanceUpdate];
     
     // has more than one individual
     isGroup = [self.selectedFriendsList count] > 1;
@@ -108,7 +110,7 @@
     profileImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"placeholder"]];
     profileImageView.autoresizingMask = UIViewAutoresizingNone;
     profileImageView.frame = CGRectMake(100, 5, 33, 33);
-    [self.navBar addSubview:profileImageView];
+    [self.navigationController.navigationBar addSubview:profileImageView];
     
     // Set Title Label
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(140, 0, 100, 44)];
@@ -116,20 +118,19 @@
     titleLabel.backgroundColor = [UIColor clearColor];
     titleLabel.font = [UIFont systemFontOfSize:21];
     titleLabel.textColor = [UIColor whiteColor];
-    [self.navBar addSubview:titleLabel];
+    [self.navigationController.navigationBar addSubview:titleLabel];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRGBHex:0x1dd69d]];
     
     //Set sideMenuButton
     UIButton *sideMenuView = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 30)];
     [sideMenuView addTarget:self action:@selector(revealMenu:) forControlEvents:UIControlEventTouchUpInside];
     [sideMenuView setBackgroundImage:[UIImage imageNamed:@"side_menu.png"] forState:UIControlStateNormal];
     UIBarButtonItem * sideMenuButton = [[UIBarButtonItem alloc] initWithCustomView:sideMenuView];
+    
     [self.navigationItem setRightBarButtonItem:sideMenuButton];
     
-    self.navItem.rightBarButtonItem = sideMenuButton;
-    [self.navBar setBarTintColor:[UIColor colorWithRGBHex:0x1dd69d]];
-    
     // Setting ScrollView
-    int topMargin =self.navBar.frame.size.height + self.navBar.frame.origin.y;
+    int topMargin =self.navigationController.navigationBar.frame.size.height + self.navigationController.navigationBar.frame.origin.y;
     timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.frame.size.width, self.view.frame.size.height - topMargin)];
     timeTable.bounces = NO;
     timeTable.contentSize = CGSizeMake(320, 626);
@@ -148,6 +149,7 @@
                                  timeTable.contentSize.width, timeTable.contentSize.height);
     
     [timeTable addSubview:imageView];
+//    [self.view insertSubview:timeTable belowSubview:settingButton];
     [self.view addSubview:timeTable];
     
     // Initialized selectedFriendsList as MYSELF
@@ -156,9 +158,10 @@
 
         Individual * individual = [Individual getIndividualFromServer:[AppDelegate getMyIndividualId]];
         self.selectedFriendsList = [NSArray arrayWithObject:individual];
-        navTitle = individual.userName;
+        self.barTitle = individual.userName;
         self.groupType = [NSNumber numberWithInt:MYSELF];
     }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -173,7 +176,7 @@
     }
     [self.view addGestureRecognizer:self.slidingViewController.panGesture];
     
-    self.titleLabel.text = navTitle;
+    self.titleLabel.text = self.barTitle;
     for (id view in [timeTable subviews]){
         if([view tag] != 111){
             [view removeFromSuperview];
@@ -181,6 +184,7 @@
     }
     
     [self showTimeTable];
+    
 }
 
 

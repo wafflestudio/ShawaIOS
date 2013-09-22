@@ -184,13 +184,15 @@
     }
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
-    
-    newContentViewController.navTitle = group.groupName;
+    newContentViewController.barTitle = group.groupName;
     newContentViewController.groupType = group.groupType;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:newContentViewController];
+    
     
     [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{
         CGRect frame = self.slidingViewController.topViewController.view.frame;
-        self.slidingViewController.topViewController = newContentViewController;
+        self.slidingViewController.topViewController = navigationController;
         self.slidingViewController.topViewController.view.frame = frame;
         [self.slidingViewController resetTopView];
     }];
@@ -224,7 +226,7 @@
     
     newContentViewController.selectedFriendsList = [group.individuals copy];
     
-    newContentViewController.navTitle = group.groupName;
+    newContentViewController.barTitle = group.groupName;
     newContentViewController.groupType = group.groupType;
     
     [self.slidingViewController anchorTopViewOffScreenTo:ECLeft animations:nil onComplete:^{

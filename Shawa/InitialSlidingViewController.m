@@ -8,6 +8,8 @@
 
 #import "InitialSlidingViewController.h"
 
+#import "ContentViewController.h"
+
 @interface InitialSlidingViewController ()
 
 @end
@@ -23,7 +25,10 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         storyboard = [UIStoryboard storyboardWithName:@"iPhone" bundle:nil];
     }
-    self.topViewController = [storyboard instantiateViewControllerWithIdentifier:@"Content"];
+    ContentViewController *contViewController = [storyboard instantiateViewControllerWithIdentifier:@"Content"];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contViewController];
+    
+    self.topViewController = navigationController;
 }
 
 @end

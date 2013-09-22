@@ -18,13 +18,14 @@
 @property (nonatomic, strong) NSArray *selectedFriendsList;
 @property (nonatomic) NSNumber * groupType;
 
-@property (nonatomic ,strong) IBOutlet UIBarButtonItem * rightBarButtonItem;
-@property (nonatomic, strong) IBOutlet UINavigationBar * navBar;
-@property (nonatomic, strong) IBOutlet UINavigationItem * navItem;
+@property (nonatomic, strong) IBOutlet UIBarButtonItem * rightBarButtonItem;
 
+@property (nonatomic, strong) IBOutlet UIButton * settingButton;
+
+@property (nonatomic, strong) NSString * barTitle;
 @property (nonatomic, strong) IBOutlet UILabel * titleLabel;
 @property (nonatomic, strong) IBOutlet UIImageView * profileImageView;
-@property (nonatomic, strong) NSString * navTitle;
+
 
 - (void)showTimeTable;
 - (void)sendDataToServer;
