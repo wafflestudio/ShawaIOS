@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE4C00712D1040198CA4437B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C3A820E1FD7D4B3C9FD37F17 /* libPods.a */; };
 		F5065B32178ABD1C002EE434 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5065B31178ABD1C002EE434 /* AddCourseViewController.m */; };
-		F50E435717CC7F3A002E916F /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E434A17CC7D8C002E916F /* BG.png */; };
 		F50E435817CC7F3D002E916F /* guide_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E434B17CC7D8C002E916F /* guide_bg.png */; };
 		F50E435917CC7F41002E916F /* guide_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E434C17CC7D8C002E916F /* guide_friend.png */; };
 		F50E435C17CC7F47002E916F /* icon_plus_pushed.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E434F17CC7D8C002E916F /* icon_plus_pushed.png */; };
@@ -16,8 +16,8 @@
 		F50E435E17CC7F4B002E916F /* research_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435117CC7D8C002E916F /* research_icon.png */; };
 		F50E435F17CC7F4D002E916F /* research0.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435217CC7D8C002E916F /* research0.png */; };
 		F50E436117CC7F52002E916F /* side_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435417CC7D8C002E916F /* side_menu.png */; };
-		F50E436217CC7F55002E916F /* timetable_bg_old.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435517CC7D8C002E916F /* timetable_bg_old.png */; };
-		F50E436317CC7F58002E916F /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435617CC7D8C002E916F /* timetable_bg.png */; };
+		F50E436217CC7F55002E916F /* timetable_bg_old2.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435517CC7D8C002E916F /* timetable_bg_old2.png */; };
+		F50E436317CC7F58002E916F /* timetable_bg_old.png in Resources */ = {isa = PBXBuildFile; fileRef = F50E435617CC7D8C002E916F /* timetable_bg_old.png */; };
 		F50E436717CC93FE002E916F /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F50E436617CC93FE002E916F /* CustomCell.m */; };
 		F50E436917CC9412002E916F /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50E436817CC9412002E916F /* CustomCell.xib */; };
 		F50E54CA17CDC2080032CFF1 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F50E54C917CDC2080032CFF1 /* CustomSearchBar.m */; };
@@ -25,6 +25,7 @@
 		F522DDB7178A7E57003311C0 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = F522DDB6178A7E57003311C0 /* Group.m */; };
 		F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */; };
 		F55A555317CCA16800A40D67 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F55A555217CC9B7500A40D67 /* placeholder.png */; };
+		F55E3A5A17EEC5E70045145C /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F55E3A5917EEC5590045145C /* timetable_bg.png */; };
 		F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8317814AE9009CB6D9 /* UIKit.framework */; };
 		F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8517814AE9009CB6D9 /* Foundation.framework */; };
 		F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */; };
@@ -43,14 +44,14 @@
 		F585B8F717829B4B00AB414D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F585B8F617829B4B00AB414D /* Course.m */; };
 		F58A1C3817866CE7005BD166 /* Individual.m in Sources */ = {isa = PBXBuildFile; fileRef = F58A1C3717866CE7005BD166 /* Individual.m */; };
 		F58A1C3A1786BB39005BD166 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F58A1C391786BB38005BD166 /* QuartzCore.framework */; };
-		F5E8BFC617C3279500250C0C /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E8BFC517C3279500250C0C /* SSKeychain.m */; };
 		F5E8BFC917C3291100250C0C /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5E8BFC817C3291100250C0C /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B842541E17A455791A7F393 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		C3A820E1FD7D4B3C9FD37F17 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5065B30178ABD1C002EE434 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
 		F5065B31178ABD1C002EE434 /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
-		F50E434A17CC7D8C002E916F /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG.png; path = resource/BG.png; sourceTree = "<group>"; };
 		F50E434B17CC7D8C002E916F /* guide_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = guide_bg.png; path = resource/guide_bg.png; sourceTree = "<group>"; };
 		F50E434C17CC7D8C002E916F /* guide_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = guide_friend.png; path = resource/guide_friend.png; sourceTree = "<group>"; };
 		F50E434F17CC7D8C002E916F /* icon_plus_pushed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_plus_pushed.png; path = resource/icon_plus_pushed.png; sourceTree = "<group>"; };
@@ -58,8 +59,8 @@
 		F50E435117CC7D8C002E916F /* research_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = research_icon.png; path = resource/research_icon.png; sourceTree = "<group>"; };
 		F50E435217CC7D8C002E916F /* research0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = research0.png; path = resource/research0.png; sourceTree = "<group>"; };
 		F50E435417CC7D8C002E916F /* side_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = side_menu.png; path = resource/side_menu.png; sourceTree = "<group>"; };
-		F50E435517CC7D8C002E916F /* timetable_bg_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg_old.png; path = resource/timetable_bg_old.png; sourceTree = "<group>"; };
-		F50E435617CC7D8C002E916F /* timetable_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg.png; path = resource/timetable_bg.png; sourceTree = "<group>"; };
+		F50E435517CC7D8C002E916F /* timetable_bg_old2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg_old2.png; path = resource/timetable_bg_old2.png; sourceTree = "<group>"; };
+		F50E435617CC7D8C002E916F /* timetable_bg_old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg_old.png; path = resource/timetable_bg_old.png; sourceTree = "<group>"; };
 		F50E436417CC92B4002E916F /* guide_schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = guide_schedule.png; path = resource/guide_schedule.png; sourceTree = "<group>"; };
 		F50E436517CC93FE002E916F /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		F50E436617CC93FE002E916F /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		F55A554F17CC96BD00A40D67 /* UIColor+COLORCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+COLORCategories.h"; sourceTree = "<group>"; };
 		F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+COLORCategories.m"; sourceTree = "<group>"; };
 		F55A555217CC9B7500A40D67 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = resource/placeholder.png; sourceTree = "<group>"; };
+		F55E3A5917EEC5590045145C /* timetable_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg.png; path = resource/timetable_bg.png; sourceTree = "<group>"; };
 		F57B3E8017814AE9009CB6D9 /* Shawa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shawa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B3E8317814AE9009CB6D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F57B3E8517814AE9009CB6D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -105,8 +107,6 @@
 		F58A1C3617866CE7005BD166 /* Individual.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Individual.h; sourceTree = "<group>"; };
 		F58A1C3717866CE7005BD166 /* Individual.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Individual.m; sourceTree = "<group>"; };
 		F58A1C391786BB38005BD166 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		F5E8BFC417C3279500250C0C /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		F5E8BFC517C3279500250C0C /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
 		F5E8BFC817C3291100250C0C /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -120,6 +120,7 @@
 				F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */,
 				F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */,
 				F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */,
+				CE4C00712D1040198CA4437B /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +157,7 @@
 				F57B3E8917814AE9009CB6D9 /* Shawa */,
 				F57B3E8217814AE9009CB6D9 /* Frameworks */,
 				F57B3E8117814AE9009CB6D9 /* Products */,
+				9B842541E17A455791A7F393 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +178,7 @@
 				F57B3E8517814AE9009CB6D9 /* Foundation.framework */,
 				F58A1C03178661FB005BD166 /* CoreData.framework */,
 				F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */,
+				C3A820E1FD7D4B3C9FD37F17 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -245,7 +248,6 @@
 			isa = PBXGroup;
 			children = (
 				F585B8FE1782B07100AB414D /* Constant.h */,
-				F5E8BFC717C3279900250C0C /* SSKeychain */,
 				F57B3EAA17814C2B009CB6D9 /* ECSlidingViewController */,
 			);
 			name = Util;
@@ -254,9 +256,9 @@
 		F58A1BF817865B8B005BD166 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F55E3A5917EEC5590045145C /* timetable_bg.png */,
 				F55A555217CC9B7500A40D67 /* placeholder.png */,
 				F50E436417CC92B4002E916F /* guide_schedule.png */,
-				F50E434A17CC7D8C002E916F /* BG.png */,
 				F50E434B17CC7D8C002E916F /* guide_bg.png */,
 				F50E434C17CC7D8C002E916F /* guide_friend.png */,
 				F50E434F17CC7D8C002E916F /* icon_plus_pushed.png */,
@@ -265,19 +267,10 @@
 				F50E435117CC7D8C002E916F /* research_icon.png */,
 				F50E435217CC7D8C002E916F /* research0.png */,
 				F50E435417CC7D8C002E916F /* side_menu.png */,
-				F50E435517CC7D8C002E916F /* timetable_bg_old.png */,
-				F50E435617CC7D8C002E916F /* timetable_bg.png */,
+				F50E435517CC7D8C002E916F /* timetable_bg_old2.png */,
+				F50E435617CC7D8C002E916F /* timetable_bg_old.png */,
 			);
 			name = Resource;
-			sourceTree = "<group>";
-		};
-		F5E8BFC717C3279900250C0C /* SSKeychain */ = {
-			isa = PBXGroup;
-			children = (
-				F5E8BFC417C3279500250C0C /* SSKeychain.h */,
-				F5E8BFC517C3279500250C0C /* SSKeychain.m */,
-			);
-			name = SSKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F57B3E9D17814AE9009CB6D9 /* Build configuration list for PBXNativeTarget "Shawa" */;
 			buildPhases = (
+				2A6EB56CD5D64DB09DA11D51 /* Check Pods Manifest.lock */,
 				F57B3E7C17814AE9009CB6D9 /* Sources */,
 				F57B3E7D17814AE9009CB6D9 /* Frameworks */,
 				F57B3E7E17814AE9009CB6D9 /* Resources */,
+				87AAA7AF01AA4BBDAD5D4EB9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -331,16 +326,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F50E436317CC7F58002E916F /* timetable_bg.png in Resources */,
+				F50E436317CC7F58002E916F /* timetable_bg_old.png in Resources */,
 				F50E435F17CC7F4D002E916F /* research0.png in Resources */,
 				F50E435917CC7F41002E916F /* guide_friend.png in Resources */,
 				F57B3E8E17814AE9009CB6D9 /* InfoPlist.strings in Resources */,
 				F50E436917CC9412002E916F /* CustomCell.xib in Resources */,
 				F57B3E9617814AE9009CB6D9 /* Default.png in Resources */,
-				F50E435717CC7F3A002E916F /* BG.png in Resources */,
 				F50E435817CC7F3D002E916F /* guide_bg.png in Resources */,
 				F55A555317CCA16800A40D67 /* placeholder.png in Resources */,
-				F50E436217CC7F55002E916F /* timetable_bg_old.png in Resources */,
+				F55E3A5A17EEC5E70045145C /* timetable_bg.png in Resources */,
+				F50E436217CC7F55002E916F /* timetable_bg_old2.png in Resources */,
 				F50E436117CC7F52002E916F /* side_menu.png in Resources */,
 				F57B3E9817814AE9009CB6D9 /* Default@2x.png in Resources */,
 				F50E435D17CC7F49002E916F /* icon_plus.png in Resources */,
@@ -353,6 +348,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2A6EB56CD5D64DB09DA11D51 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87AAA7AF01AA4BBDAD5D4EB9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F57B3E7C17814AE9009CB6D9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -364,7 +392,6 @@
 				F57B3EA917814BA9009CB6D9 /* ContentViewController.m in Sources */,
 				F50E436717CC93FE002E916F /* CustomCell.m in Sources */,
 				F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */,
-				F5E8BFC617C3279500250C0C /* SSKeychain.m in Sources */,
 				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
 				F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */,
 				F50E54CA17CDC2080032CFF1 /* CustomSearchBar.m in Sources */,
@@ -449,6 +476,7 @@
 		};
 		F57B3E9E17814AE9009CB6D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B842541E17A455791A7F393 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -462,6 +490,7 @@
 		};
 		F57B3E9F17814AE9009CB6D9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9B842541E17A455791A7F393 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

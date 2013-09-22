@@ -130,9 +130,11 @@
     [self.navBar setBarTintColor:[UIColor colorWithRGBHex:0x1dd69d]];
     
     // Setting ScrollView
-    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.navBar.frame.size.height + self.navBar.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height)];
+    int topMargin =self.navBar.frame.size.height + self.navBar.frame.origin.y;
+    timeTable = [[UIScrollView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.frame.size.width, self.view.frame.size.height - topMargin)];
+    NSLog(@"%f %f %f %f", timeTable.frame.origin.x, timeTable.frame.origin.y, timeTable.frame.size.width, timeTable.frame.size.height);
     timeTable.bounces = NO;
-    timeTable.contentSize = CGSizeMake(320, 503.5);
+    timeTable.contentSize = CGSizeMake(320, 626);
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapTouchDetected:)];
     UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longTouchDetected:)];
@@ -145,7 +147,7 @@
     UIImageView * imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"timetable_bg.png"]	];
     imageView.tag = 111;
     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y,
-                                 320, 503.5);
+                                 timeTable.contentSize.width, timeTable.contentSize.height);
     
     [timeTable addSubview:imageView];
     [self.view addSubview:timeTable];
