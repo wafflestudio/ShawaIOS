@@ -60,6 +60,10 @@
     }
 }
 
+- (IBAction)settingButtonClicked:(id)sender{
+    [self performSegueWithIdentifier:@"Setting" sender:self];
+}
+
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
     }
@@ -149,8 +153,7 @@
                                  timeTable.contentSize.width, timeTable.contentSize.height);
     
     [timeTable addSubview:imageView];
-//    [self.view insertSubview:timeTable belowSubview:settingButton];
-    [self.view addSubview:timeTable];
+    [self.view insertSubview:timeTable belowSubview:settingButton];
     
     // Initialized selectedFriendsList as MYSELF
     
@@ -170,7 +173,12 @@
     self.view.layer.shadowOpacity = 0.75f;
     self.view.layer.shadowRadius = 10.0f;
     self.view.layer.shadowColor = [UIColor blackColor].CGColor;
-
+    
+    
+    for (UIView * subview in self.navigationController.navigationBar.subviews){
+        subview.hidden = NO;
+    }
+    
     if(![self.slidingViewController.underRightViewController isKindOfClass:[MenuViewController class]]){
         self.slidingViewController.underRightViewController = (MenuViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
     }
@@ -184,7 +192,6 @@
     }
     
     [self showTimeTable];
-    
 }
 
 
@@ -295,17 +302,26 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    AddCourseViewController * addCourseViewController = [segue destinationViewController];
-    addCourseViewController.delegate = self;
     if([segue.identifier isEqualToString:@"Add New Course"]){
+        AddCourseViewController * addCourseViewController = [segue destinationViewController];
+        addCourseViewController.delegate = self;
         addCourseViewController.course = nil;
         addCourseViewController.isNewCourse = YES;
         
-    }else{
+    }else if([segue.identifier isEqualToString:@"Edit Existing Course"]){
+        AddCourseViewController * addCourseViewController = [segue destinationViewController];
+        addCourseViewController.delegate = self;
         int courseIndex = [[sender view] tag];
         Course * course = [[[selectedFriendsList objectAtIndex:0] courses] objectAtIndex:courseIndex];
         addCourseViewController.course = course;
         addCourseViewController.isNewCourse = NO;
+    }else if([segue.identifier isEqualToString:@"Setting"]){
+        SettingViewController * settingViewController = [segue destinationViewController];
+        settingViewController.navigationItem.title = @"설 정";
+        
+        for (UIView * subview in self.navigationController.navigationBar.subviews){
+            subview.hidden = YES;
+        }
     }
 }
 

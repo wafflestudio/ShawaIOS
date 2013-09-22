@@ -31,6 +31,7 @@
 - (void)sendDataToServer;
 - (IBAction)revealMenu:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
+- (IBAction)settingButtonClicked:(id)sender;
 - (IBAction)longTouchDetected:(UILongPressGestureRecognizer *)sender;
 - (IBAction)tapTouchDetected:(UITapGestureRecognizer *)sender;
 @end
