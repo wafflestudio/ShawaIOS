@@ -26,6 +26,7 @@
 		F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */; };
 		F55A555317CCA16800A40D67 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F55A555217CC9B7500A40D67 /* placeholder.png */; };
 		F55E3A5A17EEC5E70045145C /* timetable_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F55E3A5917EEC5590045145C /* timetable_bg.png */; };
+		F55E3A5D17EECD750045145C /* NSDate+DATEHelperCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = F55E3A5C17EECD750045145C /* NSDate+DATEHelperCategories.m */; };
 		F57B3E8417814AE9009CB6D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8317814AE9009CB6D9 /* UIKit.framework */; };
 		F57B3E8617814AE9009CB6D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8517814AE9009CB6D9 /* Foundation.framework */; };
 		F57B3E8817814AE9009CB6D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B3E8717814AE9009CB6D9 /* CoreGraphics.framework */; };
@@ -76,6 +77,8 @@
 		F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+COLORCategories.m"; sourceTree = "<group>"; };
 		F55A555217CC9B7500A40D67 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = resource/placeholder.png; sourceTree = "<group>"; };
 		F55E3A5917EEC5590045145C /* timetable_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timetable_bg.png; path = resource/timetable_bg.png; sourceTree = "<group>"; };
+		F55E3A5B17EECD750045145C /* NSDate+DATEHelperCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DATEHelperCategories.h"; sourceTree = "<group>"; };
+		F55E3A5C17EECD750045145C /* NSDate+DATEHelperCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DATEHelperCategories.m"; sourceTree = "<group>"; };
 		F57B3E8017814AE9009CB6D9 /* Shawa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shawa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B3E8317814AE9009CB6D9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F57B3E8517814AE9009CB6D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +137,8 @@
 				F514D36D17B23A70005ABBAF /* NSDictionary+JSONCategories.m */,
 				F55A554F17CC96BD00A40D67 /* UIColor+COLORCategories.h */,
 				F55A555017CC96BD00A40D67 /* UIColor+COLORCategories.m */,
+				F55E3A5B17EECD750045145C /* NSDate+DATEHelperCategories.h */,
+				F55E3A5C17EECD750045145C /* NSDate+DATEHelperCategories.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				F57B3EA917814BA9009CB6D9 /* ContentViewController.m in Sources */,
 				F50E436717CC93FE002E916F /* CustomCell.m in Sources */,
 				F57B3EAF17814C2B009CB6D9 /* ECSlidingViewController.m in Sources */,
+				F55E3A5D17EECD750045145C /* NSDate+DATEHelperCategories.m in Sources */,
 				F57B3EB017814C2B009CB6D9 /* UIImage+ImageWithUIView.m in Sources */,
 				F55A555117CC96BD00A40D67 /* UIColor+COLORCategories.m in Sources */,
 				F50E54CA17CDC2080032CFF1 /* CustomSearchBar.m in Sources */,

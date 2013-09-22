@@ -26,7 +26,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)saveButtonClicked:(id)sender{
-    if([self verifiyCourse] == NO){
+    if([self verifyCourse] == NO){
         return;
     }
     
@@ -41,7 +41,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL)verifiyCourse{
+- (BOOL)verifyCourse{
     if(!(monButton.selected || tueButton.selected || wedButton.selected || thuButton.selected || friButton.selected || satButton.selected || sunButton.selected)){
         return NO;
     }
@@ -143,11 +143,15 @@
     Lecture * strLecture = [_course.lectures objectAtIndex:0];
     int hour = strLecture.period + 8;
     int minute = (strLecture.period - (int)strLecture.period) * 60;
-    [startTimeButton setTitle:[self timeMaker:hour minute:minute] forState:UIControlStateNormal];
+    
+    [startTimeButton setTitle:[NSDate dateStringWithHour:hour minute:minute]
+                     forState:UIControlStateNormal];
     
     hour = strLecture.period + strLecture.duration + 8;
     minute = (strLecture.period + strLecture.duration + 8 - hour) * 60;
-    [endTimeButton setTitle:[self timeMaker:hour minute:minute] forState:UIControlStateNormal];
+    
+    [endTimeButton setTitle:[NSDate dateStringWithHour:hour minute:minute]
+                   forState:UIControlStateNormal];
 }
 
 - (void)setCourseWithIBOutlets:(Course *)_course{
@@ -211,37 +215,13 @@
     }
     return [NSDate dateWithTimeIntervalSinceReferenceDate:(NSTimeInterval)timeRoundedTo5Minutes];
 }
-- (NSString *)timeMaker:(int)hour minute:(int)minute{
-    NSString * am_pm;
-    NSString * hourString;
-    NSString * minuteString;
-    
-    if(hour > 12) {
-        am_pm = @"오후";
-    }else{
-        am_pm = @"오전";
-    }
-    
-    if(hour < 10){
-        hourString = [NSString stringWithFormat:@"0%d", hour];
-    }else{
-        hourString = [NSString stringWithFormat:@"%d", hour];
-    }
-    if(minute < 10){
-        minuteString = [NSString stringWithFormat:@"0%d", minute];
-    }else{
-        minuteString = [NSString stringWithFormat:@"%d", minute];
-    }
-    return [NSString stringWithFormat:@"%@ %@:%@", am_pm, hourString, minuteString];
-}
-
 
 // DatePicker
 - (void)changeDate:(UIDatePicker *)sender{
     NSDate * date = (NSDate *)sender.date;
     date = [self clampDate:date toMinutes:15];
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"a HH:mm"];
+    [dateFormatter setDateFormat:@"a hh:mm"];
     
     NSString * dateString = [dateFormatter stringFromDate:date];
     UIButton * timeButton = (UIButton *)[self.view viewWithTag:[(UIDatePicker *)sender tag] - 10];
@@ -282,21 +262,17 @@
     
     CGRect toolbarTargetFrame = CGRectMake(0, self.view.bounds.size.height-216-44 + moveCenter, 320, 44);
     CGRect datePickerTargetFrame = CGRectMake(0, self.view.bounds.size.height-216 + moveCenter, 320, 216);
-    
-    UIView *darkView = [[UIView alloc] initWithFrame:self.view.bounds];
-    darkView.alpha = 0;
-    darkView.backgroundColor = [UIColor blackColor];
-    darkView.tag = 11;
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDatePicker:)];
-    [darkView addGestureRecognizer:tapGesture];
-    [self.view addSubview:darkView];
-    
+
+    // UIDatePicker
     UIDatePicker *datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height+44, 320, 216)];
+    [datePicker setMinuteInterval:15];
     [datePicker setDatePickerMode:UIDatePickerModeTime];
-    
+    [datePicker addTarget:self action: @selector(changeDate:) forControlEvents:UIControlEventValueChanged];
+    datePicker.tag = [(UIButton *)sender tag] + 10;
+
+        // set default date.
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"a HH:mm"];
-    
+    [format setDateFormat:@"a hh:mm"];
     NSString * timeString;
     if([sender tag] == 2){
         timeString = [startTimeButton titleForState:UIControlStateNormal];
@@ -304,23 +280,42 @@
         timeString = [endTimeButton titleForState:UIControlStateNormal];
     }
     [datePicker setDate:[format dateFromString:timeString]];
-    datePicker.tag = [(UIButton *)sender tag] + 10;
-    [datePicker addTarget:self action: @selector(changeDate:) forControlEvents:UIControlEventValueChanged];
     
-    [datePicker setMinuteInterval:15];
-    [self.view addSubview:datePicker];
+        // set minimum time
+    NSString *dateString = @"09:00";
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"hh:mm";
+    [datePicker setMinimumDate:[dateFormatter dateFromString:dateString]];
     
+        // set maximum time
+    dateString = @"22:00";
+    dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"HH:mm";
+    [datePicker setMaximumDate:[dateFormatter dateFromString:dateString]];
+
+    // Dark Background
+    UIView *darkView = [[UIView alloc] initWithFrame:self.view.bounds];
+    darkView.alpha = 0;
+    darkView.backgroundColor = [UIColor blackColor];
+    darkView.tag = 11;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissDatePicker:)];
+    [darkView addGestureRecognizer:tapGesture];
+    
+
+    // UIToolBar
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height, 320, 44)];
     toolBar.tag = 14;
     toolBar.barStyle = UIBarStyleBlackTranslucent;
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dismissDatePicker:)];
     [toolBar setItems:[NSArray arrayWithObjects:spacer, doneButton, nil]];
+    
+    [self.view addSubview:darkView];
+    [self.view addSubview:datePicker];
     [self.view addSubview:toolBar];
     
-    
+    // Animation
     [UIView beginAnimations:@"MoveIn" context:nil];
-
     self.view.center = CGPointMake(originCenter.x, originCenter.y-moveCenter);
     toolBar.frame = toolbarTargetFrame;
     datePicker.frame = datePickerTargetFrame;
