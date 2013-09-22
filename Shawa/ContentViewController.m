@@ -152,9 +152,10 @@
     imageView.frame = CGRectMake(imageView.frame.origin.x, imageView.frame.origin.y,
                                  timeTable.contentSize.width, timeTable.contentSize.height);
     
+    
     [timeTable addSubview:imageView];
     [self.view insertSubview:timeTable belowSubview:settingButton];
-    
+        
     // Initialized selectedFriendsList as MYSELF
     
     if(self.selectedFriendsList == nil && [AppDelegate getMyIndividualId] != -1){
