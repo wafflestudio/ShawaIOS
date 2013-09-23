@@ -165,7 +165,6 @@
         self.barTitle = individual.userName;
         self.groupType = [NSNumber numberWithInt:MYSELF];
     }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated{

@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfs-GD-Hhr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="-442"/>
+            <point key="canvasLocation" x="533" y="-1134"/>
         </scene>
         <!--Setting View Controller-->
         <scene sceneID="Lt1-fq-pCT">
@@ -103,12 +103,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Wee-v5-Cpi"/>
                     <connections>
+                        <outlet property="publishMyTimeTable" destination="q6a-rM-D8a" id="hN0-L8-fFZ"/>
+                        <outlet property="synContacts" destination="x65-MT-49W" id="Qzd-Pd-uHu"/>
                         <segue destination="Jqd-n9-3T8" kind="push" identifier="Friends" id="Hso-ej-5Oj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xrd-4Y-APh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489" y="-1318"/>
+            <point key="canvasLocation" x="1503" y="-1134"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="DoY-ge-tBT">
@@ -184,7 +186,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E9r-Cr-3pB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="-1318"/>
+            <point key="canvasLocation" x="1965" y="-1134"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="zH8-aW-rbk">

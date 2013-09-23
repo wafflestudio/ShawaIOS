@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingViewController : UITableViewController
+@interface SettingViewController : UITableViewController 
+
+@property (nonatomic, strong) IBOutlet UISwitch * publishMyTimeTable;
+@property (nonatomic, strong) IBOutlet UISwitch * synContacts;
 
 @end

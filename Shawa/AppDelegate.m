@@ -11,6 +11,9 @@
 
 @implementation AppDelegate
 
+static NSString * my_uuid;
+static int my_individual_id;
+
 + (void)setUuidAndIndividualId{
     // Set Uuid
     NSString *retrieveuuid = [SSKeychain passwordForService:@"com.wafflestudio.shawa" account:@"user"];
@@ -45,6 +48,9 @@
 +(int)getMyIndividualId{
     return my_individual_id;
 }
++(NSUserDefaults *)getPreference{
+    return [NSUserDefaults standardUserDefaults];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -52,6 +58,14 @@
     NSLog(@"uuid : %@", [AppDelegate getUuidString]);
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    // set default value for Preference. NSDefaults.
+    if([[AppDelegate getPreference] boolForKey:@"setPreference"] == false){
+        [[AppDelegate getPreference] setBool:YES forKey:@"publishMyTimeTable"];
+        [[AppDelegate getPreference] setBool:YES forKey:@"synContacts"];
+        [[AppDelegate getPreference] setBool:YES forKey:@"setPreference"];
+
+    }
 
     return YES;
 }

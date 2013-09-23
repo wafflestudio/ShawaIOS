@@ -17,8 +17,6 @@
 #import "Course.h"
 
 
-static NSString * my_uuid;
-static int my_individual_id;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -27,5 +25,7 @@ static int my_individual_id;
 +(void)setUuidAndIndividualId;
 +(NSString *)getUuidString;
 +(int)getMyIndividualId;
+
++(NSUserDefaults *)getPreference;
 
 @end
