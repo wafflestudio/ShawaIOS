@@ -155,7 +155,7 @@
     
     [timeTable addSubview:imageView];
     [self.view insertSubview:timeTable belowSubview:settingButton];
-        
+    
     // Initialized selectedFriendsList as MYSELF
     
     if(self.selectedFriendsList == nil && [AppDelegate getMyIndividualId] != -1){

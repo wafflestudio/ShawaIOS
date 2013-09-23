@@ -28,6 +28,8 @@
     ContentViewController *contViewController = [storyboard instantiateViewControllerWithIdentifier:@"Content"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:contViewController];
     
+    self.shouldAddPanGestureRecognizerToTopViewSnapshot = YES;
+
     self.topViewController = navigationController;
 }
 
