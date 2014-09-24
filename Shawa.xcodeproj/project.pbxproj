@@ -317,6 +317,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Wafflestudio;
+				TargetAttributes = {
+					F57B3E7F17814AE9009CB6D9 = {
+						DevelopmentTeam = 8F8C98NKPP;
+					};
+				};
 			};
 			buildConfigurationList = F57B3E7B17814AE8009CB6D9 /* Build configuration list for PBXProject "Shawa" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -497,11 +502,12 @@
 			baseConfigurationReference = 9B842541E17A455791A7F393 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shawa/Shawa-Prefix.pch";
 				INFOPLIST_FILE = "Shawa/Shawa-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E401C60D-8B1B-49EA-8945-7FC431B58D92";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -511,11 +517,12 @@
 			baseConfigurationReference = 9B842541E17A455791A7F393 /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Shawa/Shawa-Prefix.pch";
 				INFOPLIST_FILE = "Shawa/Shawa-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "E401C60D-8B1B-49EA-8945-7FC431B58D92";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

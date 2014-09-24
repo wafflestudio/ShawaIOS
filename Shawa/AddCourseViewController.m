@@ -51,13 +51,14 @@
     NSString * startTime = [startTimeButton titleForState:UIControlStateNormal];
     NSString * endTime = [startTimeButton titleForState:UIControlStateNormal];
     
+    /*
     if([ (startTime = [startTime substringToIndex:3]) isEqualToString:@"오후"]){
         if([ (endTime = [endTime substringToIndex:3]) isEqualToString:@"오전"]){
             return NO;
         }
     }
-    
-    if(![startTime compare:endTime]){
+    */
+    if([startTime compare:endTime]){
         return NO;
     }
     if([[startTimeButton titleForState:UIControlStateNormal] isEqualToString:[endTimeButton titleForState:UIControlStateNormal]]){
@@ -100,10 +101,10 @@
     
     // Set Time Buttons
     startTimeButton.tag = 2;
-    startTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"오전 10:00"];
+    startTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"10:00"];
     
     endTimeButton.tag = 3;
-    endTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"오전 11:00"];
+    endTimeButton.titleLabel.text = [NSString stringWithFormat:@"%@", @"11:00"];
     
     // Set originCenter
     originCenter = self.view.center;
@@ -143,14 +144,28 @@
     Lecture * strLecture = [_course.lectures objectAtIndex:0];
     int hour = strLecture.period + 8;
     int minute = (strLecture.period - (int)strLecture.period) * 60;
+    NSString * hourString;
+    NSString * minuteString;
     
-    [startTimeButton setTitle:[NSDate dateStringWithHour:hour minute:minute]
+    if(hour < 10){
+        hourString = [NSString stringWithFormat:@"0%d", hour];
+    }else{
+        hourString = [NSString stringWithFormat:@"%d", hour];
+    }
+    
+    if(minute < 10){
+        minuteString = [NSString stringWithFormat:@"0%d", minute];
+    }else{
+        minuteString = [NSString stringWithFormat:@"%d", minute];
+    }
+    
+    [startTimeButton setTitle:[NSString stringWithFormat:@"%@:%@", hourString, minuteString]
                      forState:UIControlStateNormal];
     
     hour = strLecture.period + strLecture.duration + 8;
     minute = (strLecture.period + strLecture.duration + 8 - hour) * 60;
     
-    [endTimeButton setTitle:[NSDate dateStringWithHour:hour minute:minute]
+    [endTimeButton setTitle:[NSString stringWithFormat:@"%d:%d", hour, minute]
                    forState:UIControlStateNormal];
 }
 
@@ -162,12 +177,22 @@
     NSString * startTimeString = [startTimeButton titleForState:UIControlStateNormal];
     NSString * endTimeString = [endTimeButton titleForState:UIControlStateNormal];
     
+    /*
     double shour = [[[startTimeString substringFromIndex:3] substringToIndex:2] integerValue];
     double sminute = [[startTimeString substringFromIndex:6] integerValue];
     double period = shour + sminute/60 - 8;
     
     double ehour = [[[endTimeString substringFromIndex:3] substringToIndex:2] integerValue];
     double eminute = [[endTimeString substringFromIndex:6] integerValue];
+    double duration = ehour + eminute/60 - shour - sminute/60;
+
+     */
+    double shour = [[startTimeString substringToIndex:2] integerValue];
+    double sminute = [[startTimeString substringFromIndex:3] integerValue];
+    double period = shour + sminute/60 - 8;
+    
+    double ehour = [[endTimeString substringToIndex:2] integerValue];
+    double eminute = [[endTimeString substringFromIndex:3] integerValue];
     double duration = ehour + eminute/60 - shour - sminute/60;
 
     if(monButton.selected){
@@ -221,7 +246,7 @@
     NSDate * date = (NSDate *)sender.date;
     date = [self clampDate:date toMinutes:15];
     NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"a hh:mm"];
+    [dateFormatter setDateFormat:@"HH:mm"];
     
     NSString * dateString = [dateFormatter stringFromDate:date];
     UIButton * timeButton = (UIButton *)[self.view viewWithTag:[(UIDatePicker *)sender tag] - 10];
@@ -270,9 +295,9 @@
     [datePicker addTarget:self action: @selector(changeDate:) forControlEvents:UIControlEventValueChanged];
     datePicker.tag = [(UIButton *)sender tag] + 10;
 
-        // set default date.
+    // set default date.
     NSDateFormatter * format = [[NSDateFormatter alloc] init];
-    [format setDateFormat:@"a hh:mm"];
+    [format setDateFormat:@"HH:mm"];
     NSString * timeString;
     if([sender tag] == 2){
         timeString = [startTimeButton titleForState:UIControlStateNormal];
@@ -281,13 +306,13 @@
     }
     [datePicker setDate:[format dateFromString:timeString]];
     
-        // set minimum time
+    // set minimum time
     NSString *dateString = @"09:00";
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"hh:mm";
     [datePicker setMinimumDate:[dateFormatter dateFromString:dateString]];
     
-        // set maximum time
+    // set maximum time
     dateString = @"22:00";
     dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"HH:mm";
